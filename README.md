@@ -8,10 +8,10 @@
 ---
 
 ## 👨‍💻 Candidate & Submission Details
-- **Full Name**: Piyush Kumar
-- **Branch**: Computer Science & Engineering
-- **Mobile Number**: +91 7587794306
-- **Email**: candidate@nitrr.ac.in
+- **Full Name**: [YOUR_NAME]
+- **Branch**: [YOUR_BRANCH]
+- **Mobile Number**: +91 98000 00000
+- **Email**: candidate@example.com
 - **Live Project Link**: https://codeutsava10-comic.netlify.app/ *(or Vercel deployment)*
 - **Working Demo Video**: [Google Drive Demo Video Link](https://drive.google.com/)
 
@@ -53,7 +53,7 @@ For the landmark 10th edition of CodeUtsava, we reimagined the traditional hacka
   - `03. victory at nit raipur clock tower`
 - Live equalizer visualizer, track skipping, sound effects toggle, and retro comic sound bursts (`*POW!*`, `*CLACK!*`, `*COMPILE!*`).
 
-### 4. Modern, Minimalist Comic Landing Page
+### 4. Spider-Verse & Pop-Art Landing Page
 - **Hero Section**: Strong headline with real-time countdown to October 26, 2026.
 - **About TCP & NIT Raipur**: 10-year legacy, statistics counters (1,500+ hackers, 50+ mentors).
 - **6 Problem Tracks**: AI/Agentic ML, Web3 & DeFi (Polygon), FinTech, HealthTech, Hardware Edition, and Open Innovation.
@@ -63,7 +63,7 @@ For the landmark 10th edition of CodeUtsava, we reimagined the traditional hacka
 - **Rules & Guidelines**: Mandatory team rules and code integrity guidelines.
 - **FAQ Accordion**: Speech-bubble expandable answers.
 - **Registration Modal**: Devfolio fast-track application form with instant ticket pass generator and confetti.
-- **Footer**: TCP manager contacts table and official submission guidelines.
+- **Footer**: Helpdesk coordination table and repository guidelines.
 
 ---
 
@@ -90,4 +90,4 @@ npm run dev
 
 ---
 
-*Crafted with ❤️ by the Turing Club of Programmers (TCP) Technical Team, NIT Raipur.*
+*Crafted with ❤️ for CodeUtsava 10.0.*

@@ -15,20 +15,19 @@ import { playSound } from "../../utils/audioEngine";
 import tcpLogoOfficial from "../../assets/tcp_logo_official.png";
 
 export default function ComicFooter({ onPlayIntro, onRegisterClick }) {
+  // Dummy Contact Personas
   const managers = [
-    { name: "RONANKI DINESH", phone: "+91 7587794306", role: "Manager", github: "dinesh-1709" },
-    { name: "SHREYASH KUMAR DHEEMAR", phone: "+91 7725850976", role: "Manager", github: "TechShreyash" },
-    { name: "SHOURYA SINHA", phone: "+91 7987949123", role: "Manager", github: "ShouryaGit023" },
-    { name: "VED YAMGANTIWAR", phone: "+91 9131277226", role: "Manager", github: "Codec-V" },
-    { name: "NAMAN AHUJA", phone: "+91 9584493008", role: "Manager", github: "naman553" }
+    { name: "ALEX RIVERS (OPERATIONS LEAD)", phone: "+91 98000 00001", role: "Manager", github: "alex-operations" },
+    { name: "JORDAN LEE (TECHNICAL HEAD)", phone: "+91 98000 00002", role: "Manager", github: "jordan-tech" },
+    { name: "SAM MORGAN (SPONSORSHIP LEAD)", phone: "+91 98000 00003", role: "Manager", github: "sam-relations" },
+    { name: "RILEY CHEN (LOGISTICS LEAD)", phone: "+91 98000 00004", role: "Manager", github: "riley-logistics" },
+    { name: "TAYLOR BROOKS (PUBLIC RELATIONS)", phone: "+91 98000 00005", role: "Manager", github: "taylor-pr" }
   ];
 
   const githubAccounts = [
-    "https://github.com/Codec-V",
-    "https://github.com/TechShreyash",
-    "https://github.com/ShouryaGit023",
-    "https://github.com/naman553",
-    "https://github.com/dinesh-1709"
+    "https://github.com/TCP-Tech/codeutsava10.0",
+    "https://github.com/TCP-Tech/evaluation-hub",
+    "https://github.com/TCP-Tech/dev-panel"
   ];
 
   const scrollToTop = () => {
@@ -100,7 +99,7 @@ export default function ComicFooter({ onPlayIntro, onRegisterClick }) {
               </div>
               <div className="flex items-center gap-2 text-zinc-200">
                 <Mail className="w-4 h-4 text-comic-yellow" />
-                <span>tcp@nitrr.ac.in • codeutsava@nitrr.ac.in</span>
+                <span>contact@codeutsava.com • support@codeutsava.com</span>
               </div>
             </div>
           </div>
@@ -112,22 +111,22 @@ export default function ComicFooter({ onPlayIntro, onRegisterClick }) {
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-comic-yellow" />
                 <h4 className="font-bangers text-xl text-white tracking-wide">
-                  TCP RECRUITMENT & EVENT MANAGERS
+                  COORDINATION & SUPPORT DESK
                 </h4>
               </div>
               <span className="text-[10px] font-mono bg-comic-pink-hot text-white px-2.5 py-0.5 rounded-full font-bold">
-                WHATSAPP / CALL
+                WHATSAPP / HELPLINE
               </span>
             </div>
 
-            {/* Table of Managers from PDF */}
+            {/* Table of Dummy Managers */}
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs font-mono">
                 <thead>
                   <tr className="text-zinc-400 border-b border-zinc-700 pb-1">
-                    <th className="py-1 font-bold">MANAGER</th>
-                    <th className="py-1 font-bold">CONTACT / WHATSAPP</th>
-                    <th className="py-1 font-bold text-right">GITHUB</th>
+                    <th className="py-1 font-bold">COORDINATOR</th>
+                    <th className="py-1 font-bold">HELPLINE CONTACT</th>
+                    <th className="py-1 font-bold text-right">COMMUNITY HUB</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-800">
@@ -137,24 +136,14 @@ export default function ComicFooter({ onPlayIntro, onRegisterClick }) {
                         {m.name}
                       </td>
                       <td className="py-2.5 text-zinc-300">
-                        <a 
-                          href={`https://wa.me/${m.phone.replace(/[^0-9]/g, "")}`}
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="hover:underline hover:text-comic-green flex items-center gap-1"
-                        >
+                        <span className="text-zinc-300 flex items-center gap-1">
                           {m.phone}
-                        </a>
+                        </span>
                       </td>
                       <td className="py-2.5 text-right text-zinc-400">
-                        <a
-                          href={`https://github.com/${m.github}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-comic-pink-hot underline"
-                        >
+                        <span className="text-comic-pink-hot">
                           @{m.github}
-                        </a>
+                        </span>
                       </td>
                     </tr>
                   ))}
@@ -162,11 +151,11 @@ export default function ComicFooter({ onPlayIntro, onRegisterClick }) {
               </table>
             </div>
 
-            {/* Instruction Warning Box from PDF */}
+            {/* Instruction Warning Box */}
             <div className="mt-4 p-3 bg-zinc-900/90 rounded-2xl border border-amber-500/40 text-[11px] font-comic text-amber-200 flex items-start gap-2">
               <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
               <span>
-                <strong>Note:</strong> All queries to be posted in the official WhatsApp group will be resolved promptly. Please reach out to the managers listed above for immediate coordination.
+                <strong>Note:</strong> All queries submitted via the helpdesk or official Discord channels will be answered promptly by the team.
               </span>
             </div>
 
@@ -174,35 +163,30 @@ export default function ComicFooter({ onPlayIntro, onRegisterClick }) {
 
         </div>
 
-        {/* GitHub Repository Guidelines Box (From PDF Page 5 & 6) */}
+        {/* GitHub Repository Guidelines Box */}
         <div className="bg-[#27272A] p-5 sm:p-6 rounded-3xl comic-border border-zinc-700 mb-12">
           <div className="flex items-center gap-2 mb-3">
             <GitBranch className="w-5 h-5 text-comic-blue" />
             <h4 className="font-bangers text-xl text-white tracking-wide">
-              SUBMISSION & GITHUB GUIDELINES
+              SUBMISSION & REPOSITORY PROTOCOL
             </h4>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-comic text-zinc-300">
             <div className="space-y-1.5 bg-zinc-900/60 p-3.5 rounded-2xl border border-zinc-800">
               <div className="font-mono font-bold text-comic-yellow text-xs">
-                1. REPOSITORY ACCESS SETUP
+                1. REPOSITORY SETUP
               </div>
               <p>
-                Create a repository named <code>"codeutsava 10.0"</code> and grant access to team accounts:
+                Create a private repository named <code>"codeutsava 10.0"</code> and grant review access:
               </p>
               <div className="flex flex-wrap gap-1 pt-1 font-mono text-[10px]">
-                {githubAccounts.map((link, idx) => (
-                  <a
-                    key={idx}
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-2 py-0.5 bg-zinc-800 hover:bg-comic-blue rounded text-zinc-200 transition-colors"
-                  >
-                    @{link.split("/").pop()}
-                  </a>
-                ))}
+                <span className="px-2 py-0.5 bg-zinc-800 rounded text-zinc-200">
+                  @TCP-Tech-Evaluator
+                </span>
+                <span className="px-2 py-0.5 bg-zinc-800 rounded text-zinc-200">
+                  @CodeUtsava-Reviewer
+                </span>
               </div>
             </div>
 
@@ -211,12 +195,12 @@ export default function ComicFooter({ onPlayIntro, onRegisterClick }) {
                 2. README.MD MANDATORY CHECKLIST
               </div>
               <ul className="grid grid-cols-2 gap-1 font-mono text-[10px] text-zinc-300">
-                <li>• Full Name</li>
+                <li>• Team Name</li>
                 <li>• Branch & Year</li>
-                <li>• Mobile Number</li>
-                <li>• Email Address</li>
+                <li>• Contact Number</li>
+                <li>• Contact Email</li>
                 <li>• Live Deployed URL</li>
-                <li>• Google Drive Demo Video</li>
+                <li>• Working Demo Video</li>
               </ul>
             </div>
           </div>
