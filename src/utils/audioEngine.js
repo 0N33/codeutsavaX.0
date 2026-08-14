@@ -1,5 +1,5 @@
 // Web Audio Engine for Code Comic & CodeUtsava 10.0
-// Procedural Lo-Fi Synthesizer & Comic Sound Effects
+// Procedural Lo-Fi Synthesizer & Spider-Verse Comic Sound Effects
 
 let audioCtx = null;
 
@@ -25,6 +25,56 @@ export const playSound = (type = "blip") => {
     const now = ctx.currentTime;
 
     switch (type) {
+      case "thwip": {
+        // Spider-Verse Web Shooter / High Frequency Zip
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(1400, now);
+        osc.frequency.exponentialRampToValueAtTime(180, now + 0.1);
+        gain.gain.setValueAtTime(0.09, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.1);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.1);
+        break;
+      }
+
+      case "kapow": {
+        // Heavy Comic Impact Punch
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "square";
+        osc.frequency.setValueAtTime(150, now);
+        osc.frequency.exponentialRampToValueAtTime(30, now + 0.18);
+        gain.gain.setValueAtTime(0.14, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.18);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.18);
+        break;
+      }
+
+      case "glitch": {
+        // Spider-Verse Multiverse Glitch Sound
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.setValueAtTime(800, now + 0.03);
+        osc.frequency.setValueAtTime(250, now + 0.06);
+        osc.frequency.setValueAtTime(900, now + 0.09);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.12);
+        break;
+      }
+
       case "blip": {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
@@ -44,8 +94,8 @@ export const playSound = (type = "blip") => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "triangle";
-        osc.frequency.setValueAtTime(400, now);
-        osc.frequency.exponentialRampToValueAtTime(120, now + 0.07);
+        osc.frequency.setValueAtTime(420, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.07);
         gain.gain.setValueAtTime(0.12, now);
         gain.gain.linearRampToValueAtTime(0.001, now + 0.07);
         osc.connect(gain);
@@ -56,7 +106,6 @@ export const playSound = (type = "blip") => {
       }
 
       case "pageTurn": {
-        // Noise buffer for realistic comic paper swish
         const bufferSize = ctx.sampleRate * 0.12;
         const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const data = buffer.getChannelData(0);
@@ -97,7 +146,6 @@ export const playSound = (type = "blip") => {
       }
 
       case "compileSuccess": {
-        // Joyful 3-chord major arpeggio
         const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
         notes.forEach((freq, i) => {
           const osc = ctx.createOscillator();
@@ -159,7 +207,7 @@ export const COMIC_TRACKS = [
     artist: "Byte the Dino",
     mood: "Upbeat Synth Wave",
     bpm: 115,
-    coverColor: "#FF528F",
+    coverColor: "#FF2A7A",
     chords: [
       [220.00, 329.63, 440.00, 554.37], // A major add9
       [174.61, 261.63, 349.23, 440.00], // F major

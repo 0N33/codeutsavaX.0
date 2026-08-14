@@ -1,116 +1,140 @@
 import React from "react";
 import { Users, Award, Zap, Code2, Heart, ExternalLink, Sparkles, Building2 } from "lucide-react";
 import { playSound } from "../../utils/audioEngine";
-import { NitRaipurTower, ComicSfxSticker } from "../comic/ComicCharacters";
+import { NitRaipurTower, ComicSfxSticker, SheepBit } from "../comic/ComicCharacters";
 import tcpLogoOfficial from "../../assets/tcp_logo_official.png";
 
 export default function AboutSection() {
   const stats = [
-    { label: "REGISTERED HACKERS", value: "1,500+", color: "bg-[#FFF3D6]", text: "text-comic-dark" },
-    { label: "CASH & BOUNTY PRIZES", value: "₹5,00,000+", color: "bg-[#FFE5EF]", text: "text-comic-pink-hot" },
-    { label: "HOURS OF HACKING", value: "36 HRS", color: "bg-[#E8F4FF]", text: "text-comic-blue" },
-    { label: "INDUSTRY JURORS", value: "50+ PROS", color: "bg-[#E8F8F0]", text: "text-comic-green" },
+    { label: "REGISTERED HACKERS", value: "1,500+", color: "bg-[#FFE600]", text: "text-comic-dark" },
+    { label: "CASH & BOUNTY PRIZES", value: "₹5,00,000+", color: "bg-[#FF2A7A]", text: "text-white" },
+    { label: "HOURS OF HACKING", value: "36 HRS", color: "bg-[#00F0FF]", text: "text-comic-dark" },
+    { label: "INDUSTRY JURORS", value: "50+ PROS", color: "bg-[#00FF88]", text: "text-comic-dark" },
   ];
 
   return (
-    <section id="about" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFFDF7] border-b-[3px] border-comic-border select-none">
+    <section id="about" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FF8C1E] border-b-[4px] border-comic-border select-none">
       
-      <div className="max-w-7xl mx-auto">
+      {/* Spider-Verse Halftone Overlay */}
+      <div className="absolute inset-0 bg-spider-dots opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-screentone-diagonal opacity-20 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-comic-yellow comic-border rounded-full text-xs font-bangers text-comic-dark mb-2 comic-shadow-sm">
-            <Sparkles className="w-3.5 h-3.5" />
-            THE 10TH LEGENDARY EDITION
+        {/* Caption Box */}
+        <div className="flex justify-start mb-6">
+          <div className="comic-caption-box text-sm sm:text-base">
+            <span>IN THE TURING CLUB MULTIVERSE...</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bangers text-comic-dark tracking-wide">
-            ABOUT CODEUTSAVA 10.0 & TCP
+        </div>
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-4xl sm:text-6xl font-bangers text-[#18181B] tracking-wide spider-glitch-text">
+            THE ORIGIN STORY OF CODEUTSAVA 10.0
           </h2>
-          <p className="mt-2 text-base sm:text-lg font-hand font-bold text-zinc-600">
-            Fostering competitive programming, open source, and cutting-edge digital creation at NIT Raipur.
+          <p className="mt-2 text-base sm:text-xl font-hand font-bold text-zinc-900">
+            A decade of coding culture, hackathon energy, and open-source innovation at NIT Raipur!
           </p>
         </div>
 
-        {/* 4 Big Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        {/* 4 Comic Stat Badges */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {stats.map((stat, i) => (
             <div
               key={i}
-              className={`${stat.color} p-5 rounded-2xl comic-border comic-shadow-sm hover:comic-shadow transition-all text-center group`}
+              onMouseEnter={() => playSound("blip")}
+              className={`${stat.color} p-5 rounded-2xl comic-border comic-shadow hover:comic-shadow-lg transition-all text-center group cursor-pointer hover:-translate-y-1`}
             >
-              <div className={`text-3xl sm:text-4xl font-bangers ${stat.text} tracking-wide group-hover:scale-105 transition-transform`}>
+              <div className={`text-3xl sm:text-4xl font-bangers ${stat.text} tracking-wide group-hover:scale-110 transition-transform`}>
                 {stat.value}
               </div>
-              <div className="text-xs font-mono font-bold text-zinc-600 mt-1 uppercase">
+              <div className="text-xs font-mono font-bold text-comic-dark mt-1 uppercase">
                 {stat.label}
               </div>
             </div>
           ))}
         </div>
 
-        {/* 2-Column Story Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* 3-Panel Comic Strip Origin Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
-          {/* Left Column: NIT Raipur & TCP Info (7 Cols) */}
-          <div className="lg:col-span-7 space-y-4">
-            
-            <div className="bg-white p-6 rounded-3xl comic-border comic-shadow space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-comic-pink-light comic-border flex items-center justify-center">
-                  <img src={tcpLogoOfficial} alt="TCP" className="w-8 h-8 object-contain" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bangers text-comic-dark">
-                    TURING CLUB OF PROGRAMMERS
-                  </h3>
-                  <p className="text-xs font-mono text-zinc-500 font-bold">
-                    Official Coding Club of NIT Raipur
-                  </p>
-                </div>
+          {/* Panel 1: The Turing Legacy (7 Cols) */}
+          <div className="lg:col-span-7 comic-panel-frame p-6 sm:p-8 rounded-3xl flex flex-col justify-between bg-[#FFFDF7]">
+            <div className="flex items-center justify-between pb-3 border-b-2 border-dashed border-zinc-400 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded-md bg-[#18181B] text-white font-bangers text-xs flex items-center justify-center">
+                  #03
+                </span>
+                <span className="font-bangers text-base text-comic-dark tracking-wide">
+                  PANEL 1: THE TURING LEGACY
+                </span>
               </div>
+              <span className="text-xs font-mono font-bold text-[#FF2A7A]">EST. NIT RAIPUR</span>
+            </div>
 
-              <p className="text-sm font-comic text-zinc-700 leading-relaxed">
-                The <strong>Turing Club of Programmers (TCP)</strong> is the premier coding community of the <strong>National Institute of Technology, Raipur</strong>. TCP is dedicated to cultivating a passionate ecosystem of problem-solvers, competitive programmers, full-stack builders, and open-source pioneers.
-              </p>
-
-              <p className="text-sm font-comic text-zinc-700 leading-relaxed">
-                <strong>CodeUtsava</strong> is TCP’s flagship annual hackathon. Celebrating its momentous <strong>10.0 Edition</strong>, CodeUtsava attracts the brightest minds from across India for an unforgettable 36 hours of software engineering, hardware prototyping, mentorship, and tech culture.
-              </p>
-
-              {/* Club Perks Badges */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                <span className="px-3 py-1 bg-zinc-100 rounded-lg comic-border text-xs font-mono font-bold text-zinc-800">
-                  🏆 10 Years of Legacy
-                </span>
-                <span className="px-3 py-1 bg-zinc-100 rounded-lg comic-border text-xs font-mono font-bold text-zinc-800">
-                  ⚡ 500+ Active Alumni in Top Tech
-                </span>
-                <span className="px-3 py-1 bg-zinc-100 rounded-lg comic-border text-xs font-mono font-bold text-zinc-800">
-                  🌐 SIH & ACM-ICPC Regional Finalists
-                </span>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-14 h-14 rounded-2xl bg-[#FFE600] comic-border flex items-center justify-center shrink-0 comic-shadow-sm">
+                <img src={tcpLogoOfficial} alt="TCP" className="w-9 h-9 object-contain" />
+              </div>
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bangers text-comic-dark">
+                  TURING CLUB OF PROGRAMMERS
+                </h3>
+                <p className="text-xs font-mono text-zinc-600 font-bold">
+                  Official Coding Club of NIT Raipur
+                </p>
               </div>
             </div>
 
+            <div className="space-y-3 text-sm font-comic text-zinc-800 leading-relaxed">
+              <p>
+                The <strong>Turing Club of Programmers (TCP)</strong> is the premier coding powerhouse at the <strong>National Institute of Technology, Raipur</strong>. Founded with the mission to cultivate exceptional competitive programmers, full-stack builders, and open-source pioneers.
+              </p>
+              <p>
+                <strong>CodeUtsava</strong> is TCP's flagship hackathon, celebrating its landmark <strong>10.0 Edition</strong> with a superhero comic theme. Over the last decade, CodeUtsava has catalyzed hundreds of startups, research projects, and elite developer careers.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-300 mt-4">
+              <span className="px-3 py-1 bg-[#FFE6C7] rounded-lg comic-border text-xs font-mono font-bold text-zinc-900">
+                ★ 10 Years of Excellence
+              </span>
+              <span className="px-3 py-1 bg-[#FFE5EF] rounded-lg comic-border text-xs font-mono font-bold text-zinc-900">
+                ⚡ 500+ Alumni in Top Tech
+              </span>
+              <span className="px-3 py-1 bg-[#E8F8F0] rounded-lg comic-border text-xs font-mono font-bold text-zinc-900">
+                🌐 SIH & ACM-ICPC Regional Finalists
+              </span>
+            </div>
           </div>
 
-          {/* Right Column: NIT Raipur Architecture Visual (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col items-center">
-            
-            <div className="w-full bg-[#FFF3D6] p-6 rounded-3xl comic-border comic-shadow flex flex-col items-center text-center">
-              <NitRaipurTower size={240} />
-              
-              <h4 className="text-xl font-bangers text-comic-dark mt-3">
-                NIT RAIPUR CAMPUS & CCC
-              </h4>
-              <p className="text-xs font-hand font-bold text-zinc-600 mt-1 max-w-xs">
-                Hosted inside the state-of-the-art Central Computer Center (CCC) with high-speed gigabit Wi-Fi, air conditioning, and 24/7 power backup.
-              </p>
-              
-              <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono font-bold text-comic-pink-hot">
-                <span>📍 G.E. Road, Raipur, Chhattisgarh</span>
+          {/* Panel 2: NIT Raipur Campus Landmark (5 Cols) */}
+          <div className="lg:col-span-5 comic-panel-frame p-6 sm:p-8 rounded-3xl flex flex-col justify-between items-center text-center bg-[#FFE6C7]">
+            <div className="w-full flex items-center justify-between pb-3 border-b-2 border-dashed border-zinc-400 mb-2">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded-md bg-[#18181B] text-white font-bangers text-xs flex items-center justify-center">
+                  #04
+                </span>
+                <span className="font-bangers text-base text-comic-dark tracking-wide">
+                  PANEL 2: THE ARENA
+                </span>
               </div>
+              <span className="text-xs font-mono font-bold text-comic-dark">NITRR CCC</span>
             </div>
 
+            <div className="my-auto py-2">
+              <NitRaipurTower size={220} />
+            </div>
+
+            <div className="bg-[#FFFDF7] p-4 rounded-2xl comic-border w-full mt-2 speech-tail-bottom">
+              <h4 className="font-bangers text-lg text-comic-dark">
+                CENTRAL COMPUTER CENTER (CCC)
+              </h4>
+              <p className="text-xs font-comic text-zinc-700 mt-1">
+                Equipped with Gigabit fiber internet, ergonomic dev workspaces, and 24/7 continuous electricity & food support.
+              </p>
+            </div>
           </div>
 
         </div>

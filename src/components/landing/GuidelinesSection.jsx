@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldAlert, CheckCircle2, Users2, Building, Wrench, Bus, FileCheck2, Sparkles } from "lucide-react";
+import { ShieldAlert, CheckCircle2, Users2, Building, Wrench, Bus, FileCheck2, Sparkles, Zap } from "lucide-react";
 import { playSound } from "../../utils/audioEngine";
 
 export default function GuidelinesSection() {
@@ -15,54 +15,61 @@ export default function GuidelinesSection() {
       icon: Users2,
       title: "TEAM COMPOSITION (2-4 MEMBERS)",
       color: "bg-[#FFE5EF]",
-      border: "border-comic-pink-hot",
+      border: "border-[#FF2A7A]",
       desc: "Each team must consist of 2 to 4 members, including 1 designated Team Leader who will submit final project artifacts and handle communications."
     },
     {
       icon: Wrench,
       title: "SOFTWARE & HARDWARE EDITIONS",
       color: "bg-[#E8F4FF]",
-      border: "border-comic-blue",
+      border: "border-[#2958FF]",
       desc: "For the Software Edition, members must be proficient in development. For the Hardware Edition, multidisciplinary teams (electronics, mechanical, IoT, and software) are highly encouraged."
     },
     {
       icon: Bus,
       title: "FREE STAY, FOOD & REIMBURSEMENT",
       color: "bg-[#E8F8F0]",
-      border: "border-comic-green",
+      border: "border-[#00FF88]",
       desc: "NIT Raipur provides 100% free accommodation, all meals, and up to ₹1,500 per person travel reimbursement upon presenting valid transit tickets."
     },
     {
       icon: FileCheck2,
       title: "ORIGINAL CODE INTEGRITY",
       color: "bg-[#F3E8FF]",
-      border: "border-purple-600",
+      border: "border-[#B800FF]",
       desc: "All code must be authored during the 36-hour hackathon period. Plagiarism, copying fellow participants, or submitting pre-built repositories results in immediate disqualification."
     },
     {
       icon: ShieldAlert,
       title: "CODE OF CONDUCT",
-      color: "bg-white",
+      color: "bg-[#FFFDF7]",
       border: "border-comic-dark",
       desc: "CodeUtsava adheres strictly to SIH and standard ethical codes of conduct. Maintain mutual respect, professional collaboration, and academic integrity throughout."
     }
   ];
 
   return (
-    <section id="guidelines" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFF8E7] border-b-[3px] border-comic-border select-none">
+    <section id="guidelines" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFA73B] border-b-[4px] border-comic-border select-none">
       
-      <div className="max-w-7xl mx-auto">
+      {/* Spider-Verse Dot Screens */}
+      <div className="absolute inset-0 bg-spider-dots opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-screentone-diagonal opacity-20 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-comic-yellow comic-border rounded-full text-xs font-bangers text-comic-dark mb-2 comic-shadow-sm">
-            <FileCheck2 className="w-3.5 h-3.5" />
-            HACKATHON PROTOCOL
+        {/* Caption Box */}
+        <div className="flex justify-start mb-6">
+          <div className="comic-caption-box text-sm sm:text-base">
+            <span>THE CODE OF THE MULTIVERSE BUILDERS...</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bangers text-comic-dark tracking-wide">
+        </div>
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-4xl sm:text-6xl font-bangers text-[#18181B] tracking-wide spider-glitch-text">
             RULES & GUIDELINES
           </h2>
-          <p className="mt-2 text-base sm:text-lg font-hand font-bold text-zinc-600">
+          <p className="mt-2 text-base sm:text-xl font-hand font-bold text-zinc-900">
             Official guidelines for all shortlisted participants and teams at CodeUtsava 10.0.
           </p>
         </div>
@@ -75,12 +82,13 @@ export default function GuidelinesSection() {
             return (
               <div
                 key={idx}
+                onClick={() => playSound("blip")}
                 onMouseEnter={() => playSound("blip")}
-                className={`relative ${rule.color} p-6 rounded-3xl comic-border comic-shadow hover:comic-shadow-lg transition-all duration-200 flex flex-col justify-between`}
+                className={`relative comic-panel-frame ${rule.color} p-6 rounded-3xl comic-shadow hover:comic-shadow-lg transition-all duration-200 flex flex-col justify-between cursor-pointer hover:-translate-y-1.5`}
               >
                 <div>
                   {/* Icon Header */}
-                  <div className="w-12 h-12 rounded-2xl bg-white comic-border flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white comic-border flex items-center justify-center mb-4 pb-1">
                     <Icon className="w-6 h-6 text-comic-dark" />
                   </div>
 
@@ -90,14 +98,14 @@ export default function GuidelinesSection() {
                   </h3>
 
                   {/* Text */}
-                  <p className="text-xs sm:text-sm font-comic text-zinc-700 mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm font-comic text-zinc-800 mt-2 leading-relaxed">
                     {rule.desc}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-comic-border/20 flex items-center justify-between text-[11px] font-mono font-bold text-zinc-500">
+                <div className="mt-4 pt-3 border-t border-comic-border/20 flex items-center justify-between text-[11px] font-mono font-bold text-zinc-600">
                   <span>RULE #{String(idx + 1).padStart(2, "0")}</span>
-                  <CheckCircle2 className="w-4 h-4 text-comic-green" />
+                  <CheckCircle2 className="w-4 h-4 text-[#26DE81]" />
                 </div>
               </div>
             );

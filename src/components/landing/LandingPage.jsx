@@ -19,7 +19,7 @@ export default function LandingPage({
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   return (
-    <div className="w-full min-h-screen bg-[#FFFDF7] text-comic-dark overflow-x-hidden font-comic select-none animate-[fadeIn_0.5s_ease-out]">
+    <div className="w-full min-h-screen bg-[#FFA033] text-comic-dark overflow-x-hidden font-comic select-none animate-[fadeIn_0.5s_ease-out]">
       
       {/* Navigation Bar */}
       <ComicNavbar
@@ -29,31 +29,31 @@ export default function LandingPage({
         toggleMusic={toggleMusic}
       />
 
-      {/* Hero Section with Live Countdown */}
+      {/* Hero Section with Live Countdown & Spider-Verse Strip */}
       <HeroSection
         onPlayIntro={onPlayIntro}
         onRegisterClick={() => setIsRegisterModalOpen(true)}
       />
 
-      {/* About NIT Raipur & TCP */}
+      {/* About NIT Raipur & TCP Origin Comic Strip */}
       <AboutSection />
 
-      {/* Problem Tracks */}
+      {/* Problem Tracks Collectible Issues */}
       <TracksSection />
 
-      {/* Prizes, Loot & Perks */}
+      {/* Prizes, Loot & Perks Splash Page */}
       <PrizesSection />
 
-      {/* 12-Stage Timeline Roadmap */}
+      {/* 12-Stage Timeline Comic Issue Strip */}
       <TimelineSection />
 
-      {/* Sponsors & Partners */}
+      {/* Sponsors & Industry Allies */}
       <SponsorsSection />
 
-      {/* Hackathon Rules & Guidelines */}
+      {/* Hackathon Rules & Code of Conduct */}
       <GuidelinesSection />
 
-      {/* FAQs */}
+      {/* FAQs Intel */}
       <FaqSection />
 
       {/* Footer & Contacts Table */}

@@ -1,7 +1,6 @@
 import React from "react";
-import { Trophy, Medal, Gift, Award, Sparkles, Plane, Utensils, Home, Star } from "lucide-react";
+import { Trophy, Medal, Gift, Award, Sparkles, Plane, Utensils, Home, Star, Zap } from "lucide-react";
 import { playSound } from "../../utils/audioEngine";
-import { ComicSfxSticker } from "../comic/ComicCharacters";
 
 export default function PrizesSection() {
   const prizeTiers = [
@@ -12,9 +11,9 @@ export default function PrizesSection() {
       cash: "₹1,00,000 Cash Prize",
       perks: ["Silver CodeUtsava 10.0 Trophy", "Direct Interview Fast-Tracks", "Exclusive Champion Swag Kit", "Polygon Track Eligible"],
       bg: "bg-[#E8F4FF]",
-      accent: "text-comic-blue",
+      accent: "text-[#2958FF]",
       badge: "SILVER MEDAL",
-      badgeColor: "bg-comic-blue text-white",
+      badgeColor: "bg-[#2958FF] text-white",
       height: "lg:translate-y-4"
     },
     {
@@ -26,7 +25,7 @@ export default function PrizesSection() {
       bg: "bg-[#FFF3D6]",
       accent: "text-comic-dark",
       badge: "GOLDEN CHAMPION",
-      badgeColor: "bg-comic-yellow text-comic-dark font-black",
+      badgeColor: "bg-[#FFE600] text-comic-dark font-black",
       height: "lg:-translate-y-2 ring-4 ring-comic-dark"
     },
     {
@@ -36,9 +35,9 @@ export default function PrizesSection() {
       cash: "₹50,000 Cash Prize",
       perks: ["Bronze CodeUtsava 10.0 Trophy", "Sponsor Special Bounty Baskets", "Official Certificate of Excellence", "TCP VIP Community Access"],
       bg: "bg-[#FFE5EF]",
-      accent: "text-comic-pink-hot",
+      accent: "text-[#FF2A7A]",
       badge: "BRONZE MEDAL",
-      badgeColor: "bg-comic-pink-hot text-white",
+      badgeColor: "bg-[#FF2A7A] text-white",
       height: "lg:translate-y-6"
     }
   ];
@@ -47,39 +46,47 @@ export default function PrizesSection() {
     { title: "Best All-Women Team", prize: "₹25,000 + Swags", desc: "Empowering female tech innovators" },
     { title: "Best UI/UX & Comic Design", prize: "₹20,000 + Figma Pro", desc: "Most intuitive, delightful frontend interface" },
     { title: "Best Hardware / IoT Prototype", prize: "₹25,000 + Dev Kits", desc: "Excellence in electronics & physical computing" },
-    { title: "Best Beginner / Freshers Team", prize: "₹15,000 + Mentorship", desc: "Highest scoring 1st/2nd year undergraduate team" },
+    { title: "Best Freshman Team", prize: "₹15,000 + Mentorship", desc: "Highest scoring 1st/2nd year undergraduate team" },
   ];
 
   return (
-    <section id="prizes" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFFDF7] border-b-[3px] border-comic-border select-none">
+    <section id="prizes" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FF8C1E] border-b-[4px] border-comic-border select-none">
       
-      <div className="max-w-7xl mx-auto">
+      {/* Spider-Verse Dot Screens */}
+      <div className="absolute inset-0 bg-spider-dots opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-screentone-diagonal opacity-20 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         
+        {/* Caption Box */}
+        <div className="flex justify-start mb-6">
+          <div className="comic-caption-box text-sm sm:text-base">
+            <span>THE REWARD FOR THE CODE CHAMPIONS...</span>
+          </div>
+        </div>
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-comic-yellow comic-border rounded-full text-xs font-bangers text-comic-dark mb-2 comic-shadow-sm">
-            <Trophy className="w-3.5 h-3.5" />
-            REWARDS & LOOT
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bangers text-comic-dark tracking-wide">
-            ₹5,00,000+ PRIZE POOL & PERKS
+          <h2 className="text-4xl sm:text-6xl font-bangers text-[#18181B] tracking-wide spider-glitch-text">
+            ₹5,00,000+ PRIZE POOL & LOOT
           </h2>
-          <p className="mt-2 text-base sm:text-lg font-hand font-bold text-zinc-600">
-            Massive cash bounties, trophies, schwag kits, and comprehensive travel reimbursements!
+          <p className="mt-2 text-base sm:text-xl font-hand font-bold text-zinc-900">
+            Massive cash prizes, golden trophies, schwag boxes, and full travel reimbursements!
           </p>
         </div>
 
-        {/* 3 Podium Cards */}
+        {/* 3 Podium Comic Panels */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12 items-stretch">
           {prizeTiers.map((tier, idx) => (
             <div
               key={idx}
+              onClick={() => playSound("kapow")}
               onMouseEnter={() => playSound("blip")}
-              className={`relative ${tier.bg} ${tier.height} p-6 sm:p-8 rounded-3xl comic-border comic-shadow hover:comic-shadow-lg transition-all duration-200 flex flex-col justify-between`}
+              className={`relative comic-panel-frame ${tier.bg} ${tier.height} p-6 sm:p-8 rounded-3xl comic-shadow hover:comic-shadow-lg transition-all duration-200 flex flex-col justify-between cursor-pointer`}
             >
               <div>
                 {/* Badge */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-4 pb-2 border-b-2 border-dashed border-zinc-400">
                   <span className={`px-3 py-1 rounded-full text-xs font-bangers tracking-wider comic-border ${tier.badgeColor}`}>
                     {tier.badge}
                   </span>
@@ -87,10 +94,10 @@ export default function PrizesSection() {
                 </div>
 
                 {/* Amount */}
-                <div className={`text-4xl sm:text-5xl font-bangers ${tier.accent} tracking-wide`}>
+                <div className={`text-4xl sm:text-5xl font-bangers ${tier.accent} tracking-wide spider-glitch-text-sm`}>
                   {tier.amount}
                 </div>
-                <div className="text-xs font-mono font-bold text-zinc-600 uppercase mt-0.5">
+                <div className="text-xs font-mono font-bold text-zinc-700 uppercase mt-0.5">
                   {tier.cash}
                 </div>
 
@@ -100,10 +107,10 @@ export default function PrizesSection() {
                 </h3>
 
                 {/* Perks list */}
-                <ul className="mt-4 space-y-2 text-xs sm:text-sm font-comic text-zinc-700">
+                <ul className="mt-4 space-y-2 text-xs sm:text-sm font-comic text-zinc-800">
                   {tier.perks.map((perk, pIdx) => (
                     <li key={pIdx} className="flex items-center gap-2">
-                      <Star className="w-3.5 h-3.5 fill-comic-yellow text-comic-dark shrink-0" />
+                      <Star className="w-3.5 h-3.5 fill-[#FFE600] text-comic-dark shrink-0" />
                       <span>{perk}</span>
                     </li>
                   ))}
@@ -111,8 +118,8 @@ export default function PrizesSection() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-comic-border/20 text-center">
-                <span className="font-hand font-bold text-sm text-zinc-500">
-                  + Official CodeUtsava 10.0 Certificate
+                <span className="font-hand font-bold text-sm text-zinc-600">
+                  + Official CodeUtsava 10.0 Trophy & Certificate
                 </span>
               </div>
             </div>
@@ -126,12 +133,12 @@ export default function PrizesSection() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {categoryAwards.map((cat, i) => (
-              <div key={i} className="bg-white p-4 rounded-2xl comic-border comic-shadow-sm hover:comic-shadow transition-all">
+              <div key={i} className="comic-panel-frame bg-[#FFFDF7] p-4 rounded-2xl comic-shadow hover:comic-shadow-lg transition-all">
                 <div className="flex items-center gap-2 font-bangers text-base text-comic-dark">
-                  <Award className="w-4 h-4 text-comic-pink-hot" />
+                  <Award className="w-4 h-4 text-[#FF2A7A]" />
                   <span>{cat.title}</span>
                 </div>
-                <div className="text-lg font-bangers text-comic-green mt-1">
+                <div className="text-lg font-bangers text-[#00AA55] mt-1">
                   {cat.prize}
                 </div>
                 <p className="text-xs font-comic text-zinc-600 mt-0.5">
@@ -143,16 +150,16 @@ export default function PrizesSection() {
         </div>
 
         {/* NIT Raipur Travel & Stay Perks Box (From PDF Requirements) */}
-        <div className="bg-[#FFF3D6] p-6 sm:p-8 rounded-3xl comic-border comic-shadow">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-comic-yellow comic-border flex items-center justify-center">
+        <div className="comic-panel-frame bg-[#FFF3D6] p-6 sm:p-8 rounded-3xl comic-shadow">
+          <div className="flex items-center gap-3 mb-4 pb-2 border-b-2 border-dashed border-zinc-400">
+            <div className="w-10 h-10 rounded-xl bg-[#FFE600] comic-border flex items-center justify-center">
               <Gift className="w-5 h-5 text-comic-dark" />
             </div>
             <div>
               <h3 className="text-2xl font-bangers text-comic-dark">
                 FREE PARTICIPANT HOSPITALITY & PERKS
               </h3>
-              <p className="text-xs font-mono font-bold text-zinc-600">
+              <p className="text-xs font-mono font-bold text-zinc-700">
                 PROVIDED FREE OF COST BY NIT RAIPUR FOR SHORTLISTED TEAMS
               </p>
             </div>
@@ -170,7 +177,7 @@ export default function PrizesSection() {
             </div>
 
             <div className="bg-white p-4 rounded-2xl comic-border flex items-start gap-3">
-              <Home className="w-6 h-6 text-comic-pink-hot shrink-0 mt-0.5" />
+              <Home className="w-6 h-6 text-[#FF2A7A] shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bangers text-base text-comic-dark">FREE CAMPUS ACCOMMODATION</h4>
                 <p className="text-xs font-comic text-zinc-600 mt-1">
@@ -180,7 +187,7 @@ export default function PrizesSection() {
             </div>
 
             <div className="bg-white p-4 rounded-2xl comic-border flex items-start gap-3">
-              <Plane className="w-6 h-6 text-comic-blue shrink-0 mt-0.5" />
+              <Plane className="w-6 h-6 text-[#2958FF] shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bangers text-base text-comic-dark">₹1,500 TRAVEL REIMBURSEMENT</h4>
                 <p className="text-xs font-comic text-zinc-600 mt-1">

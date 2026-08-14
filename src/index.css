@@ -12,61 +12,86 @@
   }
 
   body {
-    background-color: #FFFDF7;
-    color: #141416;
+    background-color: #FFA033;
+    color: #121214;
     font-family: 'Fredoka', system-ui, sans-serif;
   }
 
   /* Custom Comic Scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: #FFF3D6;
-    border-left: 2.5px solid #18181B;
+    background: #FF8A18;
+    border-left: 3px solid #18181B;
   }
   ::-webkit-scrollbar-thumb {
-    background: #FF9820;
-    border: 2px solid #18181B;
-    border-radius: 6px;
+    background: #FFE600;
+    border: 2.5px solid #18181B;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 0px #FFF;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #FF528F;
+    background: #FF2A7A;
   }
 }
 
 @layer utilities {
-  /* Ben-Day Halftone Dot Patterns */
-  .bg-halftone-orange {
-    background-image: radial-gradient(#FF9820 20%, transparent 20%);
+  /* Spider-Verse & Classic Ben-Day Halftone Dot Screens */
+  .bg-spider-dots {
+    background-image: radial-gradient(#18181B 18%, transparent 18%);
     background-position: 0 0;
-    background-size: 14px 14px;
+    background-size: 8px 8px;
+  }
+
+  .bg-spider-dots-dense {
+    background-image: radial-gradient(#18181B 25%, transparent 25%);
+    background-position: 0 0;
+    background-size: 6px 6px;
+  }
+
+  .bg-spider-dots-orange {
+    background-image: radial-gradient(#FF7A00 24%, transparent 24%);
+    background-position: 0 0;
+    background-size: 10px 10px;
   }
   
-  .bg-halftone-pink {
-    background-image: radial-gradient(#FFA6C9 20%, transparent 20%);
+  .bg-spider-dots-pink {
+    background-image: radial-gradient(#FF2A7A 22%, transparent 22%);
     background-position: 0 0;
-    background-size: 14px 14px;
+    background-size: 10px 10px;
   }
 
-  .bg-halftone-blue {
-    background-image: radial-gradient(#75B4FF 20%, transparent 20%);
+  .bg-spider-dots-cyan {
+    background-image: radial-gradient(#00D2D3 24%, transparent 24%);
     background-position: 0 0;
-    background-size: 14px 14px;
+    background-size: 10px 10px;
   }
 
-  .bg-halftone-dark {
-    background-image: radial-gradient(#27272A 20%, transparent 20%);
+  .bg-spider-dots-yellow {
+    background-image: radial-gradient(#FFE600 28%, transparent 28%);
     background-position: 0 0;
-    background-size: 12px 12px;
+    background-size: 8px 8px;
   }
 
-  .bg-comic-grid {
-    background-size: 24px 24px;
+  /* Diagonal Screentone Hatching (Spider-Verse Comic Book Shading) */
+  .bg-screentone-diagonal {
+    background-size: 8px 8px;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(24, 24, 27, 0.12),
+      rgba(24, 24, 27, 0.12) 1.5px,
+      transparent 1.5px,
+      transparent 8px
+    );
+  }
+
+  .bg-comic-grid-dense {
+    background-size: 16px 16px;
     background-image: 
-      linear-gradient(to right, rgba(24, 24, 27, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(24, 24, 27, 0.08) 1px, transparent 1px);
+      linear-gradient(to right, rgba(24, 24, 27, 0.1) 1.5px, transparent 1.5px),
+      linear-gradient(to bottom, rgba(24, 24, 27, 0.1) 1.5px, transparent 1.5px);
   }
 
   /* Authentic Inked Borders */
@@ -78,7 +103,11 @@
     border: 4px solid #18181B;
   }
 
-  /* Pop Art Shadows */
+  .comic-border-heavy {
+    border: 5px solid #18181B;
+  }
+
+  /* Pop Art & Spider-Verse Shadows */
   .comic-shadow-sm {
     box-shadow: 3px 3px 0px #18181B;
   }
@@ -91,8 +120,12 @@
     box-shadow: 8px 8px 0px #18181B;
   }
 
+  .comic-shadow-xl {
+    box-shadow: 12px 12px 0px #18181B;
+  }
+
   .comic-shadow-pink {
-    box-shadow: 6px 6px 0px #FF528F;
+    box-shadow: 6px 6px 0px #FF2A7A;
   }
 
   .comic-shadow-blue {
@@ -100,13 +133,65 @@
   }
 
   .comic-shadow-yellow {
-    box-shadow: 6px 6px 0px #FFD028;
+    box-shadow: 6px 6px 0px #FFE600;
   }
 
-  /* Comic Cloud Shape Cutout (Ponpon Mania inspired) */
-  .cloud-shape {
-    border-radius: 40px;
+  /* Classic Comic Narration Caption Box (Like Spider-Verse Image 2 Reference!) */
+  .comic-caption-box {
+    background-color: #FFE600;
+    color: #121214;
+    border: 3px solid #18181B;
+    box-shadow: 5px 5px 0px #D63031;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-style: italic;
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+  }
+
+  .comic-caption-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(24, 24, 27, 0.15) 20%, transparent 20%);
+    background-size: 5px 5px;
+    pointer-events: none;
+  }
+
+  /* Spider-Verse Chromatic Glitch Effect */
+  .spider-glitch-text {
+    position: relative;
+    text-shadow: 
+      -2px -2px 0px #00F0FF,
+      2px 2px 0px #FF2A7A,
+      3px 3px 0px #18181B;
+  }
+
+  .spider-glitch-text-sm {
+    text-shadow: 
+      -1.5px -1.5px 0px #00F0FF,
+      1.5px 1.5px 0px #FF2A7A;
+  }
+
+  /* Comic Strip Frame Gutter Styling */
+  .comic-panel-frame {
+    background-color: #FFF8EA;
+    border: 4px solid #18181B;
+    box-shadow: 6px 6px 0px #18181B;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comic-panel-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(24, 24, 27, 0.04) 15%, transparent 15%);
+    background-size: 8px 8px;
+    pointer-events: none;
   }
 
   /* Comic Speech Bubble Tails */
@@ -119,7 +204,7 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 14px solid #FFFDF7;
+    border-top: 14px solid #FFF8EA;
     filter: drop-shadow(0 3px 0 #18181B);
   }
 
@@ -132,7 +217,8 @@
     height: 0;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-    border-right: 14px solid #FFFDF7;
+    border-right: 14px solid #FFF8EA;
+    filter: drop-shadow(-3px 0 0 #18181B);
   }
 
   /* Action Comic Text Shading */
@@ -148,12 +234,12 @@
 
   .comic-title-pink {
     -webkit-text-stroke: 2px #18181B;
-    text-shadow: 4px 4px 0px #FF528F;
+    text-shadow: 4px 4px 0px #FF2A7A;
   }
 
   .comic-title-yellow {
     -webkit-text-stroke: 2px #18181B;
-    text-shadow: 4px 4px 0px #FFD028;
+    text-shadow: 4px 4px 0px #FFE600;
   }
 
   /* Interactive Button Bounces */
@@ -200,18 +286,12 @@
   animation: popEffect 0.8s ease-out forwards;
 }
 
-/* Marquee infinite scroll */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* Speed Lines Animation */
+@keyframes speedLines {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
 }
 
-.animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marquee 20s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+.animate-speedlines {
+  animation: speedLines 2s linear infinite;
 }

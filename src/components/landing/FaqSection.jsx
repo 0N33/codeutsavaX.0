@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HelpCircle, ChevronDown, MessageSquare, Sparkles } from "lucide-react";
+import { HelpCircle, ChevronDown, MessageSquare, Sparkles, Zap } from "lucide-react";
 import { playSound } from "../../utils/audioEngine";
 
 export default function FaqSection() {
@@ -54,20 +54,27 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faqs" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFFDF7] border-b-[3px] border-comic-border select-none">
+    <section id="faqs" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FF8C1E] border-b-[4px] border-comic-border select-none">
       
-      <div className="max-w-4xl mx-auto">
+      {/* Spider-Verse Dot Screens */}
+      <div className="absolute inset-0 bg-spider-dots opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-screentone-diagonal opacity-20 pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-comic-yellow comic-border rounded-full text-xs font-bangers text-comic-dark mb-2 comic-shadow-sm">
-            <HelpCircle className="w-3.5 h-3.5" />
-            FREQUENTLY ASKED QUESTIONS
+        {/* Caption Box */}
+        <div className="flex justify-start mb-6">
+          <div className="comic-caption-box text-sm sm:text-base">
+            <span>FREQUENTLY ASKED INTEL & ANSWERS...</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bangers text-comic-dark tracking-wide">
-            HAVE QUESTIONS? WE'VE GOT ANSWERS!
+        </div>
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-4xl sm:text-6xl font-bangers text-[#18181B] tracking-wide spider-glitch-text">
+            FREQUENTLY ASKED QUESTIONS
           </h2>
-          <p className="mt-2 text-base sm:text-lg font-hand font-bold text-zinc-600">
+          <p className="mt-2 text-base sm:text-xl font-hand font-bold text-zinc-900">
             Everything you need to know about CodeUtsava 10.0, registrations, and logistics.
           </p>
         </div>
@@ -82,8 +89,8 @@ export default function FaqSection() {
                 key={idx}
                 className={`rounded-2xl comic-border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? "bg-[#FFF3D6] comic-shadow"
-                    : "bg-white hover:bg-zinc-50 comic-shadow-sm"
+                    ? "bg-[#FFE600] comic-shadow ring-2 ring-[#18181B]"
+                    : "bg-[#FFFDF7] hover:bg-white comic-shadow-sm"
                 }`}
               >
                 <button
@@ -91,19 +98,19 @@ export default function FaqSection() {
                   className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bangers text-lg sm:text-xl text-comic-dark tracking-wide"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-lg bg-comic-yellow comic-border text-xs flex items-center justify-center shrink-0">
+                    <span className="w-8 h-8 rounded-lg bg-[#18181B] text-[#FFE600] text-xs flex items-center justify-center shrink-0 comic-border">
                       Q{idx + 1}
                     </span>
                     <span>{faq.q}</span>
                   </div>
-                  <div className={`w-8 h-8 rounded-full bg-white comic-border flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 bg-comic-pink-hot text-white" : ""}`}>
+                  <div className={`w-8 h-8 rounded-full bg-white comic-border flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 bg-[#FF2A7A] text-white" : ""}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-sm font-comic text-zinc-700 leading-relaxed border-t border-comic-border/20">
-                    <div className="bg-white/80 p-3.5 rounded-xl comic-border">
+                  <div className="px-5 pb-5 pt-1 text-sm font-comic text-zinc-900 leading-relaxed border-t border-comic-border/20">
+                    <div className="bg-white p-4 rounded-xl comic-border">
                       {faq.a}
                     </div>
                   </div>
@@ -114,9 +121,9 @@ export default function FaqSection() {
         </div>
 
         {/* Still have questions banner */}
-        <div className="mt-8 p-4 bg-[#FFE5EF] rounded-2xl comic-border text-center flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-8 p-4 bg-[#FFFDF7] rounded-2xl comic-border text-center flex flex-col sm:flex-row items-center justify-between gap-3 comic-shadow">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-comic-pink-hot" />
+            <MessageSquare className="w-5 h-5 text-[#FF2A7A]" />
             <span className="font-comic font-bold text-xs sm:text-sm text-comic-dark">
               Still have doubts? Reach out to our manager team directly in WhatsApp or Discord!
             </span>
@@ -124,7 +131,7 @@ export default function FaqSection() {
           <a
             href="#contact"
             onClick={() => playSound("blip")}
-            className="px-4 py-1.5 bg-comic-dark text-white font-bangers text-sm rounded-full comic-border hover:bg-comic-pink-hot transition-all"
+            className="px-5 py-2 bg-[#18181B] text-[#FFE600] font-bangers text-sm rounded-full comic-border hover:bg-[#FF2A7A] hover:text-white transition-all comic-btn"
           >
             CONTACT MANAGERS
           </a>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Calendar, Clock, CheckCircle2, Circle, Sparkles, Flag, Rocket } from "lucide-react";
+import { Calendar, Clock, CheckCircle2, Circle, Sparkles, Flag, Rocket, Zap } from "lucide-react";
 import { playSound } from "../../utils/audioEngine";
 
 export default function TimelineSection() {
@@ -21,20 +21,27 @@ export default function TimelineSection() {
   ];
 
   return (
-    <section id="timeline" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFF8E7] border-b-[3px] border-comic-border select-none">
+    <section id="timeline" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFA73B] border-b-[4px] border-comic-border select-none">
       
-      <div className="max-w-7xl mx-auto">
+      {/* Spider-Verse Dot Screens */}
+      <div className="absolute inset-0 bg-spider-dots opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-screentone-diagonal opacity-20 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-comic-yellow comic-border rounded-full text-xs font-bangers text-comic-dark mb-2 comic-shadow-sm">
-            <Calendar className="w-3.5 h-3.5" />
-            SCHEDULE OF EVENTS
+        {/* Caption Box */}
+        <div className="flex justify-start mb-6">
+          <div className="comic-caption-box text-sm sm:text-base">
+            <span>THE 12-STAGE MISSION TIMELINE...</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bangers text-comic-dark tracking-wide">
+        </div>
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-4xl sm:text-6xl font-bangers text-[#18181B] tracking-wide spider-glitch-text">
             THE 12-STAGE COMIC ROADMAP
           </h2>
-          <p className="mt-2 text-base sm:text-lg font-hand font-bold text-zinc-600">
+          <p className="mt-2 text-base sm:text-xl font-hand font-bold text-zinc-900">
             From registration launch to the grand podium finish at NIT Raipur.
           </p>
         </div>
@@ -48,57 +55,58 @@ export default function TimelineSection() {
             return (
               <div
                 key={idx}
+                onClick={() => playSound("blip")}
                 onMouseEnter={() => {
                   playSound("blip");
                   setActiveStage(idx);
                 }}
-                className={`relative p-5 rounded-2xl comic-border transition-all duration-200 ${
+                className={`relative comic-panel-frame p-5 rounded-2xl transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? "bg-[#FFF3D6] comic-shadow-yellow ring-2 ring-comic-dark -translate-y-1"
+                    ? "bg-[#FFE600] comic-shadow-yellow ring-4 ring-[#18181B] -translate-y-1"
                     : isCompleted
-                    ? "bg-[#E8F8F0] comic-shadow-sm"
-                    : "bg-white hover:comic-shadow hover:-translate-y-0.5"
+                    ? "bg-[#E8F8F0] comic-shadow"
+                    : "bg-[#FFFDF7] hover:comic-shadow hover:-translate-y-1"
                 }`}
               >
                 {/* Stage Header */}
                 <div className="flex items-center justify-between mb-2">
                   <span className={`px-2.5 py-0.5 rounded-md font-mono text-xs font-bold comic-border ${
                     isActive
-                      ? "bg-comic-yellow text-comic-dark"
+                      ? "bg-[#18181B] text-[#FFE600]"
                       : isCompleted
-                      ? "bg-comic-green text-comic-dark"
-                      : "bg-zinc-100 text-zinc-600"
+                      ? "bg-[#26DE81] text-comic-dark"
+                      : "bg-zinc-200 text-zinc-800"
                   }`}>
                     {item.stage}
                   </span>
 
-                  <div className="flex items-center gap-1 text-xs font-mono font-bold text-comic-pink-hot">
-                    <Clock className="w-3 h-3" />
+                  <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#FF2A7A]">
+                    <Clock className="w-3.5 h-3.5" />
                     <span>{item.date}</span>
                   </div>
                 </div>
 
                 {/* Name */}
-                <h3 className="text-xl font-bangers text-comic-dark tracking-wide">
+                <h3 className="text-xl sm:text-2xl font-bangers text-comic-dark tracking-wide">
                   {item.name}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs font-comic text-zinc-600 mt-1 leading-relaxed">
+                <p className="text-xs sm:text-sm font-comic text-zinc-700 mt-1 leading-relaxed">
                   {item.desc}
                 </p>
 
                 {/* Status Indicator */}
-                <div className="mt-3 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px] font-mono">
-                  <span className="font-hand font-bold text-zinc-500">
-                    {isCompleted ? "Completed" : isActive ? "Currently Active 🔥" : "Scheduled"}
+                <div className="mt-3 pt-2 border-t border-dashed border-zinc-400 flex items-center justify-between text-[11px] font-mono font-bold">
+                  <span className="font-hand text-sm text-zinc-700">
+                    {isCompleted ? "Completed ✓" : isActive ? "Currently Active 🔥" : "Scheduled Event"}
                   </span>
                   {isCompleted ? (
-                    <CheckCircle2 className="w-4 h-4 text-comic-green" />
+                    <CheckCircle2 className="w-4 h-4 text-[#26DE81]" />
                   ) : isActive ? (
-                    <Sparkles className="w-4 h-4 text-comic-orange animate-spin-slow" />
+                    <Zap className="w-4 h-4 text-[#FF2A7A] animate-pulse" />
                   ) : (
-                    <Circle className="w-3.5 h-3.5 text-zinc-300" />
+                    <Circle className="w-3.5 h-3.5 text-zinc-400" />
                   )}
                 </div>
               </div>

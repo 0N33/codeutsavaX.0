@@ -9,7 +9,7 @@ export default function SponsorsSection() {
       tier: "PLATINUM PLATFORM PARTNER",
       category: "Hackathon Platform",
       bg: "bg-[#E8F4FF]",
-      border: "border-comic-blue",
+      border: "border-[#2762EB]",
       logo: (
         <div className="w-14 h-14 rounded-2xl bg-[#2762EB] comic-border flex items-center justify-center text-white font-bangers text-2xl comic-shadow-sm">
           DEV
@@ -35,7 +35,7 @@ export default function SponsorsSection() {
       tier: "GOLD COMMUNITY SPONSOR",
       category: "Ethereum Ecosystem",
       bg: "bg-[#E8F8F0]",
-      border: "border-comic-green",
+      border: "border-[#10B981]",
       logo: (
         <div className="w-14 h-14 rounded-2xl bg-[#10B981] comic-border flex items-center justify-center text-white font-bangers text-2xl comic-shadow-sm">
           ETH
@@ -74,9 +74,9 @@ export default function SponsorsSection() {
       tier: "HEALTHTECH TRACK SPONSOR",
       category: "HealthTech & AI",
       bg: "bg-[#FFE5EF]",
-      border: "border-comic-pink-hot",
+      border: "border-[#FF2A7A]",
       logo: (
-        <div className="w-14 h-14 rounded-2xl bg-[#FF528F] comic-border flex items-center justify-center text-white font-bangers text-2xl comic-shadow-sm">
+        <div className="w-14 h-14 rounded-2xl bg-[#FF2A7A] comic-border flex items-center justify-center text-white font-bangers text-2xl comic-shadow-sm">
           FLD
         </div>
       ),
@@ -85,20 +85,27 @@ export default function SponsorsSection() {
   ];
 
   return (
-    <section id="sponsors" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FFFDF7] border-b-[3px] border-comic-border select-none">
+    <section id="sponsors" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#FF8C1E] border-b-[4px] border-comic-border select-none">
       
-      <div className="max-w-7xl mx-auto">
+      {/* Spider-Verse Dot Screens */}
+      <div className="absolute inset-0 bg-spider-dots opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-screentone-diagonal opacity-20 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-comic-yellow comic-border rounded-full text-xs font-bangers text-comic-dark mb-2 comic-shadow-sm">
-            <Handshake className="w-3.5 h-3.5" />
-            PARTNERS IN INNOVATION
+        {/* Caption Box */}
+        <div className="flex justify-start mb-6">
+          <div className="comic-caption-box text-sm sm:text-base">
+            <span>OUR INDUSTRY ALLIES & BACKERS...</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bangers text-comic-dark tracking-wide">
+        </div>
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-4xl sm:text-6xl font-bangers text-[#18181B] tracking-wide spider-glitch-text">
             OUR ESTEEMED SPONSORS
           </h2>
-          <p className="mt-2 text-base sm:text-lg font-hand font-bold text-zinc-600">
+          <p className="mt-2 text-base sm:text-xl font-hand font-bold text-zinc-900">
             Backed by visionary global organizations powering student innovation and grants.
           </p>
         </div>
@@ -108,18 +115,19 @@ export default function SponsorsSection() {
           {sponsors.map((sp, idx) => (
             <div
               key={idx}
+              onClick={() => playSound("thwip")}
               onMouseEnter={() => playSound("blip")}
-              className={`relative ${sp.bg} p-6 rounded-3xl comic-border comic-shadow hover:comic-shadow-lg transition-all duration-200 flex flex-col justify-between group`}
+              className={`relative comic-panel-frame ${sp.bg} p-6 rounded-3xl comic-shadow hover:comic-shadow-lg transition-all duration-200 flex flex-col justify-between group cursor-pointer hover:-translate-y-1.5`}
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-4 pb-2 border-b-2 border-dashed border-zinc-400">
                   {sp.logo}
-                  <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-comic-dark text-white">
+                  <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#18181B] text-white">
                     {sp.category}
                   </span>
                 </div>
 
-                <div className="text-[10px] font-mono font-bold text-comic-pink-hot uppercase tracking-wider">
+                <div className="text-[10px] font-mono font-bold text-[#FF2A7A] uppercase tracking-wider">
                   {sp.tier}
                 </div>
 
@@ -127,14 +135,14 @@ export default function SponsorsSection() {
                   {sp.name}
                 </h3>
 
-                <p className="text-xs font-comic text-zinc-600 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm font-comic text-zinc-700 mt-2 leading-relaxed">
                   {sp.desc}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-comic-border/20 flex items-center justify-between text-xs font-mono font-bold text-zinc-500">
+              <div className="mt-4 pt-3 border-t border-comic-border/20 flex items-center justify-between text-xs font-mono font-bold text-zinc-600">
                 <span>OFFICIAL PARTNER</span>
-                <Sparkles className="w-3.5 h-3.5 text-comic-yellow group-hover:rotate-45 transition-transform" />
+                <Sparkles className="w-4 h-4 text-[#FFE600] group-hover:rotate-45 transition-transform" />
               </div>
             </div>
           ))}
@@ -143,7 +151,7 @@ export default function SponsorsSection() {
         {/* Sponsor Us Callout */}
         <div className="mt-12 bg-[#18181B] text-white p-6 sm:p-8 rounded-3xl comic-border comic-shadow flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <h3 className="text-2xl sm:text-3xl font-bangers text-comic-yellow">
+            <h3 className="text-2xl sm:text-3xl font-bangers text-[#FFE600]">
               WANT TO SPONSOR CODEUTSAVA 10.0?
             </h3>
             <p className="text-xs sm:text-sm font-comic text-zinc-300 mt-1 max-w-xl">
@@ -153,7 +161,7 @@ export default function SponsorsSection() {
           <a
             href="mailto:contact@codeutsava.com"
             onClick={() => playSound("pop")}
-            className="px-6 py-3 bg-comic-pink-hot text-white font-bangers text-lg tracking-wider rounded-full comic-border comic-shadow hover:bg-comic-yellow hover:text-comic-dark transition-all comic-btn whitespace-nowrap"
+            className="px-6 py-3 bg-[#FF2A7A] text-white font-bangers text-lg tracking-wider rounded-full comic-border comic-shadow hover:bg-[#FFE600] hover:text-[#18181B] transition-all comic-btn whitespace-nowrap"
           >
             SPONSORSHIP BROCHURE
           </a>
