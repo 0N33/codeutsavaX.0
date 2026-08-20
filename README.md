@@ -15,11 +15,6 @@
 <br />
 
 <p align="center">
-  <a href="https://github.com/TCP-Tech/Codeutsava-X">
-    <!-- TODO: Replace with the official CodeUtsava X logo -->
-    <img src="/src/assets/images/codeutsavaLogo.webp" alt="CodeUtsava X Logo" width="700">
-  </a>
-
   <h3 align="center">CodeUtsava X — Glitch × Illusion</h3>
 
   <p align="center">
@@ -81,12 +76,12 @@ The website serves as the digital gateway to the event — bringing together par
 
 CodeUtsava X is more than just a coding competition. It is a technology-focused celebration designed to bring students and developers together through:
 
-* 💻 **Hackathon** — Build innovative solutions to real-world problems
-* 🧠 **Workshops & Learning** — Learn from developers, mentors, and industry professionals
-* ⚡ **Coding & Technical Challenges** — Test your problem-solving and technical skills
-* 🌐 **Community Building** — Connect with students, developers, mentors, and technology enthusiasts
-* 🏆 **Competition & Recognition** — Compete, build, learn, and earn recognition
-* 🎨 **Creativity & Innovation** — Turn ideas into meaningful technological experiences
+- 💻 **Hackathon** — Build innovative solutions to real-world problems
+- 🧠 **Workshops & Learning** — Learn from developers, mentors, and industry professionals
+- ⚡ **Coding & Technical Challenges** — Test your problem-solving and technical skills
+- 🌐 **Community Building** — Connect with students, developers, mentors, and technology enthusiasts
+- 🏆 **Competition & Recognition** — Compete, build, learn, and earn recognition
+- 🎨 **Creativity & Innovation** — Turn ideas into meaningful technological experiences
 
 Participants from across the country can take part in the various activities conducted as part of CodeUtsava X and become a part of the CodeUtsava community.
 
@@ -94,19 +89,17 @@ Participants from across the country can take part in the various activities con
 
 ## Built With
 
-> **Note:** The following is the **proposed technology stack** for CodeUtsava X and may evolve during development.
+The frontend currently uses the following stack:
 
 ### Frontend
 
-* [Next.js](https://nextjs.org/) — React framework for building the website
-* [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
-* [pnpm](https://pnpm.io/) — Fast and efficient package manager
+- [Next.js](https://nextjs.org/) — React framework for building the website
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
+- [pnpm](https://pnpm.io/) — Fast and efficient package manager
 
-### Backend
+### Backend integration
 
-* [Django](https://www.djangoproject.com/) — Backend framework and API services
-
-The frontend and backend are maintained as separate components, allowing the website interface and backend services to evolve independently.
+This repository contains the **frontend website only**. If backend services are introduced, they should be consumed through documented external APIs and configured with environment variables.
 
 ---
 
@@ -120,13 +113,13 @@ The theme explores the space between **what is real and what appears to be real*
 
 The CodeUtsava X experience draws inspiration from:
 
-* 🌀 **Illusion** — Distorting perception and challenging what the viewer expects
-* ⚡ **Glitch** — Digital errors transformed into visual expression
-* 🖥️ **Digital Reality** — Interfaces, systems, code, and technology as part of the visual language
-* 👁️ **Perception** — Making users question what they see
-* 🔀 **Distortion** — Breaking conventional layouts and interactions
-* 🧩 **Hidden Layers** — Revealing unexpected information and experiences
-* 💻 **Technology & Creativity** — Blending engineering with artistic expression
+- 🌀 **Illusion** — Distorting perception and challenging what the viewer expects
+- ⚡ **Glitch** — Digital errors transformed into visual expression
+- 🖥️ **Digital Reality** — Interfaces, systems, code, and technology as part of the visual language
+- 👁️ **Perception** — Making users question what they see
+- 🔀 **Distortion** — Breaking conventional layouts and interactions
+- 🧩 **Hidden Layers** — Revealing unexpected information and experiences
+- 💻 **Technology & Creativity** — Blending engineering with artistic expression
 
 ### The Experience
 
@@ -146,49 +139,6 @@ Together, they create the identity of **CodeUtsava X**.
 
 > **Screenshots will be added once the CodeUtsava X website reaches a stable design milestone.**
 
-<!--
-<p align="center">
-  <img src="src/assets/images/Readme/home.png" alt="Homepage" width="700">
-  <br><b>🏠 Homepage</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/teams.png" alt="Teams" width="700">
-  <br><b>👥 Teams Section</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/team-cards.png" alt="Team Cards" width="700">
-  <br><b>👤 Team Cards</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/shortlist.png" alt="Shortlisted Teams" width="700">
-  <br><b>🏆 Shortlisted Teams</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/timeline.png" alt="Timeline" width="700">
-  <br><b>🕒 Timeline</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/faq.png" alt="FAQ" width="700">
-  <br><b>❓ FAQ Section</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/contact.png" alt="Contact" width="700">
-  <br><b>📞 Contact Us</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/spons.png" alt="Sponsors" width="700">
-  <br><b>🤝 Sponsors</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/social.png" alt="Socials" width="700">
-  <br><b>🌐 Socials</b>
-  <br><br>
-
-  <img src="src/assets/images/Readme/graph.png" alt="Graphs & Analytics" width="700">
-  <br><b>📊 Graphs & Analytics</b>
-</p>
--->
-
 ---
 
 ## Getting Started
@@ -199,16 +149,16 @@ Follow the steps below to set up the CodeUtsava X website locally.
 
 Make sure the following tools are installed on your system.
 
-* [Node.js](https://nodejs.org/)
-* [pnpm](https://pnpm.io/installation)
-* [Git](https://git-scm.com/downloads)
+- [Node.js 24 LTS](https://nodejs.org/)
+- [pnpm 10.25.0](https://pnpm.io/installation)
+- [Git](https://git-scm.com/downloads)
 
 ### Installing pnpm
 
 If pnpm is not already installed:
 
 ```sh
-npm install -g pnpm
+npm install -g pnpm@10.25.0
 ```
 
 Verify the installation:
@@ -235,19 +185,17 @@ Repository:
 
 https://github.com/TCP-Tech/Codeutsava-X
 
-Please abide by the project's [Code of Conduct](https://github.com/TCP-Tech/Codeutsava-X/blob/main/CODE_OF_CONDUCT.md).
-
 ### Running the Project
 
-The CodeUtsava X frontend is proposed to use **Next.js**, **Tailwind CSS**, and **pnpm**.
+The CodeUtsava X frontend uses **Next.js**, **Tailwind CSS**, and **pnpm**.
 
 Clone the repository and install the dependencies:
 
 ```sh
-git clone https://github.com/TCP-Tech/Codeutsava-X.git
+git clone --branch dev --single-branch https://github.com/TCP-Tech/Codeutsava-X.git
 cd Codeutsava-X
 
-pnpm install
+pnpm install --frozen-lockfile
 ```
 
 Start the development server:
@@ -256,9 +204,25 @@ Start the development server:
 pnpm dev
 ```
 
-The website should now be available through the local development server.
+The website should now be available at `http://localhost:3000`.
+
+Format the repository with the shared four-space Prettier configuration:
+
+```sh
+pnpm format
+```
+
+Run the complete local quality check before opening a pull request:
+
+```sh
+pnpm check
+```
 
 ### Production Build
+
+Set `NEXT_PUBLIC_SITE_URL` to the deployed origin so canonical URLs, social
+metadata, `robots.txt`, and `sitemap.xml` point to production. Vercel's
+production URL is detected automatically when that variable is omitted.
 
 Create a production build:
 
@@ -310,10 +274,6 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 ---
 
 ## Turing Club Of Programmers
-
-<p align="center">
-  <img src="src/assets/TCP1.png" alt="Turing Club Of Programmers" width="300">
-</p>
 
 **Turing Club of Programmers (TCP)** is the official coding club of NIT Raipur and the organization behind CodeUtsava.
 
