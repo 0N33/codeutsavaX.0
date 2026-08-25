@@ -274,31 +274,28 @@ export function Navbar() {
             >
               {mobileOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
-          ) : (
-            <>
-              <a
-                href="#top"
-                aria-label="CodeUtsava home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  smoothScrollTo("#top");
-                }}
-              >
-                <Image
-                  src="/images/codeutsava/codeutsava-logo.png"
-                  alt="CodeUtsava Logo"
-                  width={52}
-                  height={52}
-                  className="w-14 h-14  object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
-                />
-              </a>
-              <div className={`${styles.navLinks} ${styles.navButton}`}>
-                <NavItem href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1" target="_blank" delay={0.1}>
-                  FEEDBACK
-                </NavItem>
-              </div>
-            </>
           )}
+
+          <div className={`${styles.desktopOnly} items-center gap-4`}>
+            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
+              <Image
+                src="/images/codeutsava/codeutsava-logo.png"
+                alt="CodeUtsava Logo"
+                width={52}
+                height={52}
+                unoptimized
+                className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+              />
+            </a>
+            <div className={`${styles.navLinks} ${styles.navButton}`}>
+              <NavItem
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
+                target="_blank"
+              >
+                FEEDBACK
+              </NavItem>
+            </div>
+          </div>
         </div>
 
         {/* ================= CENTER COLUMN ================= */}
@@ -352,46 +349,37 @@ export function Navbar() {
             gap: "16px"
           }}
         >
-          {isLargeScreen ? (
-            <>
-              <div className={`${styles.navLinks} ${styles.navButton}`}>
-                <NavItem href="/Brochure.pdf" target="_blank" delay={0.7}>
-                  BROCHURE
-                </NavItem>
-              </div>
-              <a
-                href="#top"
-                onClick={(e) => {
-                  e.preventDefault();
-                  smoothScrollTo("#top");
-                }}
-              >
-                <Image
-                  src="/images/codeutsava/tcp-logo.png"
-                  alt="TCP Logo"
-                  width={52}
-                  height={52}
-                  className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
-                />
-              </a>
-            </>
-          ) : (
-            <a
-              href="#top"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("#top");
-              }}
-            >
+          <div className={`${styles.desktopOnly} items-center gap-4`}>
+            <div className={`${styles.navLinks} ${styles.navButton}`}>
+              <NavItem href="/CU X.0 Brochure.pdf" target="_blank">
+                BROCHURE
+              </NavItem>
+            </div>
+            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
               <Image
                 src="/images/codeutsava/tcp-logo.png"
                 alt="TCP Logo"
-                width={44}
-                height={44}
-                className="w-[44px] h-[44px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+                width={52}
+                height={52}
+                className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
               />
             </a>
-          )}
+          </div>
+
+          <a
+            href={homeHref}
+            aria-label="CodeUtsava home"
+            onClick={handleHomeClick}
+            className={`${styles.mobileOnly} items-center justify-center`}
+          >
+            <Image
+              src="/images/codeutsava/tcp-logo.png"
+              alt="TCP Logo"
+              width={42}
+              height={42}
+              className="h-[42px] w-[42px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+            />
+          </a>
         </div>
       </header>
 
@@ -423,50 +411,55 @@ export function Navbar() {
             }}
           >
             <div className="flex flex-col font-sans">
+              {isBackToHome ? (
+                <MobileNavLink href="/" setMobileOpen={setMobileOpen}>
+                  BACK TO HOME
+                </MobileNavLink>
+              ) : (
+                <>
+                  <MobileNavLink href="#top" setMobileOpen={setMobileOpen}>
+                    HOME
+                  </MobileNavLink>
+                  <MobileNavLink href="#about" setMobileOpen={setMobileOpen}>
+                    ABOUT US
+                  </MobileNavLink>
+                  <MobileNavLink href="#faq" setMobileOpen={setMobileOpen}>
+                    FAQ
+                  </MobileNavLink>
+                  <MobileNavLink href="/contact-us" setMobileOpen={setMobileOpen}>
+                    CONTACT US
+                  </MobileNavLink>
+                  <MobileNavLink href="/team" setMobileOpen={setMobileOpen}>
+                    TEAM
+                  </MobileNavLink>
+                </>
+              )}
 
-              {/* HOME */}
-              <MobileNavLink href="#top" setMobileOpen={setMobileOpen}>
-                HOME
-              </MobileNavLink>
+              <div className="grid grid-cols-2 border-t border-[#faeb9226]">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSeMsw6RCVMV0lCvvX3bGlYOomZgv0hi9fh_4sLfrfyKRsF67A/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-12 items-center justify-center border-r border-[#faeb9226] px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+                >
+                  FEEDBACK
+                </a>
+                <a
+                  href="/CU X.0 Brochure.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-12 items-center justify-center px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+                >
+                  BROCHURE
+                </a>
+              </div>
 
-              {/* ABOUT US */}
-              <MobileNavLink href="#about" setMobileOpen={setMobileOpen}>
-                ABOUT US
-              </MobileNavLink>
-
-              {/* FAQ */}
-              <MobileNavLink href="#faq" setMobileOpen={setMobileOpen}>
-                FAQ
-              </MobileNavLink>
-
-              {/* CONTACT US */}
-              <MobileNavLink href="#contact" setMobileOpen={setMobileOpen}>
-                CONTACT US
-              </MobileNavLink>
-
-              {/* TEAM */}
-              <MobileNavLink href="/team" setMobileOpen={setMobileOpen}>
-                TEAM
-              </MobileNavLink>
-
-              {/* COMMUNITY CTA */}
-              <a
-                href="https://discord.gg/Ek9gr2Xnqb"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full px-6 py-5 text-[12px] font-bold tracking-[0.12em] bg-[#faeb92] transition-colors uppercase text-center"
-                style={{
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-
-                <p className="text-black font-black">JOIN THE COMMUNITY</p>
-              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </nav>
+        </div>
+      )}
     </>
   );
 }
