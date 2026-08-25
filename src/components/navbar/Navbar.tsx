@@ -252,13 +252,17 @@ const MobileNavLink = ({
   </a>
 );
 
-export function Navbar() {
+type NavbarProps = {
+  variant?: string;
+};
+
+export function Navbar({ variant }: NavbarProps){
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(true);
 
   const pathname = usePathname();
 
-  const isBackToHome = pathname !== "/";
+  const isBackToHome = variant === "back-to-home" || pathname !== "/";
   const homeHref = isBackToHome ? "/" : "#top";
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
