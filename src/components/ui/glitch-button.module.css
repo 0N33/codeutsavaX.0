@@ -94,7 +94,7 @@
   18% { transform: translateX(-6px); color: #050207; background: var(--button-glitch-a); letter-spacing: .15em; }
   34% { transform: translateX(7px); background: var(--button-glitch-b); }
   52% { opacity: .18; transform: translateX(-2px); }
-  60% { opacity: 1; transform: translateX(-7px); background: #5b1dff; filter: blur(2px) contrast(1.4); }
+  60% { opacity: 1; transform: translateX(-7px); background: #9d69c41c; filter: blur(2px) contrast(1.4); }
   78% { transform: translateX(5px) skewX(-3deg); color: #050207; background: #ff5fcf; filter: none; }
 }
 

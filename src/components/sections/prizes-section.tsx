@@ -11,7 +11,7 @@ const prizeCards = [
     rank: "🥇",
     title: "Winner's",
     award:
-      "A monetary prize of Rs. 35,000 and Rs. 2 lakhs worth of prizes will be presented to the winning team.",
+      "A monetary prize of Rs. 50,000 and 2.5 lakhs worth of prizes will be presented to the winning team.",
     rewards: sharedRewards,
   },
   {
@@ -19,7 +19,7 @@ const prizeCards = [
     rank: "🥈",
     title: "Runner-Up's",
     award:
-      "A monetary prize of Rs. 25,000 and Rs. 1.9 lakhs worth of prizes will be presented to the runner ups.",
+      "A monetary prize of Rs. 40,000 and 2.4 lakhs worth of prizes will be presented to the 1st runner ups.",
     rewards: sharedRewards,
   },
   {
@@ -27,15 +27,15 @@ const prizeCards = [
     rank: "🥉",
     title: "2nd Runner-Up's",
     award:
-      "The second runner-up team will be awarded Rs. 2.3 lakhs, with Rs. 15,000 in cash.",
+      "A monetary prize of Rs. 30,000 and 2.4 lakhs worth of prizes will be presented to the 2nd runner ups.",
     rewards: sharedRewards,
   },
   {
     signal: "04 // DOMAIN",
     rank: "◆",
-    title: "Problem Domain Winner's",
+    title: "Problem Statement Winner's",
     award:
-      "The category-wise winning teams will be awarded Rs. 1.5 lakhs in total, with Rs. 10,000 in cash to each team.",
+      "The category-wise winning teams will be awarded 1.95 lakhs worth of prizes in total, with Rs. 15,000 in cash to each team.",
     rewards: [
       "To be announced",
     ],
