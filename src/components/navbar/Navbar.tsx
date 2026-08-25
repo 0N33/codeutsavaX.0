@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ArrowLeft, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { EasePack } from "gsap/EasePack";
+import { usePathname } from "next/navigation";
 import styles from "../hero/GlitchverseHero.module.css";
 
 function smoothScrollTo(targetSelector: string) {
@@ -15,11 +17,11 @@ function smoothScrollTo(targetSelector: string) {
   if (!targetSelector || targetSelector === "#" || targetSelector === "#top") {
     destinationY = 0;
   } else {
-    const element = document.querySelector(targetSelector);
+    const el = document.querySelector(targetSelector);
 
-    if (!element) return;
+    if (!el) return;
 
-    const rect = element.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
     destinationY = window.scrollY + rect.top - offset - 8;
   }
 
@@ -37,44 +39,188 @@ function smoothScrollTo(targetSelector: string) {
   }
 }
 
-interface NavItemProps {
-  href: string;
+const NavItem = ({
+  children,
+  href,
+  delay = 0,
+  target,
+}: {
   children: React.ReactNode;
+  href: string;
+  delay?: number;
   target?: string;
-}
+}) => {
+  const containerRef = useRef<HTMLAnchorElement>(null);
 
-const NavItem: React.FC<NavItemProps> = ({ href, children, target }) => {
-  const router = useRouter();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(EasePack);
+    }
+  }, []);
 
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (target === "_blank") return;
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
 
-    if (href.startsWith("/")) {
-      event.preventDefault();
-      router.push(href);
+    const purpleRects = gsap.utils.toArray(".purple-rect", container);
+    const pinkRects = gsap.utils.toArray(".pink-rect", container);
+
+    gsap.set(purpleRects, { xPercent: -100 });
+    gsap.set(pinkRects, { xPercent: -100 });
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+
+    const purpleRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".purple-rect", container)
+    );
+    const pinkRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".pink-rect", container)
+    );
+
+    gsap.to(purpleRects, {
+      duration: 0.4,
+      ease: "rough({ template: none.out, strength: 5, points: 15, taper: none, randomize: false, clamp: false })",
+      xPercent: 100,
+      stagger: 0.03,
+      overwrite: true,
+    });
+
+    gsap.to(pinkRects, {
+      duration: 0.4,
+      ease: "rough({ template: none.out, strength: 5, points: 15, taper: none, randomize: false, clamp: false })",
+      xPercent: 100,
+      stagger: 0.01,
+      overwrite: true,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+
+    const purpleRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".purple-rect", container)
+    );
+    const pinkRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".pink-rect", container)
+    );
+
+    gsap.to(purpleRects, {
+      duration: 0.4,
+      ease: "rough({ template: none.out, strength: 5, points: 15, taper: none, randomize: false, clamp: false })",
+      xPercent: -100,
+      stagger: 0.03,
+      overwrite: true,
+    });
+
+    gsap.to(pinkRects, {
+      duration: 0.4,
+      ease: "rough({ template: none.out, strength: 5, points: 15, taper: none, randomize: false, clamp: false })",
+      xPercent: -100,
+      stagger: 0.01,
+      overwrite: true,
+    });
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (target === "_blank") {
       return;
     }
 
-    if (!href.startsWith("#")) return;
-
-    event.preventDefault();
-    if (window.location.pathname !== "/") {
-      router.push(`/${href}`);
+    if (!href.startsWith("#")) {
       return;
     }
 
+    e.preventDefault();
     smoothScrollTo(href);
   };
 
+  const slices = 5;
+  const sliceHeight = 100 / slices;
+
   return (
-    <a
+    <motion.a
       href={href}
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      ref={containerRef}
       onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      initial={{
+        opacity: 0,
+        y: -10,
+        filter: "blur(2px)",
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+      }}
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{
+        scale: 1.05,
+        transition: {
+          duration: 0.2,
+          ease: "easeOut",
+        },
+      }}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
-      {children}
-    </a>
+      <svg
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+        preserveAspectRatio="none"
+      >
+        <g className="purple">
+          {Array.from({ length: slices }).map((_, i) => (
+            <rect
+              key={`purple-${i}`}
+              className="purple-rect"
+              x="0"
+              y={`${i * sliceHeight}%`}
+              width="100%"
+              height={`${sliceHeight + 1}%`}
+              fill="#9929ea"
+            />
+          ))}
+        </g>
+
+        <g className="pink">
+          {Array.from({ length: slices }).map((_, i) => (
+            <rect
+              key={`pink-${i}`}
+              className="pink-rect"
+              x="0"
+              y={`${i * sliceHeight}%`}
+              width="100%"
+              height={`${sliceHeight + 1}%`}
+              fill="#ff5fcf"
+            />
+          ))}
+        </g>
+      </svg>
+
+      <span style={{ position: "relative", zIndex: 10 }}>{children}</span>
+    </motion.a>
   );
 };
 
@@ -86,114 +232,90 @@ const MobileNavLink = ({
   href: string;
   children: React.ReactNode;
   setMobileOpen: (open: boolean) => void;
-}) => {
-  const router = useRouter();
+}) => (
+  <a
+    href={href}
+    onClick={(e) => {
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        smoothScrollTo(href);
+      }
 
-  return (
-    <a
-      href={href}
-      onClick={(event) => {
-        if (href.startsWith("/")) {
-          event.preventDefault();
-          router.push(href);
-          setMobileOpen(false);
-          return;
-        }
+      setMobileOpen(false);
+    }}
+    className="block w-full px-6 py-4 text-[12px] font-black tracking-[0.15em] text-[#faeb92] border-b border-[#faeb9220] hover:bg-[#faeb9220] transition-colors uppercase text-center"
+    style={{
+      fontFamily: "var(--font-body)",
+    }}
+  >
+    {children}
+  </a>
+);
 
-        if (href.startsWith("#")) {
-          event.preventDefault();
-          if (window.location.pathname !== "/") {
-            router.push(`/${href}`);
-            setMobileOpen(false);
-            return;
-          }
-          smoothScrollTo(href);
-        }
-
-        setMobileOpen(false);
-      }}
-      className="block min-h-12 w-full border-b border-[#faeb9218] px-6 py-4 text-center text-[12px] font-black tracking-[0.15em] text-[#faeb92] decoration-[#ff5fcf] underline-offset-[6px] transition-colors duration-200 hover:text-[#ff5fcf] hover:underline focus-visible:text-[#ff5fcf] focus-visible:underline uppercase"
-      style={{ fontFamily: "var(--font-body)" }}
-    >
-      {children}
-    </a>
-  );
+type NavbarProps = {
+  variant?: string;
 };
 
-export function Navbar({ variant = "default" }: { variant?: "default" | "back-to-home" }) {
+export function Navbar({ variant }: NavbarProps){
   const [mobileOpen, setMobileOpen] = useState(false);
-  const router = useRouter();
-  const isBackToHome = variant === "back-to-home";
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
 
-  useEffect(() => {
-    if (!mobileOpen) return;
+  const pathname = usePathname();
 
-    const previousOverflow = document.body.style.overflow;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileOpen(false);
-    };
-    const handleResize = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false);
-    };
+  const isBackToHome = variant === "back-to-home" || pathname !== "/";
+  const homeHref = isBackToHome ? "/" : "#top";
 
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [mobileOpen]);
-
-  const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (isBackToHome) {
-      router.push("/");
-      setMobileOpen(false);
       return;
     }
+
+    e.preventDefault();
     smoothScrollTo("#top");
-    setMobileOpen(false);
   };
 
-  const homeHref = isBackToHome ? "/" : "#top";
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    };
+
+    checkScreen();
+
+    window.addEventListener("resize", checkScreen);
+
+    return () => {
+      window.removeEventListener("resize", checkScreen);
+    };
+  }, []);
 
   return (
     <>
+      {/* ================= NAVBAR ================= */}
+
       <header
         className={styles.navbar}
-        style={{ zIndex: mobileOpen ? 50 : 20 }}
+        style={{
+          zIndex: mobileOpen ? 50 : 20,
+        }}
       >
+        {/* ================= LEFT COLUMN ================= */}
         <div className="flex items-center gap-4">
-          {isBackToHome ? (
-            <Link
-              href="/#top"
-              onClick={() => {
-                document.documentElement.dataset.heroReturn = "true";
-              }}
-              className={`${styles.mobileOnly} min-h-11 items-center gap-2 border border-[#faeb9238] px-3 text-[10px] font-black tracking-[0.1em] text-[#faeb92] transition-colors hover:border-[#ff5fcf] hover:text-[#ff5fcf] focus-visible:border-[#ff5fcf] focus-visible:text-[#ff5fcf] whitespace-nowrap`}
-              aria-label="Back to home"
-            >
-              <ArrowLeft size={17} strokeWidth={2.4} aria-hidden="true" />
-              <span>BACK TO HOME</span>
-            </Link>
-          ) : (
+          {!isLargeScreen ? (
             <button
-              type="button"
-              className={`${styles.mobileOnly} min-h-11 min-w-11 items-center justify-center border border-transparent text-[#faeb92] transition-colors hover:border-[#ff5fcf80] hover:text-[#ff5fcf] focus-visible:border-[#ff5fcf] cursor-pointer`}
-              onClick={() => setMobileOpen((open) => !open)}
+              className="text-[#faeb92] p-2 hover:bg-[#faeb9220] rounded-md transition-colors cursor-pointer"
+              onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-navigation"
             >
-              {mobileOpen ? <X size={26} /> : <Menu size={26} />}
+              {mobileOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
-          )}
+          ) : null}
 
           <div className={`${styles.desktopOnly} items-center gap-4`}>
-            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
+            <a
+              href={homeHref}
+              aria-label="CodeUtsava home"
+              onClick={handleHomeClick}
+            >
               <Image
                 src="/images/codeutsava/codeutsava-logo.png"
                 alt="CodeUtsava Logo"
@@ -203,6 +325,7 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
                 className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
               />
             </a>
+
             <div className={`${styles.navLinks} ${styles.navButton}`}>
               <NavItem
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
@@ -214,39 +337,57 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
           </div>
         </div>
 
-        <div className="flex items-center justify-center">
-          {!isBackToHome && (
+        {/* ================= CENTER COLUMN ================= */}
+        {isLargeScreen ? (
+          <nav
+            className={styles.navLinks}
+            aria-label="Primary navigation"
+          >
+            <NavItem href="#top" delay={0.2}>
+              HOME
+            </NavItem>
+
+            <NavItem href="#about" delay={0.3}>
+              ABOUT US
+            </NavItem>
+
+            <NavItem href="#faq" delay={0.4}>
+              FAQ
+            </NavItem>
+
+            <NavItem href="#contact" delay={0.5}>
+              CONTACT US
+            </NavItem>
+
+            <NavItem href="/team" delay={0.6}>
+              TEAM
+            </NavItem>
+          </nav>
+        ) : (
+          <div className="flex items-center justify-center">
             <a
               href={homeHref}
               aria-label="CodeUtsava home"
-              onClick={handleHomeClick}
-              className={`${styles.mobileOnly} items-center justify-center`}
+              onClick={(e) => {
+                if (isBackToHome) {
+                  return;
+                }
+
+                e.preventDefault();
+                smoothScrollTo("#top");
+                setMobileOpen(false);
+              }}
             >
               <Image
                 src="/images/codeutsava/codeutsava-logo.png"
                 alt="CodeUtsava Logo"
-                width={42}
-                height={42}
-                unoptimized
-                className="h-[42px] w-[42px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+                width={44}
+                height={44}
+                className="w-[44px] h-[44px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
               />
             </a>
-          )}
-
-          <nav className={`${styles.navLinks} ${styles.desktopOnly}`} aria-label="Primary navigation">
-            {isBackToHome ? (
-              <NavItem href="/">BACK TO HOME</NavItem>
-            ) : (
-              <>
-                <NavItem href="#top">HOME</NavItem>
-                <NavItem href="#about">ABOUT US</NavItem>
-                <NavItem href="#faq">FAQ</NavItem>
-                <NavItem href="/contact-us">CONTACT US</NavItem>
-                <NavItem href="/team">TEAM</NavItem>
-              </>
-            )}
-          </nav>
-        </div>
+          </div>
+        )}
 
         <div
           style={{
@@ -262,7 +403,12 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
                 BROCHURE
               </NavItem>
             </div>
-            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
+
+            <a
+              href={homeHref}
+              aria-label="CodeUtsava home"
+              onClick={handleHomeClick}
+            >
               <Image
                 src="/images/codeutsava/tcp-logo.png"
                 alt="TCP Logo"
@@ -290,40 +436,75 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
         </div>
       </header>
 
-      {mobileOpen && (
-        <div className={styles.mobileMenuLayer}>
-          <button
-            type="button"
-            className="fixed inset-0 z-40 cursor-default bg-black/70 backdrop-blur-[2px]"
-            onClick={() => setMobileOpen(false)}
-            aria-label="Close navigation menu"
-          />
+      {/* ================= MOBILE MENU ================= */}
 
-          <nav
-            id="mobile-navigation"
-            aria-label="Mobile navigation"
-            className="fixed left-[10px] right-[10px] top-[80px] z-[60] max-h-[calc(100dvh-92px)] overflow-y-auto border border-[#faeb9240] bg-black/95 shadow-[0_14px_45px_rgba(153,41,234,0.38)] backdrop-blur-md"
+      <AnimatePresence>
+        {!isLargeScreen && mobileOpen && (
+          <motion.div
+            initial={{
+              height: 0,
+              opacity: 0,
+            }}
+            animate={{
+              height: "auto",
+              opacity: 1,
+            }}
+            exit={{
+              height: 0,
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: [0.25, 0.3, 0.35, 0.4],
+            }}
+            className="fixed left-4 right-4 z-9999 bg-black/95 backdrop-blur-md border border-[#faeb9240] overflow-hidden shadow-[0_10px_40px_rgba(153,41,234,0.3)]"
+            style={{
+              top: "100px",
+              borderRadius: "12px",
+            }}
           >
             <div className="flex flex-col font-sans">
               {isBackToHome ? (
-                <MobileNavLink href="/" setMobileOpen={setMobileOpen}>
+                <MobileNavLink
+                  href="/"
+                  setMobileOpen={setMobileOpen}
+                >
                   BACK TO HOME
                 </MobileNavLink>
               ) : (
                 <>
-                  <MobileNavLink href="#top" setMobileOpen={setMobileOpen}>
+                  <MobileNavLink
+                    href="#top"
+                    setMobileOpen={setMobileOpen}
+                  >
                     HOME
                   </MobileNavLink>
-                  <MobileNavLink href="#about" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="#about"
+                    setMobileOpen={setMobileOpen}
+                  >
                     ABOUT US
                   </MobileNavLink>
-                  <MobileNavLink href="#faq" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="#faq"
+                    setMobileOpen={setMobileOpen}
+                  >
                     FAQ
                   </MobileNavLink>
-                  <MobileNavLink href="/contact-us" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="/contact-us"
+                    setMobileOpen={setMobileOpen}
+                  >
                     CONTACT US
                   </MobileNavLink>
-                  <MobileNavLink href="/team" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="/team"
+                    setMobileOpen={setMobileOpen}
+                  >
                     TEAM
                   </MobileNavLink>
                 </>
@@ -339,6 +520,7 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
                 >
                   FEEDBACK
                 </a>
+
                 <a
                   href="/CU X.0 Brochure.pdf"
                   target="_blank"
@@ -349,11 +531,10 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
                   BROCHURE
                 </a>
               </div>
-
             </div>
-          </nav>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -893,14 +893,14 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
       tabIndex={0}
       role="button"
       aria-label="3D Timeline Road Interactive Canvas"
-      className="w-full h-full absolute inset-0 cursor-default select-none bg-[#020104] touch-pan-y"
+      className="w-full h-full absolute inset-0 cursor-default select-none bg-transparent touch-pan-y"
     >
       <canvas ref={canvasRef} className="w-full h-full block" />
 
       {/* Compact Stage Indicator Pill for both PC and Android */}
       {hoveredEvent && (
         <div
-          className="flex absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 bg-black/90 backdrop-blur-md border px-4 py-1.5 sm:px-5 sm:py-2 rounded-full shadow-[0_0_20px_rgba(255,95,207,0.35)] items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs font-mono pointer-events-none transition-all z-30 max-w-[92vw] whitespace-nowrap overflow-hidden"
+          className="flex absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 bg-transparent border px-4 py-1.5 sm:px-5 sm:py-2 rounded-full items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs font-mono pointer-events-none transition-all z-30 max-w-[92vw] whitespace-nowrap overflow-hidden"
           style={{ borderColor: hoveredEvent.accentColor }}
         >
           <span className="text-[#FAEB92] font-bold shrink-0">{hoveredEvent.stageCode}:</span>
