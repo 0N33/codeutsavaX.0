@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { EasePack } from "gsap/EasePack";
+import { usePathname } from "next/navigation";
 import styles from "../hero/GlitchverseHero.module.css";
 
 function smoothScrollTo(targetSelector: string) {
@@ -71,8 +72,13 @@ const NavItem = ({
   const handleMouseEnter = () => {
     if (!containerRef.current) return;
     const container = containerRef.current;
-    const purpleRects = gsap.utils.shuffle(gsap.utils.toArray(".purple-rect", container));
-    const pinkRects = gsap.utils.shuffle(gsap.utils.toArray(".pink-rect", container));
+
+    const purpleRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".purple-rect", container)
+    );
+    const pinkRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".pink-rect", container)
+    );
 
     gsap.to(purpleRects, {
       duration: 0.4,
@@ -94,8 +100,13 @@ const NavItem = ({
   const handleMouseLeave = () => {
     if (!containerRef.current) return;
     const container = containerRef.current;
-    const purpleRects = gsap.utils.shuffle(gsap.utils.toArray(".purple-rect", container));
-    const pinkRects = gsap.utils.shuffle(gsap.utils.toArray(".pink-rect", container));
+
+    const purpleRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".purple-rect", container)
+    );
+    const pinkRects = gsap.utils.shuffle(
+      gsap.utils.toArray(".pink-rect", container)
+    );
 
     gsap.to(purpleRects, {
       duration: 0.4,
@@ -118,9 +129,11 @@ const NavItem = ({
     if (target === "_blank") {
       return;
     }
+
     if (!href.startsWith("#")) {
       return;
     }
+
     e.preventDefault();
     smoothScrollTo(href);
   };
@@ -163,7 +176,7 @@ const NavItem = ({
         display: "flex",
         alignItems: "center",
         position: "relative",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
     >
       <svg
@@ -190,6 +203,7 @@ const NavItem = ({
             />
           ))}
         </g>
+
         <g className="pink">
           {Array.from({ length: slices }).map((_, i) => (
             <rect
@@ -204,6 +218,7 @@ const NavItem = ({
           ))}
         </g>
       </svg>
+
       <span style={{ position: "relative", zIndex: 10 }}>{children}</span>
     </motion.a>
   );
@@ -225,6 +240,7 @@ const MobileNavLink = ({
         e.preventDefault();
         smoothScrollTo(href);
       }
+
       setMobileOpen(false);
     }}
     className="block w-full px-6 py-4 text-[12px] font-black tracking-[0.15em] text-[#faeb92] border-b border-[#faeb9220] hover:bg-[#faeb9220] transition-colors uppercase text-center"
@@ -239,6 +255,20 @@ const MobileNavLink = ({
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(true);
+
+  const pathname = usePathname();
+
+  const isBackToHome = pathname !== "/";
+  const homeHref = isBackToHome ? "/" : "#top";
+
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isBackToHome) {
+      return;
+    }
+
+    e.preventDefault();
+    smoothScrollTo("#top");
+  };
 
   useEffect(() => {
     const checkScreen = () => {
@@ -274,10 +304,14 @@ export function Navbar() {
             >
               {mobileOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
-          )}
+          ) : null}
 
           <div className={`${styles.desktopOnly} items-center gap-4`}>
-            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
+            <a
+              href={homeHref}
+              aria-label="CodeUtsava home"
+              onClick={handleHomeClick}
+            >
               <Image
                 src="/images/codeutsava/codeutsava-logo.png"
                 alt="CodeUtsava Logo"
@@ -287,6 +321,7 @@ export function Navbar() {
                 className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
               />
             </a>
+
             <div className={`${styles.navLinks} ${styles.navButton}`}>
               <NavItem
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
@@ -307,15 +342,19 @@ export function Navbar() {
             <NavItem href="#top" delay={0.2}>
               HOME
             </NavItem>
+
             <NavItem href="#about" delay={0.3}>
               ABOUT US
             </NavItem>
+
             <NavItem href="#faq" delay={0.4}>
               FAQ
             </NavItem>
+
             <NavItem href="#contact" delay={0.5}>
               CONTACT US
             </NavItem>
+
             <NavItem href="/team" delay={0.6}>
               TEAM
             </NavItem>
@@ -323,9 +362,13 @@ export function Navbar() {
         ) : (
           <div className="flex items-center justify-center">
             <a
-              href="#top"
+              href={homeHref}
               aria-label="CodeUtsava home"
               onClick={(e) => {
+                if (isBackToHome) {
+                  return;
+                }
+
                 e.preventDefault();
                 smoothScrollTo("#top");
                 setMobileOpen(false);
@@ -341,12 +384,13 @@ export function Navbar() {
             </a>
           </div>
         )}
+
         <div
           style={{
             justifySelf: "end",
             display: "flex",
             alignItems: "center",
-            gap: "16px"
+            gap: "16px",
           }}
         >
           <div className={`${styles.desktopOnly} items-center gap-4`}>
@@ -355,7 +399,12 @@ export function Navbar() {
                 BROCHURE
               </NavItem>
             </div>
-            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
+
+            <a
+              href={homeHref}
+              aria-label="CodeUtsava home"
+              onClick={handleHomeClick}
+            >
               <Image
                 src="/images/codeutsava/tcp-logo.png"
                 alt="TCP Logo"
@@ -412,24 +461,46 @@ export function Navbar() {
           >
             <div className="flex flex-col font-sans">
               {isBackToHome ? (
-                <MobileNavLink href="/" setMobileOpen={setMobileOpen}>
+                <MobileNavLink
+                  href="/"
+                  setMobileOpen={setMobileOpen}
+                >
                   BACK TO HOME
                 </MobileNavLink>
               ) : (
                 <>
-                  <MobileNavLink href="#top" setMobileOpen={setMobileOpen}>
+                  <MobileNavLink
+                    href="#top"
+                    setMobileOpen={setMobileOpen}
+                  >
                     HOME
                   </MobileNavLink>
-                  <MobileNavLink href="#about" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="#about"
+                    setMobileOpen={setMobileOpen}
+                  >
                     ABOUT US
                   </MobileNavLink>
-                  <MobileNavLink href="#faq" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="#faq"
+                    setMobileOpen={setMobileOpen}
+                  >
                     FAQ
                   </MobileNavLink>
-                  <MobileNavLink href="/contact-us" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="/contact-us"
+                    setMobileOpen={setMobileOpen}
+                  >
                     CONTACT US
                   </MobileNavLink>
-                  <MobileNavLink href="/team" setMobileOpen={setMobileOpen}>
+
+                  <MobileNavLink
+                    href="/team"
+                    setMobileOpen={setMobileOpen}
+                  >
                     TEAM
                   </MobileNavLink>
                 </>
@@ -445,6 +516,7 @@ export function Navbar() {
                 >
                   FEEDBACK
                 </a>
+
                 <a
                   href="/CU X.0 Brochure.pdf"
                   target="_blank"
@@ -455,11 +527,10 @@ export function Navbar() {
                   BROCHURE
                 </a>
               </div>
-
             </div>
-          </nav>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
