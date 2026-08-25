@@ -17,8 +17,14 @@ export function SponsorSection() {
   return (
     <section className={styles.sponsors} id="sponsors" aria-labelledby="sponsors-title">
       <div className={styles.backgroundGrid} aria-hidden="true" />
+      <div className={styles.filmGrain} aria-hidden="true" />
       <div className={styles.orbitalRing} aria-hidden="true" />
       <div className={styles.signal} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+      <div className={styles.glitchBursts} aria-hidden="true">
         <span />
         <span />
         <span />
@@ -28,7 +34,7 @@ export function SponsorSection() {
           <span className={styles.statusDot} />
           POWERED BY THE PEOPLE WHO BUILD THE FUTURE
         </p> */}
-        <h2 id="sponsors-title">OUR SPONSORS</h2>
+        <h2 id="sponsors-title" data-text="OUR SPONSORS">OUR SPONSORS</h2>
         {/* <p className={styles.subhead}>THE ALLIES BEHIND THE GLITCHVERSE</p> */}
       </div>
 

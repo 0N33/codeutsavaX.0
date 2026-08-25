@@ -51,6 +51,8 @@
 }
 
 .sectionHeading {
+  position: relative;
+  isolation: isolate;
   width: fit-content;
   margin: 0;
   color: #faeb92;
@@ -61,6 +63,30 @@
   line-height: 0.78;
   text-transform: uppercase;
   text-shadow: 6px 0 rgba(153, 41, 234, 0.48);
+  animation: headingJolt 4.8s steps(1, end) infinite;
+}
+
+.sectionHeading::before,
+.sectionHeading::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sectionHeading::before {
+  color: #ff5fcf;
+  text-shadow: -7px 0 rgba(153, 41, 234, 0.92);
+  animation: headingGlitchTop 4.8s steps(1, end) infinite;
+}
+
+.sectionHeading::after {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(250, 235, 146, 0.78);
+  text-shadow: 7px 0 rgba(255, 95, 207, 0.8);
+  animation: headingGlitchBottom 4.8s steps(1, end) infinite;
 }
 
 .chartLine {
@@ -181,6 +207,60 @@
 .tooltip { display: grid; gap: 3px; min-width: 128px; padding: 9px 11px; border: 1px solid rgba(255,95,207,.78); background: rgba(12,3,21,.96); box-shadow: 0 0 16px rgba(153,41,234,.28); color: #faeb92; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .06em; }
 .tooltip strong { color: #faeb92; font-family: var(--font-body); font-size: 18px; font-weight: 900; letter-spacing: .01em; }
 .participationBar { transition: filter 180ms ease, height 180ms ease, y 180ms ease; }
+.activeParticipationBar { animation: barGlitch .45s steps(2, end) infinite; }
+.teamsArea { animation: chartGlitch 5.6s steps(1, end) 3.15s infinite; }
+
+@keyframes chartGlitch {
+  0%, 62%, 68%, 100% { transform: translate(0); filter: none; }
+  63% { transform: translate(-4px, 2px); filter: drop-shadow(5px 0 #00f0ff); }
+  64% { transform: translate(6px, -2px); filter: drop-shadow(-6px 0 #ff5fcf); }
+  65% { transform: translate(-2px); }
+  66% { transform: translate(3px, 1px); filter: brightness(1.8); }
+}
+
+@keyframes barGlitch {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  35% { transform: translateX(4px); opacity: .78; }
+  70% { transform: translateX(-3px); opacity: .88; }
+}
+
+@keyframes headingJolt {
+  0%, 48%, 55%, 100% { transform: translate(0) skewX(0); filter: none; }
+  49% { transform: translate(-5px, 1px) skewX(-2deg); filter: brightness(1.4); }
+  50% { transform: translate(6px, -2px) skewX(3deg); }
+  51% { transform: translate(-3px, 1px) skewX(-1deg); }
+  52% { transform: translate(2px) skewX(.5deg); }
+  82% { transform: translate(-3px) skewX(-1deg); }
+  83% { transform: translate(4px, 1px) skewX(2deg); }
+}
+
+@keyframes headingGlitchTop {
+  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  49% { opacity: .9; transform: translate(-9px, -2px); clip-path: inset(0 0 63% 0); }
+  50% { opacity: .72; transform: translate(7px, 2px); clip-path: inset(21% 0 42% 0); }
+  51% { opacity: .94; transform: translate(-5px); clip-path: inset(52% 0 16% 0); }
+  52% { opacity: .42; transform: translate(3px); clip-path: inset(6% 0 74% 0); }
+  82% { opacity: .76; transform: translate(-6px); clip-path: inset(71% 0 3% 0); }
+  83% { opacity: .48; transform: translate(4px); clip-path: inset(9% 0 68% 0); }
+}
+
+@keyframes headingGlitchBottom {
+  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  49% { opacity: .76; transform: translate(9px, 2px); clip-path: inset(69% 0 0 0); }
+  50% { opacity: .9; transform: translate(-6px, -1px); clip-path: inset(47% 0 18% 0); }
+  51% { opacity: .62; transform: translate(5px); clip-path: inset(12% 0 60% 0); }
+  52% { opacity: .3; transform: translate(-2px); clip-path: inset(78% 0 3% 0); }
+  82% { opacity: .74; transform: translate(7px); clip-path: inset(4% 0 72% 0); }
+  83% { opacity: .38; transform: translate(-3px); clip-path: inset(63% 0 8% 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sectionHeading,
+  .sectionHeading::before,
+  .sectionHeading::after,
+  .teamsArea,
+  .activeParticipationBar { animation: none; }
+}
 
 @media (max-width: 900px) { .intro { align-items: start; flex-direction: column; } .chartGrid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .section { padding-inline: 16px; } .sectionHeading { font-size: clamp(36px, 10vw, 56px); } .chartCard { padding: 18px 14px; } .chartFrame { height: 270px; } .metricLabel { font-size: 15px; } .metricNote { font-size: 8px; } }  

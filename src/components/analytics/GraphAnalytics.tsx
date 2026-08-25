@@ -30,7 +30,7 @@ function ChartTooltip({ active, label, payload, suffix }: TooltipData) {
 function ParticipationBar({ x = 0, y = 0, width = 0, height = 0, fill = '#ff5fcf', payload, activeLabel }: BarShape) {
   const isActive = payload?.label === activeLabel;
   const growth = isActive ? 5 : 0;
-  return <rect x={x} y={y - growth / 2} width={width} height={height + growth} rx={(height + growth) / 2} fill={fill} className={styles.participationBar} style={{ outline : 'none', filter: isActive ? 'drop-shadow(0 0 7px rgba(255, 95, 207, 0.72))' : undefined }} />;
+  return <rect x={x} y={y - growth / 2} width={width} height={height + growth} rx={(height + growth) / 2} fill={fill} className={`${styles.participationBar} ${isActive ? styles.activeParticipationBar : ''}`} style={{ outline : 'none', filter: isActive ? 'drop-shadow(0 0 7px rgba(255, 95, 207, 0.72))' : undefined }} />;
 }
 
 export function GraphAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: GraphAnalyticsProps) {
@@ -60,7 +60,7 @@ export function GraphAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: G
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.content}>
         <header className={styles.intro}>
-          <h2 id="analytics-title" className={styles.sectionHeading}>GRAPH AND ANALYTICS</h2>
+          <h2 id="analytics-title" data-text="GRAPH AND ANALYTICS" className={styles.sectionHeading}>GRAPH AND ANALYTICS</h2>
           {/* <p className={styles.bodyCopy}>Explore Codeutsava&apos;s participations</p> */}
         </header>
 
@@ -75,7 +75,7 @@ export function GraphAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: G
                   <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: 'rgba(250,235,146,0.7)', fontFamily: 'var(--font-mono)', fontSize: 11 }} />
                   <YAxis axisLine={false} tickLine={false} width={42} tickFormatter={formatNumber} tick={{ fill: 'rgba(250,235,146,0.55)', fontFamily: 'var(--font-mono)', fontSize: 10 }} />
                   <Tooltip cursor={{ stroke: '#faeb92', strokeOpacity: 0.38, strokeDasharray: '3 4' }} content={<ChartTooltip suffix="teams" />} />
-                  <Area type="monotone" dataKey="teams" stroke="#ff5fcf" strokeWidth={3} fill="url(#teams-area)" activeDot={{ r: 7, fill: '#05020a', stroke: '#faeb92', strokeWidth: 3 }} isAnimationActive={hasEnteredViewport} animationBegin={100} animationDuration={1900} animationEasing="ease-out" style={{ outline: 'none', pointerEvents: 'none' }} />
+                  <Area type="monotone" dataKey="teams" stroke="#ff5fcf" strokeWidth={3} fill="url(#teams-area)" activeDot={{ r: 7, fill: '#05020a', stroke: '#faeb92', strokeWidth: 3 }} isAnimationActive={hasEnteredViewport} animationBegin={100} animationDuration={1900} animationEasing="ease-out" className={styles.teamsArea} style={{ outline: 'none', pointerEvents: 'none' }} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
