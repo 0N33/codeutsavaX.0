@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { SoundButton } from "@/components/ui/sound-button";
 
 export const metadata: Metadata = {
   title: {
@@ -32,6 +32,7 @@ export default function RootLayout({
       </head>
       <body>
         <div className="relative z-10">{children}</div>
+        <SoundButton />
       </body>
     </html>
   );

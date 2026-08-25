@@ -67,7 +67,7 @@ const SOCIAL_APP_ICONS = [
 
 const NAV_LINKS = [
   { label: 'HOME', href: '#top' },
-  { label: 'EVENTS', href: '/events' },
+  { label: 'TIMELINE', href: '#timeline' },
   { label: 'TEAMS', href: '/team' },
   { label: 'FAQ', href: '#faq' },
   { label: 'CONTACT US', href: '/contact-us' },

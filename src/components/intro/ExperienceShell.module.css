@@ -41,11 +41,11 @@
   background: radial-gradient(ellipse 72% 64% at 50% 48%, #6f3ac4 0%, #321c88 48%, #080511 100%);
 }
 .entering .bootViewport {
-  animation: glitchExit 640ms steps(1, end) forwards;
+  animation: glitchExit 960ms steps(1, end) forwards;
   pointer-events: none;
   will-change: transform, opacity, filter, clip-path;
 }
-.entering .bios { animation: contentCorrupt 640ms steps(1, end) both; }
+.entering .bios { animation: contentCorrupt 960ms steps(1, end) both; }
 .bios {
   position: relative;
   z-index: 2;
@@ -115,14 +115,14 @@
   display: flex;
   gap: clamp(2px,.32vw,5px);
 }
-.loader span { flex: 1; opacity: .08; background: #f7efd6; animation: segmentIn 10ms calc(500ms + var(--segment-index) * 105ms) linear forwards; }
+.loader span { flex: 1; opacity: .08; background: #f7efd6; animation: segmentIn 10ms calc(200ms + var(--segment-index) * 50ms) linear forwards; }
 .copyright { margin: auto 0 0; text-align: center; font: 400 clamp(.62rem,.9vw,.82rem)/1.4 var(--font-mono); }
 .scanlines, .noise, .bloom, .flash, .glitchBars { position: absolute; inset: 0; pointer-events: none; }
 .scanlines { z-index: 5; opacity: .2; background: repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.62) 3px 4px); }
 .noise { z-index: 4; opacity: .065; background-image: radial-gradient(rgba(255,255,255,.35) .55px,transparent .7px); background-size: 3px 3px; animation: noiseShift 280ms steps(2) infinite; }
 .bloom { z-index: 1; background: radial-gradient(ellipse at center,rgba(184,132,255,.24),transparent 67%); }
 .flash { z-index: 8; opacity: 0; background: #faeb92; mix-blend-mode: screen; }
-.entering .flash { animation: transitionFlash 640ms steps(1,end) both; }
+.entering .flash { animation: transitionFlash 960ms steps(1,end) both; }
 .glitchBars { z-index: 7; opacity: 0; overflow: hidden; }
 .glitchBars span {
   position: absolute;
@@ -140,7 +140,7 @@
 .glitchBars span:nth-child(3n+2) { height: 4.4%; }
 .glitchBars span:nth-child(3n) { height: 2.2%; }
 .entering .glitchBars { opacity: 1; }
-.entering .glitchBars span { animation: tearBar 640ms steps(2, end) both; animation-delay: calc(var(--bar-index) * -17ms); }
+.entering .glitchBars span { animation: tearBar 960ms steps(2, end) both; animation-delay: calc(var(--bar-index) * -17ms); }
 @keyframes powerOn {
   0% { transform: scaleY(.006) scaleX(.08); filter: brightness(8); }
   38% { transform: scaleY(.006) scaleX(1); }
