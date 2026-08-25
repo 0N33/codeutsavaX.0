@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { TimelineEvent, TIMELINE_EVENTS } from '@/data/timelineEvents';
+import { TIMELINE_EVENTS } from '@/data/timelineEvents';
 import { TimelineCanvas3D } from './TimelineCanvas3D';
 import { retroAudio } from '@/utils/audioEffects';
 import {

@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { EasePack } from "gsap/EasePack";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "../hero/GlitchverseHero.module.css";
 
 function smoothScrollTo(targetSelector: string) {
@@ -130,16 +130,17 @@ const NavItem = ({
       return;
     }
 
-    if (!href.startsWith("#")) {
-      return;
-    }
-
     e.preventDefault();
-    smoothScrollTo(href);
+    if (href.startsWith("#")) {
+      smoothScrollTo(href);
+    } else if (href.startsWith("/")) {
+      router.push(href);
+    }
   };
 
   const slices = 5;
   const sliceHeight = 100 / slices;
+  const router = useRouter();
 
   return (
     <motion.a
@@ -232,13 +233,18 @@ const MobileNavLink = ({
   href: string;
   children: React.ReactNode;
   setMobileOpen: (open: boolean) => void;
-}) => (
+}) => {
+  const router = useRouter();
+  return (
   <a
     href={href}
     onClick={(e) => {
       if (href.startsWith("#")) {
         e.preventDefault();
         smoothScrollTo(href);
+      } else if (href.startsWith("/")) {
+        e.preventDefault();
+        router.push(href);
       }
 
       setMobileOpen(false);
@@ -250,7 +256,8 @@ const MobileNavLink = ({
   >
     {children}
   </a>
-);
+  );
+};
 
 type NavbarProps = {
   variant?: string;
@@ -261,6 +268,7 @@ export function Navbar({ variant }: NavbarProps){
   const [isLargeScreen, setIsLargeScreen] = useState(true);
 
   const pathname = usePathname();
+  const router = useRouter();
 
   const isBackToHome = variant === "back-to-home" || pathname !== "/";
   const homeHref = pathname === "/" ? "#top" : "/";
@@ -268,12 +276,12 @@ export function Navbar({ variant }: NavbarProps){
   const getSectionHref = (id: string) => pathname === "/" ? id : `/${id}`;
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isBackToHome) {
-      return;
-    }
-
     e.preventDefault();
-    smoothScrollTo("#top");
+    if (isBackToHome) {
+      router.push("/");
+    } else {
+      smoothScrollTo("#top");
+    }
   };
 
   useEffect(() => {

@@ -32,8 +32,8 @@ function ScrambleGlitchText({
 
   useEffect(() => {
     if (!isHovered) {
-      setDisplayText(text);
-      return;
+      const timeoutId = setTimeout(() => setDisplayText(text), 0);
+      return () => clearTimeout(timeoutId);
     }
 
     const interval = setInterval(() => {

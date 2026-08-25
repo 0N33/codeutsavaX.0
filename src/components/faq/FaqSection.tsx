@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FAQS } from '@/data/faqs';
 import styles from '../sections/EventSections.module.css';
 
@@ -11,10 +11,14 @@ const AsciiFire = dynamic(() => import('@/components/originkit/ui/ascii-flame'),
 
 export function FaqSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const mountedRef = useRef(false);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      setIsMounted(true);
+    }
   }, []);
 
   return (

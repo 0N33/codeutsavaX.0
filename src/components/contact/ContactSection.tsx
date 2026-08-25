@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { Send, MapPin, ExternalLink, CheckCircle } from 'lucide-react';
 import Swal from 'sweetalert2';
@@ -22,10 +22,14 @@ export function ContactSection() {
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const mountedRef = useRef(false);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      setIsMounted(true);
+    }
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
