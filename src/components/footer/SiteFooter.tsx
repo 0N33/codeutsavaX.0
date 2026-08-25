@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { MapPin, Volume2, VolumeX } from 'lucide-react';
-import { retroAudio } from '@/utils/audioEffects';
+
 import { cyberSoundtrack } from '@/utils/cyberSoundtrack';
 import { AmbientTetris } from './AmbientTetris';
 import styles from './SiteFooter.module.css';
@@ -194,13 +195,13 @@ export function SiteFooter() {
           {/* Right: Right-Aligned Navigation Links */}
           <nav className={styles.navLinksCol} aria-label="Footer Navigation">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className={styles.navLinkItem}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

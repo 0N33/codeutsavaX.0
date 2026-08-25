@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useCallback,
   type CSSProperties,
   type ReactNode,
 } from "react";
@@ -129,13 +130,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
     };
   }, [isIntroMusicPlaying]);
 
-  const toggleIntroMusic = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const muted = introSoundtrack.toggleMute();
-    setIsIntroMusicPlaying(!muted);
-  };
-
-  const enter = () => {
+  const enter = useCallback(() => {
     if (!ready || entering) return;
     setHeroMounted(true);
     setEntering(true);
@@ -150,7 +145,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
       setEntered(true);
       transitionTimerRef.current = null;
     }, reducedMotionRef.current ? 180 : 960);
-  };
+  }, [ready, entering]);
 
   useEffect(() => {
     if (!ready || entered || entering) return;
@@ -162,7 +157,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [ready, entered, entering, isIntroMusicPlaying]);
+  }, [ready, entered, entering, isIntroMusicPlaying, enter]);
 
   return (
     <div

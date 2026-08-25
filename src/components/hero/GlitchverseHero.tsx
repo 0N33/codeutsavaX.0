@@ -53,7 +53,7 @@ export function GlitchverseHero() {
             className={styles.discordBtn}
             aria-label="Join the CodeUtsava community on Discord"
           >
-            <img src="/images/codeutsava/discord-symbol.svg" alt="" />
+            <Image src="/images/codeutsava/discord-symbol.svg" alt="Discord" width={24} height={24} />
           </a>
           <GlitchButton
             label="STEPS TO REGISTER"

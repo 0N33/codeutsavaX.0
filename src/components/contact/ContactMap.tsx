@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
 export default function ContactMap() {
+  const mountedRef = useRef(false);
   const [mounted, setMounted] = useState(false);
 
   const customIcon = L.icon({
@@ -19,7 +20,10 @@ export default function ContactMap() {
   });
 
   useEffect(() => {
-    setMounted(true);
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      setMounted(true);
+    }
   }, []);
 
   if (!mounted) return null;
