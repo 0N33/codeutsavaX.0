@@ -263,7 +263,9 @@ export function Navbar({ variant }: NavbarProps){
   const pathname = usePathname();
 
   const isBackToHome = variant === "back-to-home" || pathname !== "/";
-  const homeHref = isBackToHome ? "/" : "#top";
+  const homeHref = pathname === "/" ? "#top" : "/";
+  
+  const getSectionHref = (id: string) => pathname === "/" ? id : `/${id}`;
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (isBackToHome) {
@@ -343,19 +345,19 @@ export function Navbar({ variant }: NavbarProps){
             className={styles.navLinks}
             aria-label="Primary navigation"
           >
-            <NavItem href="#top" delay={0.2}>
+            <NavItem href={getSectionHref("#top")} delay={0.2}>
               HOME
             </NavItem>
 
-            <NavItem href="#about" delay={0.3}>
+            <NavItem href={getSectionHref("#about")} delay={0.3}>
               ABOUT US
             </NavItem>
 
-            <NavItem href="#faq" delay={0.4}>
+            <NavItem href={getSectionHref("#faq")} delay={0.4}>
               FAQ
             </NavItem>
 
-            <NavItem href="#contact" delay={0.5}>
+            <NavItem href="/contact-us" delay={0.5}>
               CONTACT US
             </NavItem>
 
@@ -464,31 +466,23 @@ export function Navbar({ variant }: NavbarProps){
             }}
           >
             <div className="flex flex-col font-sans">
-              {isBackToHome ? (
-                <MobileNavLink
-                  href="/"
-                  setMobileOpen={setMobileOpen}
-                >
-                  BACK TO HOME
-                </MobileNavLink>
-              ) : (
                 <>
                   <MobileNavLink
-                    href="#top"
+                    href={getSectionHref("#top")}
                     setMobileOpen={setMobileOpen}
                   >
                     HOME
                   </MobileNavLink>
 
                   <MobileNavLink
-                    href="#about"
+                    href={getSectionHref("#about")}
                     setMobileOpen={setMobileOpen}
                   >
                     ABOUT US
                   </MobileNavLink>
 
                   <MobileNavLink
-                    href="#faq"
+                    href={getSectionHref("#faq")}
                     setMobileOpen={setMobileOpen}
                   >
                     FAQ
@@ -508,7 +502,6 @@ export function Navbar({ variant }: NavbarProps){
                     TEAM
                   </MobileNavLink>
                 </>
-              )}
 
               <div className="grid grid-cols-2 border-t border-[#faeb9226]">
                 <a

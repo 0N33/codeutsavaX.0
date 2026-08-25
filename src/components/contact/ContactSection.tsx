@@ -3,7 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { Send, MapPin, ExternalLink, CheckCircle } from 'lucide-react';
+import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
 import styles from './ContactSection.module.css';
+
+const ContactMap = dynamic(() => import('./ContactMap'), { ssr: false });
 
 const AsciiFire = dynamic(() => import('@/components/originkit/ui/ascii-flame'), {
   ssr: false,
@@ -31,13 +35,43 @@ export function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
 
     setStatus('submitting');
-    setTimeout(() => {
+    
+    const serviceId = "service_vd2r5gp";
+    const templateId = "template_ebprf0z"; 
+    const publicKey = "muZX9OwYinoY4h80T";
+
+    try {
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          mobile: formData.phone,
+          email: formData.email,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      console.log("Email sent successfully:", result);
       setStatus('success');
+
+      Swal.fire({
+        title: "Thank You!",
+        text: "Your message has been sent successfully!",
+        icon: "success",
+        customClass: {
+          title: "swal-title-custom",
+          popup: "swal-popup-custom",
+          confirmButton: "swal-button-orange",
+        },
+      });
+
       setFormData({
         name: '',
         phone: '',
@@ -45,7 +79,20 @@ export function ContactSection() {
         message: '',
       });
       setTimeout(() => setStatus('idle'), 6000);
-    }, 1200);
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      setStatus('idle');
+      Swal.fire({
+        title: "Oops!",
+        text: "Failed to send message. Please try again.",
+        icon: "error",
+        customClass: {
+          title: "swal-title-custom",
+          popup: "swal-popup-custom",
+          confirmButton: "swal-button-orange",
+        },
+      });
+    }
   };
 
   return (
@@ -212,14 +259,9 @@ export function ContactSection() {
                   <span>NIT RAIPUR CAMPUS</span>
                 </div>
 
-                <iframe
-                  title="NIT Raipur Map Location"
-                  className={styles.mapIframe}
-                  src="https://maps.google.com/maps?q=National+Institute+of+Technology+Raipur,+G.E.+Road,+Raipur,+Chhattisgarh+492010&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
+                <div className={styles.mapIframe} style={{ position: 'relative' }}>
+                  <ContactMap />
+                </div>
               </div>
 
               <div className={styles.mapFooterDetails}>

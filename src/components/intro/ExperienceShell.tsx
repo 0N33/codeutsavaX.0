@@ -27,7 +27,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const skipIntro =
-      window.location.hash === "#top" ||
+      !!window.location.hash ||
       document.documentElement.dataset.heroReturn === "true";
     skipIntroRef.current = skipIntro;
 
@@ -48,7 +48,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
         setReturningToHero(false);
         delete document.documentElement.dataset.heroReturn;
         transitionTimerRef.current = null;
-      }, reducedMotionRef.current ? 180 : 640);
+      }, reducedMotionRef.current ? 180 : 960);
     });
 
     return () => window.cancelAnimationFrame(frame);
@@ -85,7 +85,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
     const compact = compactQuery.matches || reducedMotionQuery.matches;
 
     reducedMotionRef.current = reducedMotionQuery.matches;
-    const timer = window.setTimeout(() => setReady(true), compact ? 700 : 2350);
+    const timer = window.setTimeout(() => setReady(true), compact ? 400 : 1200);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -149,7 +149,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
     transitionTimerRef.current = window.setTimeout(() => {
       setEntered(true);
       transitionTimerRef.current = null;
-    }, reducedMotionRef.current ? 180 : 640);
+    }, reducedMotionRef.current ? 180 : 960);
   };
 
   useEffect(() => {
@@ -176,27 +176,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
             <div className={styles.scanlines} aria-hidden="true" />
             <div className={styles.noise} aria-hidden="true" />
 
-            {/* Intro Sound Toggle Icon (Logo Only, Bottom-Right Orange Position) */}
-            <button
-              className={styles.introSoundToggle}
-              type="button"
-              onClick={toggleIntroMusic}
-              title={isIntroMusicPlaying ? "Mute Intro Audio" : "Play Intro Audio"}
-              aria-label={isIntroMusicPlaying ? "Mute Intro Audio" : "Play Intro Audio"}
-            >
-              {isIntroMusicPlaying ? (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
-                </svg>
-              ) : (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                  <line x1="23" y1="9" x2="17" y2="15" />
-                  <line x1="17" y1="9" x2="23" y2="15" />
-                </svg>
-              )}
-            </button>
+
             <section
               className={styles.bios}
               data-intro-content
