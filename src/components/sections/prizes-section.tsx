@@ -2,10 +2,7 @@ import sponsorStyles from "@/components/sponsor-section/SponsorSection.module.cs
 import styles from "./prizes-section.module.css";
 
 const sharedRewards = [
-  "A Wolfram | Alpha PRO subscription for one year absolutely FREE.",
-  "An O'Reilly Ebook for FREE.",
-  "One month FREE Echo-3D Premium.",
-  "50% off on all TLE Eliminator courses.",
+  "To be announced",
 ] as const;
 
 const prizeCards = [
@@ -40,9 +37,7 @@ const prizeCards = [
     award:
       "The category-wise winning teams will be awarded Rs. 1.5 lakhs in total, with Rs. 10,000 in cash to each team.",
     rewards: [
-      "A Wolfram | Alpha PRO subscription for one year absolutely FREE.",
-      "One month FREE Echo-3D Premium.",
-      "50% off on all TLE Eliminator courses.",
+      "To be announced",
     ],
   },
   {
@@ -50,7 +45,9 @@ const prizeCards = [
     rank: "⬡",
     title: "Best Hack on Ethereum + Polygon",
     award: "The winning team will be awarded Rs. 16,000 in cash.",
-    rewards: [],
+    rewards: [
+      "To be announced",
+    ],
   },
   {
     signal: "06 // ALL ACCESS",
@@ -58,12 +55,7 @@ const prizeCards = [
     title: "For All Participants!",
     award: "Every participant unlocks the following partner perks and rewards.",
     rewards: [
-      "30 days FREE trial of O'Reilly learning platform.",
-      "30 days FREE access to Wolfram | One.",
-      "One month FREE Echo3D Pro.",
-      "T-shirts, stickers and other goodies for the team.",
-      "System-driven mocks by InterviewBuddy.",
-      "50% off on all TLE Eliminator courses.",
+      "To be announced",
     ],
   },
 ] as const;
@@ -88,7 +80,7 @@ export function PrizesSection() {
       <div className={styles.prizeFrame}>
         <div className={styles.transmissionHeader}>
           <p>WIN EXCITING PRIZES WORTH UP TO</p>
-          <strong>36 LAKHS</strong>
+          <strong>40,00,000</strong>
           <span>REWARD POOL // UNLOCKED</span>
         </div>
 
