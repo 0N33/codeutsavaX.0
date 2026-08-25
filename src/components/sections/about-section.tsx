@@ -40,7 +40,7 @@ export function AboutSection() {
                 <p>
                   At its heart is a <strong>28-hour hackathon</strong> where participants turn ambitious ideas into
                   working solutions. Workshops, MIC sessions, mentorship, gaming battles and community showcases
-                  keep the experience moving beyond the build. This year&apos;s edition features a 33&nbsp;L+ prize pool,
+                  keep the experience moving beyond the build. This year&apos;s edition features a 40&nbsp;L+ prize pool,
                   including 1.5–2&nbsp;L cash prizes.
                 </p>
               </div>
