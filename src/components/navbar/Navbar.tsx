@@ -193,24 +193,24 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
           )}
 
           <div className={`${styles.desktopOnly} items-center gap-4`}>
-              <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
-                <Image
-                  src="/images/codeutsava/codeutsava-logo.png"
-                  alt="CodeUtsava Logo"
-                  width={52}
-                  height={52}
-                  unoptimized
-                  className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
-                />
-              </a>
-              <div className={`${styles.navLinks} ${styles.navButton}`}>
-                <NavItem
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
-                  target="_blank"
-                >
-                  FEEDBACK
-                </NavItem>
-              </div>
+            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
+              <Image
+                src="/images/codeutsava/codeutsava-logo.png"
+                alt="CodeUtsava Logo"
+                width={52}
+                height={52}
+                unoptimized
+                className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+              />
+            </a>
+            <div className={`${styles.navLinks} ${styles.navButton}`}>
+              <NavItem
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
+                target="_blank"
+              >
+                FEEDBACK
+              </NavItem>
+            </div>
           </div>
         </div>
 
@@ -257,20 +257,20 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
           }}
         >
           <div className={`${styles.desktopOnly} items-center gap-4`}>
-              <div className={`${styles.navLinks} ${styles.navButton}`}>
-                <NavItem href="/Brochure.pdf" target="_blank">
-                  BROCHURE
-                </NavItem>
-              </div>
-              <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
-                <Image
-                  src="/images/codeutsava/tcp-logo.png"
-                  alt="TCP Logo"
-                  width={52}
-                  height={52}
-                  className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
-                />
-              </a>
+            <div className={`${styles.navLinks} ${styles.navButton}`}>
+              <NavItem href="/CU X.0 Brochure.pdf" target="_blank">
+                BROCHURE
+              </NavItem>
+            </div>
+            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
+              <Image
+                src="/images/codeutsava/tcp-logo.png"
+                alt="TCP Logo"
+                width={52}
+                height={52}
+                className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+              />
+            </a>
           </div>
 
           <a
@@ -304,53 +304,53 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
             aria-label="Mobile navigation"
             className="fixed left-[10px] right-[10px] top-[80px] z-[60] max-h-[calc(100dvh-92px)] overflow-y-auto border border-[#faeb9240] bg-black/95 shadow-[0_14px_45px_rgba(153,41,234,0.38)] backdrop-blur-md"
           >
-          <div className="flex flex-col font-sans">
-            {isBackToHome ? (
-              <MobileNavLink href="/" setMobileOpen={setMobileOpen}>
-                BACK TO HOME
-              </MobileNavLink>
-            ) : (
-              <>
-                <MobileNavLink href="#top" setMobileOpen={setMobileOpen}>
-                  HOME
+            <div className="flex flex-col font-sans">
+              {isBackToHome ? (
+                <MobileNavLink href="/" setMobileOpen={setMobileOpen}>
+                  BACK TO HOME
                 </MobileNavLink>
-                <MobileNavLink href="#about" setMobileOpen={setMobileOpen}>
-                  ABOUT US
-                </MobileNavLink>
-                <MobileNavLink href="#faq" setMobileOpen={setMobileOpen}>
-                  FAQ
-                </MobileNavLink>
-                <MobileNavLink href="/contact-us" setMobileOpen={setMobileOpen}>
-                  CONTACT US
-                </MobileNavLink>
-                <MobileNavLink href="/team" setMobileOpen={setMobileOpen}>
-                  TEAM
-                </MobileNavLink>
-              </>
-            )}
+              ) : (
+                <>
+                  <MobileNavLink href="#top" setMobileOpen={setMobileOpen}>
+                    HOME
+                  </MobileNavLink>
+                  <MobileNavLink href="#about" setMobileOpen={setMobileOpen}>
+                    ABOUT US
+                  </MobileNavLink>
+                  <MobileNavLink href="#faq" setMobileOpen={setMobileOpen}>
+                    FAQ
+                  </MobileNavLink>
+                  <MobileNavLink href="/contact-us" setMobileOpen={setMobileOpen}>
+                    CONTACT US
+                  </MobileNavLink>
+                  <MobileNavLink href="/team" setMobileOpen={setMobileOpen}>
+                    TEAM
+                  </MobileNavLink>
+                </>
+              )}
 
-            <div className="grid grid-cols-2 border-t border-[#faeb9226]">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="flex min-h-12 items-center justify-center border-r border-[#faeb9226] px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
-              >
-                FEEDBACK
-              </a>
-              <a
-                href="/Brochure.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="flex min-h-12 items-center justify-center px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
-              >
-                BROCHURE
-              </a>
+              <div className="grid grid-cols-2 border-t border-[#faeb9226]">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSeMsw6RCVMV0lCvvX3bGlYOomZgv0hi9fh_4sLfrfyKRsF67A/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-12 items-center justify-center border-r border-[#faeb9226] px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+                >
+                  FEEDBACK
+                </a>
+                <a
+                  href="/CU X.0 Brochure.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-12 items-center justify-center px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+                >
+                  BROCHURE
+                </a>
+              </div>
+
             </div>
-
-          </div>
           </nav>
         </div>
       )}
