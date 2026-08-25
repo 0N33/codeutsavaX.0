@@ -38,11 +38,11 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     phaseCode: 'INIT_PORTAL',
     category: 'Registration',
     description:
-      'Registrations begin for CodeUtsava 9.0, the flagship event of The Turing Club of Programmers.',
+      'Registrations begin for CodeUtsava X.0, the flagship event of The Turing Club of Programmers.',
     details: [
       'Registrations officially open',
       'Teams can begin submitting their entries',
-      'Get ready for CodeUtsava 9.0'
+      'Get ready for CodeUtsava X.0'
     ],
     xpIcon: 'notepad',
     xpFileName: 'REGISTRATION_OPEN.TXT',
@@ -67,7 +67,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     phaseCode: 'EVAL_BATCH_1',
     category: 'Selection',
     description:
-      'Team Shortlisting begins in batches for CodeUtsava 9.0.',
+      'Team Shortlisting begins in batches for CodeUtsava X.0.',
     details: [
       'Team evaluation begins',
       'Shortlisting is conducted in batches',
@@ -96,7 +96,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     phaseCode: 'PORTAL_LOCK',
     category: 'Registration',
     description:
-      'Registrations for CodeUtsava 9.0 officially close.',
+      'Registrations for CodeUtsava X.0 officially close.',
     details: [
       'Registration deadline: 11:59 PM',
       'No further registrations after the deadline',
@@ -115,7 +115,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     id: 'stage-4',
     stageNumber: 4,
     stageCode: 'STAGE_04',
-    title: 'Final Teams Announced.',
+    title: 'Final Teams Announced',
     lane: 'middle',
     laneIndex: 0,
     date: '2nd November',
@@ -125,14 +125,14 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     phaseCode: 'ROSTER_CONFIRMED',
     category: 'Selection',
     description:
-      'Final Shortlisted Teams for CodeUtsava 9.0 are released.',
+      'Final Shortlisted Teams for CodeUtsava X.0 are released.',
     details: [
       'Final shortlisted teams are announced',
       'Selected teams receive confirmation',
       'Teams prepare for the hackathon'
     ],
     xpIcon: 'wizard',
-    xpFileName: 'FINAL_ROSTER_V9.DLL',
+    xpFileName: 'FINAL_ROSTER_VX.DLL',
     status: 'UPCOMING',
     accentColor: '#FFE279',
     memoryAddress: '0x00A1F021',
@@ -144,7 +144,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     id: 'stage-5',
     stageNumber: 5,
     stageCode: 'STAGE_05',
-    title: 'Problem Statements Released.',
+    title: 'Problem Statements Released',
     lane: 'left',
     laneIndex: -1,
     date: '2nd November',
@@ -154,7 +154,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     phaseCode: 'PS_DECRYPT',
     category: 'Challenge',
     description:
-      'Problem Statements for CodeUtsava 9.0 are released.',
+      'Problem Statements for CodeUtsava X.0 are released.',
     details: [
       'Problem Statements are officially revealed',
       'Teams can study and analyse the challenges',
@@ -183,11 +183,11 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     phaseCode: 'HACK_TIMER_START',
     category: 'Hackathon',
     description:
-      'Commencement of CodeUtsava 9.0!',
+      'Commencement of CodeUtsava X.0!',
     details: [
       'The hackathon officially begins',
       'Teams start building their solutions',
-      'CodeUtsava 9.0 goes live'
+      'CodeUtsava X.0 goes live'
     ],
     xpIcon: 'cpu',
     xpFileName: 'HACK_SPRINT_INIT.SYS',

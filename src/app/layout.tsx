@@ -21,7 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(window.location.hash==="#top"){document.documentElement.dataset.heroReturn="true"}}catch(e){}',
+          }}
+        />
+      </head>
       <body>
         <div className="relative z-10">{children}</div>
       </body>

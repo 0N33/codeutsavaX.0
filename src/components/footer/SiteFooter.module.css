@@ -2,12 +2,14 @@
   --purple: #9929ea;
   --pink: #ff5fcf;
   --cream: #faeb92;
+  --cyan: #00ffff;
   --black: #000000;
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 84px) 24px;
-  border-top: 1px solid rgba(255, 95, 207, 0.5);
+  padding: clamp(40px, 5vw, 68px) clamp(20px, 5vw, 84px) 24px;
+  border-top: 1px solid rgba(255, 95, 207, 0.55);
+  box-shadow: 0 -2px 18px rgba(255, 95, 207, 0.12);
   background: transparent;
   color: var(--cream);
   font-family: 'Satoshi', var(--font-body), sans-serif;
@@ -31,8 +33,9 @@
 .footerShade {
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(3, 1, 6, 0.92) 0 35%, rgba(3, 1, 6, 0.78) 65%, rgba(3, 1, 6, 0.2)),
-    linear-gradient(to bottom, rgba(3, 1, 6, 0.85) 0%, transparent 35%, rgba(3, 1, 6, 0.7) 80%, rgba(3, 1, 6, 0.95) 100%);
+    radial-gradient(ellipse at 85% 40%, rgba(153, 41, 234, 0.14) 0%, transparent 60%),
+    linear-gradient(90deg, rgba(3, 1, 6, 0.94) 0 35%, rgba(3, 1, 6, 0.82) 65%, rgba(3, 1, 6, 0.25)),
+    linear-gradient(to bottom, rgba(3, 1, 6, 0.88) 0%, transparent 35%, rgba(3, 1, 6, 0.72) 80%, rgba(3, 1, 6, 0.96) 100%);
 }
 
 .footerContainer {
@@ -41,7 +44,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 4vw, 48px);
+  gap: clamp(32px, 4.5vw, 52px);
 }
 
 /* =========================================================================
@@ -58,7 +61,7 @@
 .brandLogosGroup {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .logoItem {
@@ -68,13 +71,22 @@
 
 .logoItem:hover {
   transform: translateY(-2px);
-  filter: drop-shadow(0 0 10px rgba(255, 95, 207, 0.6));
+  filter: drop-shadow(0 0 12px rgba(255, 95, 207, 0.75));
+}
+
+.brandDivider {
+  width: 1.5px;
+  height: 38px;
+  background: linear-gradient(to bottom, var(--pink), var(--cream));
+  margin: 0 4px;
+  opacity: 0.8;
 }
 
 .tcpBrandText {
   display: flex;
   flex-direction: column;
   line-height: 1.25;
+  text-align: left;
 }
 
 .tcpBrandText span {
@@ -102,7 +114,7 @@
 .socialIconsRow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .socialIconLink {
@@ -115,8 +127,8 @@
 
 .socialIconLink:hover {
   color: var(--pink);
-  transform: scale(1.15) translateY(-2px);
-  filter: drop-shadow(0 0 10px rgba(255, 95, 207, 0.9));
+  transform: scale(1.18) translateY(-2px);
+  filter: drop-shadow(0 0 12px rgba(255, 95, 207, 0.95));
 }
 
 .socialUpdatesNote {
@@ -131,7 +143,7 @@
 }
 
 /* =========================================================================
-   2. MIDDLE ROW: FAQ-STYLED ABOUT NIT RAIPUR CARD (LEFT) & NAV LINKS (RIGHT)
+   2. MIDDLE ROW: ABOUT NIT RAIPUR CARD & NAV LINKS
    ========================================================================= */
 .middleRow {
   display: grid;
@@ -145,13 +157,13 @@
   position: relative;
   background: #050207;
   border: 1px solid rgba(255, 95, 207, 0.7);
-  box-shadow: 12px 12px 0 rgba(153, 41, 234, 0.16), 0 0 50px rgba(153, 41, 234, 0.12);
+  box-shadow: 12px 12px 0 rgba(153, 41, 234, 0.18), 0 0 50px rgba(153, 41, 234, 0.12);
   clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%);
   padding: clamp(18px, 2.5vw, 26px);
   display: flex;
   align-items: center;
   gap: clamp(16px, 2.5vw, 24px);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.25s ease;
   overflow: hidden;
 }
 
@@ -170,7 +182,8 @@
 
 .aboutNitCard:hover {
   border-color: #ff5fcf;
-  box-shadow: 14px 14px 0 rgba(153, 41, 234, 0.24), 0 0 60px rgba(255, 95, 207, 0.25);
+  box-shadow: 14px 14px 0 rgba(153, 41, 234, 0.26), 0 0 60px rgba(255, 95, 207, 0.22);
+  transform: translateY(-2px);
 }
 
 .cardScanline {
@@ -190,6 +203,17 @@
   height: clamp(68px, 8vw, 92px);
   display: grid;
   place-items: center;
+  border-radius: 50%;
+  padding: 2px;
+  border: 1.5px dashed rgba(250, 235, 146, 0.4);
+  box-shadow: 0 0 16px rgba(153, 41, 234, 0.35);
+  background: rgba(153, 41, 234, 0.12);
+  transition: all 0.25s ease;
+}
+
+.aboutNitCard:hover .nitLogoWrap {
+  border-color: var(--pink);
+  box-shadow: 0 0 20px rgba(255, 95, 207, 0.5);
 }
 
 .nitLogoImg {
@@ -229,7 +253,7 @@
   font-weight: 500;
 }
 
-/* Right Aligned Navigation Links */
+/* Right Aligned Navigation Links with Cyber Glitch Hover */
 .navLinksCol {
   display: flex;
   flex-direction: column;
@@ -247,19 +271,20 @@
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all 0.18s ease;
+  transition: all 0.2s ease;
 }
 
 .navLinkItem:hover {
   color: var(--pink);
   transform: translateX(-4px);
-  text-shadow: 0 0 12px rgba(255, 95, 207, 0.8);
+  text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink), 0 0 12px rgba(255, 95, 207, 0.8);
 }
 
 /* =========================================================================
    3. BOTTOM BAR (3-WAY SPLIT)
    ========================================================================= */
 .bottomRow {
+  position: relative;
   padding-top: 18px;
   border-top: 1px solid rgba(250, 235, 146, 0.18);
   display: flex;
@@ -274,8 +299,30 @@
   color: rgba(250, 235, 146, 0.75);
 }
 
+.bottomRow::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pink) 50%, transparent);
+  opacity: 0.8;
+}
+
 .architectNote {
   color: #ffffff;
+}
+
+.heartIcon {
+  color: var(--pink);
+  display: inline-block;
+  animation: heartPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); filter: drop-shadow(0 0 6px var(--pink)); }
 }
 
 .tcpTeamLink {
@@ -301,7 +348,7 @@
 .backToTopLink:hover {
   color: var(--pink);
   transform: translateY(-2px);
-  text-shadow: 0 0 10px var(--pink);
+  text-shadow: 0 0 12px var(--pink);
 }
 
 .bottomRightGroup {
@@ -343,51 +390,151 @@
   border-color: var(--pink);
   color: #ffffff;
   box-shadow: 0 0 12px var(--pink);
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* =========================================================================
-   RESPONSIVE LAYOUT
+   ANDROID & MOBILE OPTIMIZED LAYOUT (SPACIOUS & UNCLUTTERED)
    ========================================================================= */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  .footer {
+    padding: 44px 20px 28px;
+  }
+
+  .footerContainer {
+    gap: 36px;
+  }
+
+  /* 1. Centered Brand Logos & Text */
   .topRow {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
   }
 
+  .brandLogosGroup {
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brandDivider {
+    height: 32px;
+  }
+
+  /* 2. Centered Social Applications Row & Subtitle */
   .socialsGroup {
-    align-items: flex-start;
-    text-align: left;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
   }
 
+  .socialIconsRow {
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .socialIconLink svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .socialUpdatesNote {
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    color: rgba(250, 235, 146, 0.75);
+  }
+
+  /* 3. Centered Middle Layout */
   .middleRow {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
   }
 
   .aboutNitCard {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
     align-items: center;
+    text-align: left;
+    padding: 20px 18px;
+    gap: 18px;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
   }
 
+  .aboutNitCard::before {
+    width: 24px;
+    height: 24px;
+    transform: rotate(-45deg) translate(-8px, -4px);
+  }
+
+  .nitLogoWrap {
+    width: 64px;
+    height: 64px;
+  }
+
+  .aboutTitle {
+    font-size: 13.5px;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+
+  .aboutDescription {
+    font-size: 9px;
+    line-height: 1.55;
+    letter-spacing: 0.03em;
+  }
+
+  /* 4. Centered Navigation Matrix */
   .navLinksCol {
-    align-items: flex-start;
-    text-align: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 14px 22px;
+    max-width: 340px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navLinkItem {
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
   }
 
   .navLinkItem:hover {
-    transform: translateX(4px);
+    transform: translateY(-2px);
   }
 
+  /* 5. Mobile Bottom Bar */
   .bottomRow {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    gap: 14px;
+    gap: 16px;
+    padding-top: 22px;
+    font-size: 9px;
+  }
+
+  .backToTopLink {
+    display: none;
   }
 
   .bottomRightGroup {
     justify-content: center;
+    gap: 14px;
   }
 }

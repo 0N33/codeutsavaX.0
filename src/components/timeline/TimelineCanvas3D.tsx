@@ -7,7 +7,6 @@ import { retroAudio } from '@/utils/audioEffects';
 interface TimelineCanvas3DProps {
   activeEventIndex: number;
   onSelectEvent: (index: number) => void;
-  onOpenDialog: (event: TimelineEvent) => void;
   scrollProgress: number;
   setScrollProgress: (progress: number) => void;
 }
@@ -25,7 +24,6 @@ interface Particle {
 export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
   activeEventIndex,
   onSelectEvent,
-  onOpenDialog,
   scrollProgress
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -57,11 +55,6 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
   useEffect(() => {
     onSelectEventRef.current = onSelectEvent;
   }, [onSelectEvent]);
-
-  const onOpenDialogRef = useRef(onOpenDialog);
-  useEffect(() => {
-    onOpenDialogRef.current = onOpenDialog;
-  }, [onOpenDialog]);
 
   // Generate ambient particle cloud
   const particlesRef = useRef<Particle[]>([]);
@@ -158,7 +151,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
 
-      computeWrappedDescriptions(ctx, isMobile ? 185 : 242);
+      computeWrappedDescriptions(ctx, isMobile ? 210 : 250);
     };
 
     resize();
@@ -221,13 +214,14 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
         : Math.max(520, Math.min(760, width * 0.48));
       const laneOffset = isMobile ? roadWidth * 0.16 : roadWidth / 3;
 
-      // Smooth camera interpolation
-      cameraZRef.current += (targetZRef.current - cameraZRef.current) * (isMobile ? 0.11 : 0.085);
+      // Smooth camera interpolation with adaptive responsiveness on touch
+      const lerpFactor = isMobile ? 0.14 : 0.085;
+      cameraZRef.current += (targetZRef.current - cameraZRef.current) * lerpFactor;
 
-      // Line-crossing stage detection
+      // Centered stage detection for natural mobile scrolling
       const physicalStageIdx = Math.max(0, Math.min(
         TIMELINE_EVENTS.length - 1,
-        Math.floor((cameraZRef.current + CAMERA_VIEW_DISTANCE + STAGE_SPACING * 0.15) / STAGE_SPACING)
+        Math.round((cameraZRef.current + CAMERA_VIEW_DISTANCE) / STAGE_SPACING)
       ));
 
       if (physicalStageIdx !== prevReportedStageRef.current) {
@@ -551,10 +545,10 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
         if (proj.scale > 0.18) {
           const isExpanded = expProgress > 0.40;
           const canonicalW = isMobile
-            ? (145 + 80 * expProgress)
-            : (165 + 105 * expProgress);
+            ? (160 + 105 * expProgress)
+            : (175 + 115 * expProgress);
           const canonicalH = isMobile
-            ? (52 + 130 * expProgress)
+            ? (55 + 140 * expProgress)
             : (55 + 145 * expProgress);
           const canonicalHeaderH = 15 + 13 * expProgress;
           const canonicalBodyH = canonicalH - canonicalHeaderH;
@@ -693,9 +687,16 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
 
           // STEP D: BODY CONTENT IN SILKSCREEN & GEIST MONO
           if (isExpanded) {
-            // Line 1: Uppercase Title in Silkscreen / Press Start 2P
-            ctx.font = 'bold 11px "Silkscreen", "Geist Mono", monospace';
+            // Line 1: Uppercase Title with dynamic measurement & scaling to guarantee zero edge clipping
             const titleStr = scrambleDuringExpansion(evt.title.toUpperCase(), effectiveIsCardGlitching ? effectiveCardGlitch : expProgress, tick);
+            let titleFontSize = isMobile ? 10 : 11;
+            ctx.font = `bold ${titleFontSize}px "Silkscreen", "Geist Mono", monospace`;
+            const maxTitleWidth = canonicalW - 24;
+            const measuredW = ctx.measureText(titleStr).width;
+            if (measuredW > maxTitleWidth && measuredW > 0) {
+              titleFontSize = Math.max(7.5, Math.floor(titleFontSize * (maxTitleWidth / measuredW) * 10) / 10);
+              ctx.font = `bold ${titleFontSize}px "Silkscreen", "Geist Mono", monospace`;
+            }
 
             if (effectiveIsCardGlitching) {
               ctx.fillStyle = '#00F0FF';
@@ -862,22 +863,16 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
   };
 
   const handleTouchEnd = () => {
-    const elapsed = Date.now() - touchStartPosRef.current.time;
-    if (elapsed < 350 && hoveredNodeIndexRef.current !== null) {
-      const selected = TIMELINE_EVENTS[hoveredNodeIndexRef.current];
+    // Stage navigation on touch without popup modal
+    if (hoveredNodeIndexRef.current !== null) {
       onSelectEvent(hoveredNodeIndexRef.current);
-      onOpenDialog(selected);
-      retroAudio.playXPDing();
     }
   };
 
-  // Canvas Click: Open XP Dialog
+  // Canvas Click: Only select node without popup modal
   const handleClick = () => {
     if (hoveredNodeIndexRef.current !== null) {
-      const selected = TIMELINE_EVENTS[hoveredNodeIndexRef.current];
       onSelectEvent(hoveredNodeIndexRef.current);
-      onOpenDialog(selected);
-      retroAudio.playXPDing();
     }
   };
 
@@ -898,33 +893,14 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
       tabIndex={0}
       role="button"
       aria-label="3D Timeline Road Interactive Canvas"
-      className="w-full h-full absolute inset-0 cursor-crosshair select-none bg-[#020104] touch-pan-y"
+      className="w-full h-full absolute inset-0 cursor-default select-none bg-[#020104] touch-pan-y"
     >
       <canvas ref={canvasRef} className="w-full h-full block" />
 
-      {/* Desktop Hover Tooltip */}
+      {/* Compact Stage Indicator Pill for both PC and Android */}
       {hoveredEvent && (
         <div
-          className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/95 backdrop-blur-xl border-2 px-5 py-2.5 rounded-xl shadow-[0_0_30px_rgba(255,95,207,0.4)] items-center gap-3 text-xs font-mono pointer-events-none transition-all z-30 whitespace-nowrap"
-          style={{ borderColor: hoveredEvent.accentColor }}
-        >
-          <span className="text-white font-bold">{hoveredEvent.stageCode}:</span>
-          <span className="text-gray-200 font-sans font-medium">{hoveredEvent.title}</span>
-          <span className="text-gray-400">({hoveredEvent.date})</span>
-          <span
-            className="px-2 py-0.5 rounded text-[10px] font-black uppercase"
-            style={{ backgroundColor: `${hoveredEvent.accentColor}30`, color: hoveredEvent.accentColor }}
-          >
-            {hoveredEvent.lane.toUpperCase()} LANE
-          </span>
-          <span className="text-yellow-300 font-bold ml-1 animate-pulse">[ Click to open XP Dialog ]</span>
-        </div>
-      )}
-
-      {/* Mobile / Android: Very Small & Compact Stage Indicator Pill */}
-      {hoveredEvent && (
-        <div
-          className="flex sm:hidden absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/90 backdrop-blur-md border px-3 py-1 rounded-full shadow-[0_0_12px_rgba(255,95,207,0.3)] items-center justify-center gap-1 text-[11px] font-mono pointer-events-none transition-all z-30 max-w-[90vw] whitespace-nowrap overflow-hidden"
+          className="flex absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 bg-black/90 backdrop-blur-md border px-4 py-1.5 sm:px-5 sm:py-2 rounded-full shadow-[0_0_20px_rgba(255,95,207,0.35)] items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs font-mono pointer-events-none transition-all z-30 max-w-[92vw] whitespace-nowrap overflow-hidden"
           style={{ borderColor: hoveredEvent.accentColor }}
         >
           <span className="text-[#FAEB92] font-bold shrink-0">{hoveredEvent.stageCode}:</span>

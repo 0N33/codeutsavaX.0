@@ -10,7 +10,7 @@
   background:
     radial-gradient(ellipse 68% 40% at 50% 51%, rgba(153, 41, 234, 0.13), transparent 72%),
     radial-gradient(circle at 14% 12%, rgba(255, 95, 207, 0.07), transparent 20%),
-    #050507;
+    rgba(5, 5, 7, 0.45);
   color: var(--cream);
 }
 
@@ -163,11 +163,12 @@
   margin: 15px auto 12px;
   color: var(--cream);
   font-family: var(--font-body);
-  font-size: clamp(56px, 8.2vw, 122px);
-  font-weight: 800;
+  font-size: clamp(36px, 5.8vw, 76px);
+  font-weight: 900;
   letter-spacing: -0.07em;
-  line-height: 0.75;
-  text-shadow: 8px 0 rgba(153, 41, 234, 0.34), -4px 0 rgba(255, 95, 207, 0.22);
+  line-height: 0.78;
+  text-transform: uppercase;
+  text-shadow: 6px 0 rgba(153, 41, 234, 0.48);
   animation: titleJolt 4.8s steps(1, end) infinite;
 }
 
@@ -382,36 +383,6 @@
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-@keyframes titleJolt {
-  0%, 48%, 55%, 100% { transform: translate(0) skewX(0); filter: none; }
-  49% { transform: translate(-5px, 1px) skewX(-2deg); filter: brightness(1.4); }
-  50% { transform: translate(6px, -2px) skewX(3deg); }
-  51% { transform: translate(-3px, 1px) skewX(-1deg); }
-  52% { transform: translate(2px) skewX(0.5deg); }
-  82% { transform: translate(-3px) skewX(-1deg); }
-  83% { transform: translate(4px, 1px) skewX(2deg); }
-}
-
-@keyframes titleGlitchTop {
-  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
-  49% { opacity: 0.9; transform: translate(-9px, -2px); clip-path: inset(0 0 63% 0); }
-  50% { opacity: 0.72; transform: translate(7px, 2px); clip-path: inset(21% 0 42% 0); }
-  51% { opacity: 0.94; transform: translate(-5px); clip-path: inset(52% 0 16% 0); }
-  52% { opacity: 0.42; transform: translate(3px); clip-path: inset(6% 0 74% 0); }
-  82% { opacity: 0.76; transform: translate(-6px); clip-path: inset(71% 0 3% 0); }
-  83% { opacity: 0.48; transform: translate(4px); clip-path: inset(9% 0 68% 0); }
-}
-
-@keyframes titleGlitchBottom {
-  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
-  49% { opacity: 0.76; transform: translate(9px, 2px); clip-path: inset(69% 0 0 0); }
-  50% { opacity: 0.9; transform: translate(-6px, -1px); clip-path: inset(47% 0 18% 0); }
-  51% { opacity: 0.62; transform: translate(5px); clip-path: inset(12% 0 60% 0); }
-  52% { opacity: 0.3; transform: translate(-2px); clip-path: inset(78% 0 3% 0); }
-  82% { opacity: 0.74; transform: translate(7px); clip-path: inset(4% 0 72% 0); }
-  83% { opacity: 0.38; transform: translate(-3px); clip-path: inset(63% 0 8% 0); }
-}
-
 @keyframes pinkWave {
   0% { opacity: 0; transform: skewX(-15deg) translateX(-20%); }
   12% { opacity: 0.92; }
@@ -437,7 +408,7 @@
   .sponsors { min-height: 680px; padding-block: 86px 72px; }
   .heading { width: min(100% - 32px, 1180px); }
   .eyebrow { max-width: 260px; line-height: 1.5; text-align: left; }
-  .heading h2 { font-size: clamp(42px, 10.5vw, 72px); }
+  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
   .subhead { font-size: 8px; line-height: 1.5; }
   .marquee { display: none; }
   .mobileMarquee {
@@ -469,7 +440,7 @@
 @media (min-width: 641px) and (max-width: 960px) {
   .sponsors { min-height: 620px; padding-block: 104px 92px; }
   .heading { margin-bottom: 64px; }
-  .heading h2 { font-size: clamp(62px, 9.8vw, 94px); }
+  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
   .track { gap: 22px; }
   .card {
     width: clamp(230px, 30vw, 278px);
@@ -478,11 +449,45 @@
   .coordinates { width: min(100% - 64px, 1180px); }
 }
 
+@keyframes titleJolt {
+  0%, 48%, 55%, 100% { transform: translate(0) skewX(0); filter: none; }
+  49% { transform: translate(-5px, 1px) skewX(-2deg); filter: brightness(1.4); }
+  50% { transform: translate(6px, -2px) skewX(3deg); }
+  51% { transform: translate(-3px, 1px) skewX(-1deg); }
+  52% { transform: translate(2px) skewX(0.5deg); }
+  82% { transform: translate(-3px) skewX(-1deg); }
+  83% { transform: translate(4px, 1px) skewX(2deg); }
+}
+
+@keyframes titleGlitchTop {
+  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  49% { opacity: 0.9; transform: translate(-9px, -2px); clip-path: inset(0 0 63% 0); }
+  50% { opacity: 0.72; transform: translate(7px, 2px); clip-path: inset(21% 0 42% 0); }
+  51% { opacity: 0.94; transform: translate(-5px); clip-path: inset(52% 0 16% 0); }
+  52% { opacity: 0.42; transform: translate(3px); clip-path: inset(6% 0 74% 0); }
+  82% { opacity: 0.76; transform: translate(-6px); clip-path: inset(71% 0 3% 0); }
+  83% { opacity: 0.48; transform: translate(4px); clip-path: inset(9% 0 68% 0); }
+}
+
+@keyframes titleGlitchBottom {
+  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  49% { opacity: 0.76; transform: translate(9px, 2px); clip-path: inset(69% 0 0 0); }
+  50% { opacity: 0.9; transform: translate(-6px, -1px); clip-path: inset(47% 0 18% 0); }
+  51% { opacity: 0.62; transform: translate(5px); clip-path: inset(12% 0 60% 0); }
+  52% { opacity: 0.3; transform: translate(-2px); clip-path: inset(78% 0 3% 0); }
+  82% { opacity: 0.74; transform: translate(7px); clip-path: inset(4% 0 72% 0); }
+  83% { opacity: 0.38; transform: translate(-3px); clip-path: inset(63% 0 8% 0); }
+}
+
+@media (max-width: 600px) {
+  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
+}
+
 @media (max-width: 430px) {
   .sponsors { min-height: 630px; padding-block: 70px 58px; }
   .heading { margin-bottom: 42px; }
   .eyebrow { font-size: 8px; letter-spacing: 0.13em; }
-  .heading h2 { font-size: clamp(40px, 10.8vw, 48px); letter-spacing: -0.065em; }
+  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
   .subhead { max-width: 230px; margin-inline: auto; }
   .mobileMarquee {
     gap: 12px;
@@ -497,7 +502,7 @@
 }
 
 @media (max-width: 350px) {
-  .heading h2 { font-size: 38px; }
+  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
   .mobileTrack .card { height: 110px; }
 }
 

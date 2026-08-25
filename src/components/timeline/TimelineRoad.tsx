@@ -3,12 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TimelineEvent, TIMELINE_EVENTS } from '@/data/timelineEvents';
 import { TimelineCanvas3D } from './TimelineCanvas3D';
-import { WindowsXPDialog } from './WindowsXPDialog';
 import { retroAudio } from '@/utils/audioEffects';
-import { AnimatePresence, motion } from 'framer-motion';
 import {
   Volume2,
-  VolumeX
+  VolumeX,
+  FastForward
 } from 'lucide-react';
 
 interface GlitchTextProps {
@@ -39,9 +38,22 @@ const GlitchText: React.FC<GlitchTextProps> = ({ text, className = '' }) => {
 export const TimelineRoad: React.FC = () => {
   const stickyContainerRef = useRef<HTMLDivElement | null>(null);
   const [activeEventIndex, setActiveEventIndex] = useState<number>(0);
-  const [selectedModalEvent, setSelectedModalEvent] = useState<TimelineEvent | null>(null);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [isMuted, setIsMuted] = useState<boolean>(retroAudio.getMuted());
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    return retroAudio.subscribe((muted) => setIsMuted(muted));
+  }, []);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // STICKY SCROLL PROGRESS TRACKING
   useEffect(() => {
@@ -86,24 +98,34 @@ export const TimelineRoad: React.FC = () => {
     setActiveEventIndex(prev => prev === index ? prev : index);
   }, []);
 
-  const handleOpenDialog = React.useCallback((event: TimelineEvent) => {
-    setSelectedModalEvent(event);
-    retroAudio.playXPDing();
-  }, []);
-
   const toggleMute = () => {
     const nextMuted = retroAudio.toggleMute();
     setIsMuted(nextMuted);
     if (!nextMuted) retroAudio.playXPDing();
   };
 
+  const handleSkipSection = () => {
+    if (!stickyContainerRef.current) return;
+    const nextEl = stickyContainerRef.current.nextElementSibling;
+    if (nextEl) {
+      nextEl.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      const rect = stickyContainerRef.current.getBoundingClientRect();
+      window.scrollTo({
+        top: window.scrollY + rect.bottom,
+        behavior: 'smooth'
+      });
+    }
+    retroAudio.playXPDing();
+  };
+
   return (
-    // Sticky scroll container with runway for all 9 stages + empty space
+    // Sticky scroll container with optimized runway for all 9 stages
     <section
       id="timeline"
       ref={stickyContainerRef}
       className="relative w-full bg-transparent"
-      style={{ height: `${(TIMELINE_EVENTS.length + 2.5) * 75}vh` }}
+      style={{ height: `${isMobile ? (TIMELINE_EVENTS.length + 1.2) * 38 : (TIMELINE_EVENTS.length + 2.5) * 75}vh` }}
     >
       {/* FULLSCREEN PINNED STICKY VIEWPORT (100vw x 100vh) */}
       <div className="sticky top-0 w-full h-[100svh] overflow-hidden flex flex-col justify-between select-none">
@@ -112,7 +134,6 @@ export const TimelineRoad: React.FC = () => {
         <TimelineCanvas3D
           activeEventIndex={activeEventIndex}
           onSelectEvent={handleSelectEvent}
-          onOpenDialog={handleOpenDialog}
           scrollProgress={scrollProgress}
           setScrollProgress={setScrollProgress}
         />
@@ -142,8 +163,21 @@ export const TimelineRoad: React.FC = () => {
             </h2>
           </div>
 
-          {/* Right Sleek Purple Volume Toggle Button */}
-          <div className="pointer-events-auto">
+          {/* Right Controls: Skip Section Button + Volume Toggle Button */}
+          <div className="pointer-events-auto flex items-center gap-2 sm:gap-3">
+            {/* Skip Section Button */}
+            <button
+              type="button"
+              onClick={handleSkipSection}
+              className="h-10 px-3 sm:px-4 rounded-xl flex items-center gap-1.5 sm:gap-2 transition-all duration-300 cursor-pointer border shadow-lg bg-[#9929EA]/25 text-[#FAEB92] border-[#FF5FCF]/50 hover:bg-[#9929EA]/40 hover:scale-105 shadow-[0_0_20px_rgba(153,41,234,0.4)] text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider"
+              title="Skip Timeline Section"
+              aria-label="Skip Timeline Section"
+            >
+              <span>SKIP</span>
+              <FastForward className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF5FCF] drop-shadow-[0_0_8px_#FF5FCF]" />
+            </button>
+
+            {/* Sleek Purple Volume Toggle Button */}
             <button
               type="button"
               onClick={toggleMute}
@@ -154,8 +188,8 @@ export const TimelineRoad: React.FC = () => {
                   : 'bg-black/60 text-gray-500 border-white/10 hover:bg-black/80 hover:text-gray-300'
                 }
               `}
-              title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-              aria-label={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+              title={isMuted ? 'Unmute Timeline SFX' : 'Mute Timeline SFX'}
+              aria-label={isMuted ? 'Unmute Timeline SFX' : 'Mute Timeline SFX'}
             >
               {!isMuted ? (
                 <Volume2 className="w-5 h-5 text-[#FF5FCF] drop-shadow-[0_0_8px_#FF5FCF]" />
@@ -169,45 +203,6 @@ export const TimelineRoad: React.FC = () => {
         {/* Empty bottom spacer for pristine clean view */}
         <div className="relative z-40 w-full pointer-events-none pb-4" />
       </div>
-
-      {/* =========================================================================
-         CLICK-ACTIVATED WINDOWS XP POPUP MODAL
-         ========================================================================= */}
-      <AnimatePresence>
-        {selectedModalEvent && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => setSelectedModalEvent(null)}
-            role="presentation"
-            className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md cursor-pointer"
-          >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              role="presentation"
-              className="cursor-default w-full max-w-[600px]"
-            >
-              <WindowsXPDialog
-                event={selectedModalEvent}
-                isFloatingModal={true}
-                onClose={() => setSelectedModalEvent(null)}
-                onSelectNext={
-                  activeEventIndex < TIMELINE_EVENTS.length - 1
-                    ? () => handleSelectEvent(activeEventIndex + 1)
-                    : undefined
-                }
-                onSelectPrev={
-                  activeEventIndex > 0
-                    ? () => handleSelectEvent(activeEventIndex - 1)
-                    : undefined
-                }
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };

@@ -29,13 +29,12 @@ export function SponsorSection() {
         <span />
         <span />
       </div>
-
       <div className={styles.heading}>
         {/* <p className={styles.eyebrow}>
           <span className={styles.statusDot} />
           POWERED BY THE PEOPLE WHO BUILD THE FUTURE
         </p> */}
-        <h2 id="sponsors-title" data-text="OUR   SPONSORS">OUR   SPONSORS</h2>
+        <h2 id="sponsors-title" data-text="OUR SPONSORS">OUR SPONSORS</h2>
         {/* <p className={styles.subhead}>THE ALLIES BEHIND THE GLITCHVERSE</p> */}
       </div>
 

@@ -4,12 +4,8 @@
   letter-spacing: -0.045em;
 }
 
-.sponsorHeading {
-  position: relative;
-  isolation: isolate;
-  width: fit-content;
-  margin: 0;
-  color: var(--paper);
+.bodyCopy {
+  color: rgba(250, 235, 146, 0.72);
   font-family: var(--font-body);
   font-size: clamp(28px, 4vw, 56px);
   font-weight: 800;
@@ -18,8 +14,60 @@
   animation: heading-jolt 4.8s steps(1, end) infinite;
 }
 
-.sponsorHeading::before,
-.sponsorHeading::after {
+.metricLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.instruction,
+.chartDataLabel,
+.chartDataText {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.instruction {
+  margin: 0;
+  color: rgba(250, 235, 146, 0.55);
+  font-size: 11px;
+}
+
+.chartMetric {
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+}
+
+.chartDataLabel {
+  font-size: 10px;
+}
+
+.sectionHeading {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  margin: 0;
+  color: #faeb92;
+  font-family: var(--font-body);
+  font-size: clamp(36px, 5.8vw, 76px);
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.78;
+  text-transform: uppercase;
+  text-shadow: 6px 0 rgba(153, 41, 234, 0.48);
+  animation: headingJolt 4.8s steps(1, end) infinite;
+}
+
+.sectionHeading::before,
+.sectionHeading::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
@@ -28,61 +76,33 @@
   opacity: 0;
 }
 
-.sponsorHeading::before {
-  color: var(--acid);
+.sectionHeading::before {
+  color: #ff5fcf;
   text-shadow: -7px 0 rgba(153, 41, 234, 0.92);
-  animation: heading-glitch-top 4.8s steps(1, end) infinite;
+  animation: headingGlitchTop 4.8s steps(1, end) infinite;
 }
 
-.sponsorHeading::after {
+.sectionHeading::after {
   color: transparent;
   -webkit-text-stroke: 1px rgba(250, 235, 146, 0.78);
   text-shadow: 7px 0 rgba(255, 95, 207, 0.8);
-  animation: heading-glitch-bottom 4.8s steps(1, end) infinite;
+  animation: headingGlitchBottom 4.8s steps(1, end) infinite;
 }
 
 .chartLine {
   stroke-dasharray: 900;
   stroke-dashoffset: 900;
-  animation: chart-draw 2.8s cubic-bezier(.16, 1, .3, 1) .2s forwards, chart-glitch 5.6s steps(1, end) 3.15s infinite;
+  animation: chart-draw 2.8s cubic-bezier(.16, 1, .3, 1) .2s forwards;
 }
 
 .readout {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-}
-
-.readout::before,
-.readout::after {
-  content: attr(data-value);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.readout::before {
-  color: #ff5fcf;
-  transform: translateX(-3px);
-  text-shadow: -4px 0 #9929ea;
-  clip-path: inset(8% 0 63% 0);
-  animation: data-glitch-top .62s steps(2, end);
-}
-
-.readout::after {
-  color: #9bf8ff;
-  transform: translateX(3px);
-  text-shadow: 4px 0 #ff5fcf;
-  clip-path: inset(67% 0 7% 0);
-  animation: data-glitch-bottom .62s steps(2, end);
-}
-
-.readout:hover::before,
-.readout:hover::after,
-.readout:focus-within::before,
-.readout:focus-within::after {
-  animation-iteration-count: infinite;
+  display: flex;
+  min-height: 5.5rem;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .activeNode {
@@ -96,59 +116,115 @@
 .barButton:focus-visible {
   outline: none;
 }
-
+.chartFrame svg,
+.chartFrame svg *,
+.chartFrame :focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 .chartPoint:focus-visible circle:nth-child(2) {
   stroke: #ff5fcf;
 }
 
 .barButton:hover .barValue,
 .barButton:focus-visible .barValue {
-  transform: scale(1.35) translateX(-5px);
+  transform: scale(1.15) translateX(-4px);
   color: #faeb92;
-  text-shadow: 3px 0 #ff5fcf, -2px 0 #9929ea;
 }
 
-.barButton:hover .barTrack::after,
-.barButton:focus-visible .barTrack::after {
-  animation: bar-glitch .45s steps(2, end) infinite;
+.barButton {
+  position: relative;
 }
 
-.barTrack::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+/* Keep hover ownership on the row while its visual bar expands. */
+
+.barButton > span {
   pointer-events: none;
-  background: repeating-linear-gradient(0deg, transparent 0 4px, rgba(255,255,255,.34) 5px 6px);
-  mix-blend-mode: overlay;
-  opacity: .35;
+}
+
+.barTrack {
+  position: relative;
+  display: block;
+  height: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.barButton:hover .barTrack,
+.barButton:focus-visible .barTrack {
+  transform: scaleY(1.35);
+  border-color: rgba(250, 235, 146, 0.55);
+  box-shadow: 0 0 10px rgba(255, 95, 207, 0.35);
+}
+
+.barValue {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: right;
+  transition: transform 150ms ease, color 150ms ease;
 }
 
 @keyframes chart-draw { to { stroke-dashoffset: 0; } }
-@keyframes chart-glitch {
+@keyframes node-pulse { to { filter: drop-shadow(0 0 10px #ff5fcf); } }
+@media (prefers-reduced-motion: reduce) {
+  .chartLine, .activeNode { animation: none; stroke-dashoffset: 0; }
+}
+
+@media (max-width: 600px) {
+  .sectionHeading { font-size: clamp(36px, 5.8vw, 76px); }
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(72px, 9vw, 120px) clamp(20px, 5vw, 72px);
+  color: #faeb92;
+}
+
+.gridOverlay { position: absolute; inset: 0; pointer-events: none; opacity: .46; background-image: linear-gradient(rgba(255,95,207,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(250,235,146,.045) 1px, transparent 1px); background-size: 38px 38px; }
+.glow { position: absolute; top: 0; left: 50%; width: min(48rem, 100vw); height: 26rem; border-radius: 50%; pointer-events: none; background: rgba(153,41,234,.2); filter: blur(140px); transform: translateX(-50%); }
+.content { position: relative; width: min(100%, 1280px); margin: 0 auto; }
+.intro { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: clamp(34px, 5vw, 58px); }
+
+.sectionHeading { max-width: 720px; width: auto; color: #faeb92; font-family: var(--font-body); font-size: clamp(36px, 5.8vw, 76px); font-weight: 900; letter-spacing: -.07em; line-height: .78; text-shadow: 6px 0 rgba(153,41,234,.48); }
+.bodyCopy { max-width: 360px; margin: 0; color: rgba(250,235,146,.72); font-family: var(--font-body); font-size: clamp(14px, 1.2vw, 17px); font-weight: 400; letter-spacing: normal; line-height: 1.72; }
+
+.chartGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); }
+.chartCard { min-width: 0; padding: clamp(18px, 2.5vw, 30px); border: 1px solid rgba(250,235,146,.25); background: rgba(5,2,10,.7); box-shadow: inset 0 0 42px rgba(153,41,234,.12), 0 18px 40px rgba(0,0,0,.25); backdrop-filter: blur(8px); }
+.chartCardHeader { display: flex; align-items: start; justify-content: space-between; gap: 14px; min-height: 44px; }
+.metricLabel { display: flex; align-items: center; gap: 9px; margin: 0; color: #ff5fcf; font-family: var(--font-body); font-size: clamp(15px, 1.5vw, 19px); font-weight: 900; letter-spacing: .05em; line-height: 1.1; }
+.metricNote { flex: 0 0 auto; color: rgba(250,235,146,.55); font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+.chartFrame { height: clamp(260px, 28vw, 340px); margin-top: 18px; }
+.chartFrame :global(.recharts-surface:focus),
+.chartFrame :global(.recharts-surface:focus-visible),
+.chartFrame :global(.recharts-wrapper:focus),
+.chartFrame :global(.recharts-wrapper:focus-visible) { outline: none !important; }
+.tooltip { display: grid; gap: 3px; min-width: 128px; padding: 9px 11px; border: 1px solid rgba(255,95,207,.78); background: rgba(12,3,21,.96); box-shadow: 0 0 16px rgba(153,41,234,.28); color: #faeb92; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .06em; }
+.tooltip strong { color: #faeb92; font-family: var(--font-body); font-size: 18px; font-weight: 900; letter-spacing: .01em; }
+.participationBar { transition: filter 180ms ease, height 180ms ease, y 180ms ease; }
+.activeParticipationBar { animation: barGlitch .45s steps(2, end) infinite; }
+.teamsArea { animation: chartGlitch 5.6s steps(1, end) 3.15s infinite; }
+
+@keyframes chartGlitch {
   0%, 62%, 68%, 100% { transform: translate(0); filter: none; }
   63% { transform: translate(-4px, 2px); filter: drop-shadow(5px 0 #00f0ff); }
   64% { transform: translate(6px, -2px); filter: drop-shadow(-6px 0 #ff5fcf); }
   65% { transform: translate(-2px); }
   66% { transform: translate(3px, 1px); filter: brightness(1.8); }
 }
-@keyframes node-pulse { to { filter: drop-shadow(0 0 10px #ff5fcf); } }
-@keyframes data-glitch-top {
-  0%, 100% { opacity: 0; transform: translateX(-3px); }
-  20% { opacity: .9; transform: translate(5px, -2px); }
-  45% { opacity: .55; transform: translate(-7px, 1px); }
-}
-@keyframes data-glitch-bottom {
-  0%, 100% { opacity: 0; transform: translateX(3px); }
-  30% { opacity: .8; transform: translate(-6px, 2px); }
-  60% { opacity: .45; transform: translate(5px, -1px); }
-}
-@keyframes bar-glitch {
-  0%, 100% { transform: translateX(0); opacity: .35; }
-  35% { transform: translateX(7px); opacity: .78; }
-  70% { transform: translateX(-5px); opacity: .62; }
+
+@keyframes barGlitch {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  35% { transform: translateX(4px); opacity: .78; }
+  70% { transform: translateX(-3px); opacity: .88; }
 }
 
-@keyframes heading-jolt {
+@keyframes headingJolt {
   0%, 48%, 55%, 100% { transform: translate(0) skewX(0); filter: none; }
   49% { transform: translate(-5px, 1px) skewX(-2deg); filter: brightness(1.4); }
   50% { transform: translate(6px, -2px) skewX(3deg); }
@@ -158,7 +234,7 @@
   83% { transform: translate(4px, 1px) skewX(2deg); }
 }
 
-@keyframes heading-glitch-top {
+@keyframes headingGlitchTop {
   0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
   49% { opacity: .9; transform: translate(-9px, -2px); clip-path: inset(0 0 63% 0); }
   50% { opacity: .72; transform: translate(7px, 2px); clip-path: inset(21% 0 42% 0); }
@@ -168,7 +244,7 @@
   83% { opacity: .48; transform: translate(4px); clip-path: inset(9% 0 68% 0); }
 }
 
-@keyframes heading-glitch-bottom {
+@keyframes headingGlitchBottom {
   0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
   49% { opacity: .76; transform: translate(9px, 2px); clip-path: inset(69% 0 0 0); }
   50% { opacity: .9; transform: translate(-6px, -1px); clip-path: inset(47% 0 18% 0); }
@@ -179,6 +255,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .chartLine, .sponsorHeading, .sponsorHeading::before, .sponsorHeading::after { animation: none; stroke-dashoffset: 0; }
-  .readout::before, .readout::after, .activeNode { animation: none; }
+  .sectionHeading,
+  .sectionHeading::before,
+  .sectionHeading::after,
+  .teamsArea,
+  .activeParticipationBar { animation: none; }
 }
+
+@media (max-width: 900px) { .intro { align-items: start; flex-direction: column; } .chartGrid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .section { padding-inline: 16px; } .sectionHeading { font-size: clamp(36px, 10vw, 56px); } .chartCard { padding: 18px 14px; } .chartFrame { height: 270px; } .metricLabel { font-size: 15px; } .metricNote { font-size: 8px; } }  

@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ArrowLeft, Menu, X } from "lucide-react";
 import styles from "../hero/GlitchverseHero.module.css";
 
 function smoothScrollTo(targetSelector: string) {
@@ -111,7 +112,7 @@ const MobileNavLink = ({
 
         setMobileOpen(false);
       }}
-      className="block w-full px-6 py-4 text-center text-[12px] font-black tracking-[0.15em] text-[#faeb92] decoration-[#ff5fcf] underline-offset-[6px] hover:text-[#ff5fcf] hover:underline focus-visible:text-[#ff5fcf] focus-visible:underline uppercase transition-colors duration-200"
+      className="block min-h-12 w-full border-b border-[#faeb9218] px-6 py-4 text-center text-[12px] font-black tracking-[0.15em] text-[#faeb92] decoration-[#ff5fcf] underline-offset-[6px] transition-colors duration-200 hover:text-[#ff5fcf] hover:underline focus-visible:text-[#ff5fcf] focus-visible:underline uppercase"
       style={{ fontFamily: "var(--font-body)" }}
     >
       {children}
@@ -121,17 +122,30 @@ const MobileNavLink = ({
 
 export function Navbar({ variant = "default" }: { variant?: "default" | "back-to-home" }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(true);
   const router = useRouter();
   const isBackToHome = variant === "back-to-home";
 
   useEffect(() => {
-    const checkScreen = () => setIsLargeScreen(window.innerWidth >= 768);
+    if (!mobileOpen) return;
 
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setMobileOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [mobileOpen]);
 
   const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -153,17 +167,32 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
         style={{ zIndex: mobileOpen ? 50 : 20 }}
       >
         <div className="flex items-center gap-4">
-          {!isLargeScreen ? (
+          {isBackToHome ? (
+            <Link
+              href="/#top"
+              onClick={() => {
+                document.documentElement.dataset.heroReturn = "true";
+              }}
+              className={`${styles.mobileOnly} min-h-11 items-center gap-2 border border-[#faeb9238] px-3 text-[10px] font-black tracking-[0.1em] text-[#faeb92] transition-colors hover:border-[#ff5fcf] hover:text-[#ff5fcf] focus-visible:border-[#ff5fcf] focus-visible:text-[#ff5fcf] whitespace-nowrap`}
+              aria-label="Back to home"
+            >
+              <ArrowLeft size={17} strokeWidth={2.4} aria-hidden="true" />
+              <span>BACK TO HOME</span>
+            </Link>
+          ) : (
             <button
               type="button"
-              className="text-[#faeb92] p-2 hover:bg-[#faeb9220] rounded-md cursor-pointer"
-              onClick={() => setMobileOpen(!mobileOpen)}
+              className={`${styles.mobileOnly} min-h-11 min-w-11 items-center justify-center border border-transparent text-[#faeb92] transition-colors hover:border-[#ff5fcf80] hover:text-[#ff5fcf] focus-visible:border-[#ff5fcf] cursor-pointer`}
+              onClick={() => setMobileOpen((open) => !open)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
             >
-              {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+              {mobileOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
-          ) : (
-            <>
+          )}
+
+          <div className={`${styles.desktopOnly} items-center gap-4`}>
               <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
                 <Image
                   src="/images/codeutsava/codeutsava-logo.png"
@@ -182,12 +211,29 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
                   FEEDBACK
                 </NavItem>
               </div>
-            </>
-          )}
+          </div>
         </div>
 
-        {isLargeScreen ? (
-          <nav className={styles.navLinks} aria-label="Primary navigation">
+        <div className="flex items-center justify-center">
+          {!isBackToHome && (
+            <a
+              href={homeHref}
+              aria-label="CodeUtsava home"
+              onClick={handleHomeClick}
+              className={`${styles.mobileOnly} items-center justify-center`}
+            >
+              <Image
+                src="/images/codeutsava/codeutsava-logo.png"
+                alt="CodeUtsava Logo"
+                width={42}
+                height={42}
+                unoptimized
+                className="h-[42px] w-[42px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+              />
+            </a>
+          )}
+
+          <nav className={`${styles.navLinks} ${styles.desktopOnly}`} aria-label="Primary navigation">
             {isBackToHome ? (
               <NavItem href="/">BACK TO HOME</NavItem>
             ) : (
@@ -200,20 +246,7 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
               </>
             )}
           </nav>
-        ) : (
-          <div className="flex items-center justify-center">
-            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
-              <Image
-                src="/images/codeutsava/codeutsava-logo.png"
-                alt="CodeUtsava Logo"
-                width={44}
-                height={44}
-                unoptimized
-                className="w-[44px] h-[44px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
-              />
-            </a>
-          </div>
-        )}
+        </div>
 
         <div
           style={{
@@ -223,8 +256,7 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
             gap: "16px",
           }}
         >
-          {isLargeScreen ? (
-            <>
+          <div className={`${styles.desktopOnly} items-center gap-4`}>
               <div className={`${styles.navLinks} ${styles.navButton}`}>
                 <NavItem href="/Brochure.pdf" target="_blank">
                   BROCHURE
@@ -239,26 +271,39 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
                   className="w-[52px] h-[52px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
                 />
               </a>
-            </>
-          ) : (
-            <a href={homeHref} aria-label="CodeUtsava home" onClick={handleHomeClick}>
-              <Image
-                src="/images/codeutsava/tcp-logo.png"
-                alt="TCP Logo"
-                width={44}
-                height={44}
-                className="w-[44px] h-[44px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
-              />
-            </a>
-          )}
+          </div>
+
+          <a
+            href={homeHref}
+            aria-label="CodeUtsava home"
+            onClick={handleHomeClick}
+            className={`${styles.mobileOnly} items-center justify-center`}
+          >
+            <Image
+              src="/images/codeutsava/tcp-logo.png"
+              alt="TCP Logo"
+              width={42}
+              height={42}
+              className="h-[42px] w-[42px] object-contain drop-shadow-[0_0_8px_rgba(255,95,207,0.5)]"
+            />
+          </a>
         </div>
       </header>
 
-      {!isLargeScreen && mobileOpen && (
-        <div
-          className="fixed left-4 right-4 z-[9998] bg-black/95 backdrop-blur-md border border-[#faeb9240] overflow-hidden shadow-[0_10px_40px_rgba(153,41,234,0.3)]"
-          style={{ top: "100px", borderRadius: "12px" }}
-        >
+      {mobileOpen && (
+        <div className={styles.mobileMenuLayer}>
+          <button
+            type="button"
+            className="fixed inset-0 z-40 cursor-default bg-black/70 backdrop-blur-[2px]"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close navigation menu"
+          />
+
+          <nav
+            id="mobile-navigation"
+            aria-label="Mobile navigation"
+            className="fixed left-[10px] right-[10px] top-[80px] z-[60] max-h-[calc(100dvh-92px)] overflow-y-auto border border-[#faeb9240] bg-black/95 shadow-[0_14px_45px_rgba(153,41,234,0.38)] backdrop-blur-md"
+          >
           <div className="flex flex-col font-sans">
             {isBackToHome ? (
               <MobileNavLink href="/" setMobileOpen={setMobileOpen}>
@@ -284,17 +329,29 @@ export function Navbar({ variant = "default" }: { variant?: "default" | "back-to
               </>
             )}
 
-            <a
-              href="https://discord.gg/Ek9gr2Xnqb"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full px-6 py-5 text-[12px] font-black tracking-[0.12em] text-[#000] bg-[#faeb92] hover:bg-[#ff5fcf] uppercase text-center"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              <span className="w-2 h-2 rounded-full bg-black" />
-              JOIN THE COMMUNITY
-            </a>
+            <div className="grid grid-cols-2 border-t border-[#faeb9226]">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-12 items-center justify-center border-r border-[#faeb9226] px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+              >
+                FEEDBACK
+              </a>
+              <a
+                href="/Brochure.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-12 items-center justify-center px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+              >
+                BROCHURE
+              </a>
+            </div>
+
           </div>
+          </nav>
         </div>
       )}
     </>

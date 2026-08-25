@@ -61,7 +61,6 @@ export function GrowthAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: 
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-6 sm:mb-14 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            {/* <p className="mb-3 flex items-center gap-2 font-mono text-[10px] tracking-[0.32em] text-cyan-200/80"><Zap className="h-3.5 w-3.5" /> LIVE ARCHIVE / 2016—2024</p> */}
             <h2 id="analytics-title" data-text="GRAPH AND ANALYTICS." className={`${styles.sponsorHeading} text-4xl uppercase leading-[.85] sm:text-6xl`}>GRAPH AND ANALYTICS.</h2>
           </div>
           <p className="max-w-sm border-l border-[#ff5fcf]/60 pl-4 font-mono text-xs leading-relaxed text-white/60">Hover or select any signal point to inspect how the Codeutsava universe keeps expanding.</p>
