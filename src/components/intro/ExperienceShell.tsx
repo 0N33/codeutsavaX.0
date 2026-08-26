@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   useEffect,
   useRef,
@@ -13,6 +12,7 @@ import styles from "./ExperienceShell.module.css";
 import { retroAudio } from "@/utils/audioEffects";
 import { introSoundtrack } from "@/utils/introSoundtrack";
 import { cyberSoundtrack } from "@/utils/cyberSoundtrack";
+import { BackgroundVideo } from "../layout/BackgroundVideo";
 
 const GLYPHS = [..."CODEUTSAVA", " ", ..."X", ".O"];
 
@@ -134,7 +134,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
     if (!ready || entering) return;
     setHeroMounted(true);
     setEntering(true);
-    
+
     retroAudio.playIntroPortalSound();
     introSoundtrack.fadeOutAndStop(0.4);
 
@@ -163,6 +163,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
     <div
       className={`${styles.experience} ${entering ? styles.entering : ""} ${entered ? styles.entered : ""} ${returningToHero ? styles.returning : ""}`}
     >
+      <BackgroundVideo />
       <div className={styles.site}>{heroMounted ? children : null}</div>
       {!entered && (
         <div className={styles.transitionStage} aria-live="polite">
@@ -178,15 +179,12 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
               aria-label="Codeutsava X.0 startup screen"
             >
               <div className={styles.brand}>
-                <Image
-                  className={styles.mark}
-                  src="/images/codeutsava/codeutsava-glitch-logo.png"
-                  alt=""
-                  width={180}
-                  height={180}
-                  priority
-                />
-                <h1 aria-label="Codeutsava X.0">
+
+                <h1
+                  className={styles.brandTitle}
+                  data-text="CODEUTSAVA X.0"
+                  aria-label="Codeutsava X.0"
+                >
                   {GLYPHS.map((glyph, index) => (
                     <span
                       className={glyph === " " ? styles.wordSpace : undefined}
@@ -198,10 +196,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
                   ))}
                 </h1>
               </div>
-              <div className={styles.systemCopy}>
-                <p>Turing Club of Programmers, Website</p>
-                <p>Version X.0</p>
-              </div>
+
               <div className={styles.actionSlot}>
                 {!ready ? (
                   <div
