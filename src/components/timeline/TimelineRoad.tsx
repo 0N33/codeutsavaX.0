@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TimelineCanvas3D } from './TimelineCanvas3D';
 import styles from './TimelineRoad.module.css';
+import sponsorStyles from '@/components/sponsor-section/SponsorSection.module.css';
+import guidelineStyles from '@/components/sections/guidelines-section.module.css';
 import { retroAudio } from '@/utils/audioEffects';
 import {
   Volume2,
@@ -154,22 +156,74 @@ export const TimelineRoad: React.FC = () => {
   };
 
   return (
-    // The trigger is visually positioned without reserving timeline layout space.
     <section
       id="timeline"
       ref={stickyContainerRef}
-      className="relative w-full bg-transparent"
-      style={{ height: '1px' }}
+      className={`${guidelineStyles.guidelines} relative w-full flex flex-col items-center justify-center`}
     >
-      <button
-        type="button"
-        onClick={handleOpenTimeline}
-        className="group absolute left-1/2 top-0 z-10 flex min-h-14 min-w-60 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-3 rounded-xl border border-[#FF5FCF]/80 bg-[#07050D]/95 px-7 py-4 text-sm font-bold uppercase tracking-[0.2em] text-[#FAEB92] shadow-[0_0_0_1px_rgba(153,41,234,0.5),0_0_24px_rgba(153,41,234,0.75),inset_0_0_18px_rgba(153,41,234,0.2)] transition duration-300 hover:scale-105 hover:border-[#FAEB92] hover:bg-[#9929EA] hover:text-white hover:shadow-[0_0_32px_rgba(255,95,207,0.75)] sm:min-h-16 sm:min-w-72 sm:text-base"
-        aria-label="Open timeline"
-      >
-        <span>Open Timeline</span>
-        <ChevronRight className="h-5 w-5 text-[#FF5FCF] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-      </button>
+      <div className={sponsorStyles.backgroundGrid} aria-hidden="true" />
+      <div className={sponsorStyles.filmGrain} aria-hidden="true" />
+      <div className={sponsorStyles.glitchBursts} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+
+      <div className={`${sponsorStyles.heading} ${guidelineStyles.heading}`}>
+        <h2 id="timeline-title" data-text="TIMELINE">
+          TIMELINE
+        </h2>
+      </div>
+
+      <div className={guidelineStyles.frame}>
+        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
+        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
+        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
+        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
+
+        <div className={guidelineStyles.frameHeader} aria-hidden="true">
+          <span>MODULE // CHRONOS</span>
+          <span className={guidelineStyles.status}>OFFLINE</span>
+        </div>
+
+        <div className={`${guidelineStyles.content} flex flex-col items-center justify-center py-10 text-center`}>
+          <p className={guidelineStyles.kicker}>SYSTEM STATUS</p>
+          <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 28px)' }}>Initiating Sequence</h3>
+
+          <div className={`${guidelineStyles.rules} max-w-2xl mt-4 z-10 relative px-4`}>
+            <p style={{ textAlign: 'center', color: 'rgba(250, 235, 146, 0.76)' }}>
+              The <strong className="text-[#00F0FF]" style={{ textShadow: '0 0 10px rgba(0, 240, 255, 0.4)' }}>Glitchverse</strong> is expanding. Trace the sequence of events from initiation to execution in our interactive 3D timeline.
+            </p>
+            <div className="flex items-center justify-center gap-4 mt-8 opacity-80">
+              <span className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent to-[#FF5FCF]"></span>
+              <span className="font-mono text-[10px] sm:text-xs font-semibold tracking-[0.3em] text-[#FAEB92] animate-pulse">SYSTEM.READY // AWAITING.INPUT</span>
+              <span className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent to-[#FF5FCF]"></span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleOpenTimeline}
+            className={guidelineStyles.criteriaButton}
+            style={{ 
+              minWidth: '320px', 
+              minHeight: '54px', 
+              marginTop: '32px', 
+              fontSize: '16px',
+              padding: '12px 24px'
+            }}
+            aria-label="Open timeline"
+          >
+            <span>OPEN TIMELINE</span>
+            <ChevronRight className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className={guidelineStyles.frameFooter} aria-hidden="true">
+          <span>READ // COMPILE // EXECUTE</span>
+          <span>ENTER TO BEGIN</span>
+        </div>
+      </div>
       {isTimelineOpen && (
         <div
           className={`${styles.modalBackdrop} ${isTimelineClosing ? styles.modalBackdropClosing : ''} fixed inset-0 z-3000 flex items-center justify-center bg-black/45 p-2 sm:p-6`}

@@ -175,10 +175,10 @@
   padding: .7em 1.7em;
   align-items: center;
   justify-content: center;
-  border: 1px solid #8c56d4;
+  border: 1px solid #000000;
   border-radius: .5em;
   color: #f7efd6;
-  background: #5730b3;
+  background: #0d0b13;
   box-shadow: 6px 6px 12px #24145f, -6px -6px 12px #8c56d4;
   cursor: pointer;
   font: 700 18px/1 var(--font-mono);
@@ -188,7 +188,7 @@
 
 .enterButton:hover {
   color: #fff;
-  background: #6338c2;
+  background: #39226b;
   transform: translateY(-1px);
 }
 
