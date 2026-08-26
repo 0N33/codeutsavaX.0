@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { retroAudio } from "@/utils/audioEffects";
+
 
 const GLITCH_DURATION = 600;
 
