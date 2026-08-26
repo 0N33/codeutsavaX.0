@@ -450,31 +450,32 @@ export function Navbar({ variant }: NavbarProps){
 
       <AnimatePresence>
         {!isLargeScreen && mobileOpen && (
-          <motion.div
-            initial={{
-              height: 0,
-              opacity: 0,
-            }}
-            animate={{
-              height: "auto",
-              opacity: 1,
-            }}
-            exit={{
-              height: 0,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.4,
-              ease: [0.25, 0.3, 0.35, 0.4],
-            }}
-            className="fixed left-4 right-4 z-9999 bg-black/95 backdrop-blur-md border border-[#faeb9240] overflow-hidden shadow-[0_10px_40px_rgba(153,41,234,0.3)]"
-            style={{
-              top: "100px",
-              borderRadius: "12px",
-            }}
-          >
-            <div className="flex flex-col font-sans">
-                <>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{
+                x: "-100%",
+              }}
+              animate={{
+                x: 0,
+              }}
+              exit={{
+                x: "-100%",
+              }}
+              transition={{
+                type: "spring", damping: 25, stiffness: 200
+              }}
+              className="fixed top-0 left-0 bottom-0 w-3/4 max-w-sm z-40 bg-[#050507]/95 backdrop-blur-md border-r border-[#faeb9240] overflow-y-auto shadow-[10px_0_40px_rgba(153,41,234,0.3)] flex flex-col pt-[100px]"
+            >
+              <div className="flex flex-col font-sans flex-1">
+                <div className="flex-1 flex flex-col gap-2 px-4">
                   <MobileNavLink
                     href={getSectionHref("#top")}
                     setMobileOpen={setMobileOpen}
@@ -509,31 +510,32 @@ export function Navbar({ variant }: NavbarProps){
                   >
                     TEAM
                   </MobileNavLink>
-                </>
+                </div>
 
-              <div className="grid grid-cols-2 border-t border-[#faeb9226]">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSeMsw6RCVMV0lCvvX3bGlYOomZgv0hi9fh_4sLfrfyKRsF67A/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex min-h-12 items-center justify-center border-r border-[#faeb9226] px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
-                >
-                  FEEDBACK
-                </a>
+                <div className="grid grid-cols-2 border-t border-[#faeb9226] mt-auto">
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSeMsw6RCVMV0lCvvX3bGlYOomZgv0hi9fh_4sLfrfyKRsF67A/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex min-h-16 items-center justify-center border-r border-[#faeb9226] px-3 text-center text-[11px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:bg-[#faeb9220] hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+                  >
+                    FEEDBACK
+                  </a>
 
-                <a
-                  href="/CU X.0 Brochure.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex min-h-12 items-center justify-center px-3 text-center text-[10px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
-                >
-                  BROCHURE
-                </a>
+                  <a
+                    href="/CU X.0 Brochure.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex min-h-16 items-center justify-center px-3 text-center text-[11px] font-black tracking-[0.12em] text-[#faeb92] transition-colors hover:bg-[#faeb9220] hover:text-[#ff5fcf] focus-visible:text-[#ff5fcf]"
+                  >
+                    BROCHURE
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

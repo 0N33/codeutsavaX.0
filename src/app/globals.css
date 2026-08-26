@@ -49,7 +49,7 @@
   0%,
   2.84%,
   100% {
-    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2klEQVRYhe2W0RLEEAxFr0b//4Nbsi90lJbEsvvivHR0IvcKMYDFYrGQwzOSbv82oTLAzMNNSA2w9z4aGIp5EzzP8xpYa2uxUwwAAB/Hcfux7/twI6ozEAwN3Yen1dzKnzJjK1QVCMamVyCHW6ffGCPNVWBb4rPaL9Ljmp1zokAiampU21AqJBXTGgAqHQFcXaHNqQ6+VYKIkI+1oimqNoxi4TsEqXN2zuWrLSqjyHfRakMgXDxE9Jr8m22QGHi8rr33PXoF2hdRxGxb79QsUee89Gqc8k5Y/IwPJydNFcyD31sAAAAASUVORK5CYII=) 8 8, auto;
+    cursor: url('/cursor.cur'), auto;
   }
 
   2.94%,
@@ -226,7 +226,7 @@ html {
   background: var(--ink);
   scroll-behavior: smooth;
   animation: glitchCursor 2.26s linear infinite forwards;
-  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2klEQVRYhe2W0RLEEAxFr0b//4Nbsi90lJbEsvvivHR0IvcKMYDFYrGQwzOSbv82oTLAzMNNSA2w9z4aGIp5EzzP8xpYa2uxUwwAAB/Hcfux7/twI6ozEAwN3Yen1dzKnzJjK1QVCMamVyCHW6ffGCPNVWBb4rPaL9Ljmp1zokAiampU21AqJBXTGgAqHQFcXaHNqQ6+VYKIkI+1oimqNoxi4TsEqXN2zuWrLSqjyHfRakMgXDxE9Jr8m22QGHi8rr33PXoF2hdRxGxb79QsUee89Gqc8k5Y/IwPJydNFcyD31sAAAAASUVORK5CYII=) 8 8, auto;
+  cursor: url('/cursor.cur'), auto;
 }
 
 html[data-hero-return="true"] [data-intro-content] {
@@ -240,14 +240,16 @@ body {
   background: var(--ink);
   color: var(--paper);
   font-family: var(--font-body);
-  animation: glitchCursor 2.26s linear infinite forwards;
-  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2klEQVRYhe2W0RLEEAxFr0b//4Nbsi90lJbEsvvivHR0IvcKMYDFYrGQwzOSbv82oTLAzMNNSA2w9z4aGIp5EzzP8xpYa2uxUwwAAB/Hcfux7/twI6ozEAwN3Yen1dzKnzJjK1QVCMamVyCHW6ffGCPNVWBb4rPaL9Ljmp1zokAiampU21AqJBXTGgAqHQFcXaHNqQ6+VYKIkI+1oimqNoxi4TsEqXN2zuWrLSqjyHfRakMgXDxE9Jr8m22QGHi8rr33PXoF2hdRxGxb79QsUee89Gqc8k5Y/IwPJydNFcyD31sAAAAASUVORK5CYII=) 8 8, auto;
 }
 
-html,
-body {
-  animation: none;
-  cursor: url('/cursor.cur'), auto;
+*,
+a,
+button,
+[role="button"],
+input,
+textarea,
+select {
+  cursor: url('/cursor.cur'), auto !important;
 }
 
 html.cursor-glitch-click,

@@ -238,6 +238,42 @@ class RetroAudioEngine {
   public playWarp() {
     this.playStageChime(0);
   }
+
+  // Quick static/white-noise glitch for clicks
+  public playGlitchClick() {
+    if (this.isMuted) return;
+    const ctx = this.getContext();
+    if (!ctx) return;
+    try {
+      const t = ctx.currentTime;
+      
+      const bufferSize = ctx.sampleRate * 0.05; // 50ms of noise
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      
+      const noiseSource = ctx.createBufferSource();
+      noiseSource.buffer = buffer;
+      
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.setValueAtTime(4000, t);
+      
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.12, t);
+      gain.gain.exponentialRampToValueAtTime(0.01, t + 0.04);
+      
+      noiseSource.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+      
+      noiseSource.start(t);
+    } catch {
+      // Audio context silenced or blocked
+    }
+  }
 }
 
 export const retroAudio = new RetroAudioEngine();

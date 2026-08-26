@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 
+
 const GLITCH_DURATION = 600;
 
 export function CursorGlitch() {
