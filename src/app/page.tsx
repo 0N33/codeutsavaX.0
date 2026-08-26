@@ -8,7 +8,6 @@ import { PrizesSection } from '@/components/sections/prizes-section';
 import { GraphAnalytics } from '@/components/analytics/GraphAnalytics';
 import { EventSections } from '@/components/sections/EventSections';
 import { AboutSection } from '@/components/sections/about-section';
-import { BackgroundVideo } from '@/components/layout/BackgroundVideo';
 
 export const metadata: Metadata = {
   title: 'Codeutsava X.0 - Build Beyond the Screen',
@@ -18,7 +17,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <ExperienceShell>
-      <BackgroundVideo />
       <div className='flex min-h-screen flex-col bg-transparent'>
         <GlitchverseHero />
         <AboutSection />

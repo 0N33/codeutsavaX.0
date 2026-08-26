@@ -9,8 +9,7 @@
   padding: clamp(84px, 11vw, 156px) 0 clamp(72px, 9vw, 128px);
   background:
     radial-gradient(ellipse 68% 40% at 50% 51%, rgba(153, 41, 234, 0.13), transparent 72%),
-    radial-gradient(circle at 14% 12%, rgba(255, 95, 207, 0.07), transparent 20%),
-    rgba(5, 5, 7, 0.45);
+    radial-gradient(circle at 14% 12%, rgba(255, 95, 207, 0.07), transparent 20%);
   color: var(--cream);
 }
 
@@ -26,8 +25,13 @@
   opacity: 0.7;
 }
 
-.sponsors::before { top: 28px; }
-.sponsors::after { bottom: 28px; }
+.sponsors::before {
+  top: 28px;
+}
+
+.sponsors::after {
+  bottom: 28px;
+}
 
 .backgroundGrid {
   position: absolute;
@@ -91,8 +95,15 @@
   animation: signalTravel 5.2s linear infinite;
 }
 
-.signal span:nth-child(2) { animation-delay: -1.7s; opacity: 0.68; }
-.signal span:nth-child(3) { animation-delay: -3.4s; opacity: 0.4; }
+.signal span:nth-child(2) {
+  animation-delay: -1.7s;
+  opacity: 0.68;
+}
+
+.signal span:nth-child(3) {
+  animation-delay: -3.4s;
+  opacity: 0.4;
+}
 
 .glitchBursts {
   position: absolute;
@@ -114,9 +125,21 @@
   animation: transmissionBurst 7.2s steps(1, end) infinite;
 }
 
-.glitchBursts span:nth-child(1) { top: 31%; }
-.glitchBursts span:nth-child(2) { top: 58%; height: 5px; animation-delay: -2.45s; }
-.glitchBursts span:nth-child(3) { top: 76%; width: 35%; animation-delay: -4.9s; }
+.glitchBursts span:nth-child(1) {
+  top: 31%;
+}
+
+.glitchBursts span:nth-child(2) {
+  top: 58%;
+  height: 5px;
+  animation-delay: -2.45s;
+}
+
+.glitchBursts span:nth-child(3) {
+  top: 76%;
+  width: 35%;
+  animation-delay: -4.9s;
+}
 
 .heading {
   position: relative;
@@ -128,7 +151,9 @@
 
 .heading,
 .marquee,
-.coordinates { isolation: isolate; }
+.coordinates {
+  isolation: isolate;
+}
 
 .eyebrow,
 .subhead,
@@ -195,7 +220,9 @@
   animation: titleGlitchBottom 4.8s steps(1, end) infinite;
 }
 
-.subhead { color: var(--pink); }
+.subhead {
+  color: var(--pink);
+}
 
 .marquee {
   position: relative;
@@ -216,15 +243,20 @@
   background: linear-gradient(90deg, transparent, rgba(250, 235, 146, 0.34), transparent);
 }
 
-.marquee::before { top: 0; }
-.marquee::after { bottom: 6px; }
+.marquee::before {
+  top: 0;
+}
+
+.marquee::after {
+  bottom: 6px;
+}
 
 .edgeFade {
   position: absolute;
   z-index: 2;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, #050507 0%, transparent 11%, transparent 89%, #050507 100%);
+  background: linear-gradient(90deg, rgba(5, 5, 7, .18) 0%, transparent 11%, transparent 89%, rgba(5, 5, 7, .18) 100%);
 }
 
 .track {
@@ -235,7 +267,9 @@
   will-change: transform;
 }
 
-.marquee:hover .track { animation-play-state: paused; }
+.marquee:hover .track {
+  animation-play-state: paused;
+}
 
 .mobileMarquee {
   display: none;
@@ -347,79 +381,212 @@
 }
 
 @keyframes sponsorScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-25% - 7.5px)); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-25% - 7.5px));
+  }
 }
 
 @keyframes mobileSponsorScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-25% - 3px)); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-25% - 3px));
+  }
 }
 
 @keyframes gridDrift {
-  to { background-position: 68px 68px; }
+  to {
+    background-position: 68px 68px;
+  }
 }
 
 @keyframes grainShift {
-  0% { transform: translate(0); }
-  33% { transform: translate(-2%, 1%); }
-  66% { transform: translate(1%, -2%); }
-  100% { transform: translate(-1%, 2%); }
+  0% {
+    transform: translate(0);
+  }
+
+  33% {
+    transform: translate(-2%, 1%);
+  }
+
+  66% {
+    transform: translate(1%, -2%);
+  }
+
+  100% {
+    transform: translate(-1%, 2%);
+  }
 }
 
 @keyframes ringPulse {
-  0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) rotate(-5deg) scale(0.98); }
-  50% { opacity: 0.82; transform: translate(-50%, -50%) rotate(-5deg) scale(1.02); }
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) rotate(-5deg) scale(0.98);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: translate(-50%, -50%) rotate(-5deg) scale(1.02);
+  }
 }
 
 @keyframes signalTravel {
-  from { left: 0; opacity: 0; transform: scale(0.4); }
-  12%, 88% { opacity: 1; }
-  to { left: 100%; opacity: 0; transform: scale(1.3); }
+  from {
+    left: 0;
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  12%,
+  88% {
+    opacity: 1;
+  }
+
+  to {
+    left: 100%;
+    opacity: 0;
+    transform: scale(1.3);
+  }
 }
 
 @keyframes statusBlink {
-  0%, 100% { opacity: 0.4; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 @keyframes pinkWave {
-  0% { opacity: 0; transform: skewX(-15deg) translateX(-20%); }
-  12% { opacity: 0.92; }
-  76% { opacity: 0.52; }
-  100% { opacity: 0; transform: skewX(-15deg) translateX(310%); }
+  0% {
+    opacity: 0;
+    transform: skewX(-15deg) translateX(-20%);
+  }
+
+  12% {
+    opacity: 0.92;
+  }
+
+  76% {
+    opacity: 0.52;
+  }
+
+  100% {
+    opacity: 0;
+    transform: skewX(-15deg) translateX(310%);
+  }
 }
 
 @keyframes transmissionBurst {
-  0%, 38%, 42%, 100% { left: -30%; opacity: 0; transform: scaleX(0.2); }
-  39% { left: -8%; opacity: 0.92; transform: scaleX(1.25); }
-  40% { left: 42%; opacity: 0.58; transform: scaleX(0.76); }
-  41% { left: 110%; opacity: 0; transform: scaleX(0.2); }
+
+  0%,
+  38%,
+  42%,
+  100% {
+    left: -30%;
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+
+  39% {
+    left: -8%;
+    opacity: 0.92;
+    transform: scaleX(1.25);
+  }
+
+  40% {
+    left: 42%;
+    opacity: 0.58;
+    transform: scaleX(0.76);
+  }
+
+  41% {
+    left: 110%;
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
 }
 
 @keyframes cardTransmission {
-  0%, 41%, 45%, 100% { opacity: 0; transform: translateX(0); }
-  42% { opacity: 0.7; transform: translateX(-8px) scaleY(1.18); }
-  43% { opacity: 0.35; transform: translateX(10px) scaleY(0.65); }
-  44% { opacity: 0.58; transform: translateX(-4px); }
+
+  0%,
+  41%,
+  45%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  42% {
+    opacity: 0.7;
+    transform: translateX(-8px) scaleY(1.18);
+  }
+
+  43% {
+    opacity: 0.35;
+    transform: translateX(10px) scaleY(0.65);
+  }
+
+  44% {
+    opacity: 0.58;
+    transform: translateX(-4px);
+  }
 }
 
 @media (max-width: 640px) {
-  .sponsors { min-height: 680px; padding-block: 86px 72px; }
-  .heading { width: min(100% - 32px, 1180px); }
-  .eyebrow { max-width: 260px; line-height: 1.5; text-align: left; }
-  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
-  .subhead { font-size: 8px; line-height: 1.5; }
-  .marquee { display: none; }
+  .sponsors {
+    min-height: 680px;
+    padding-block: 86px 72px;
+  }
+
+  .heading {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .eyebrow {
+    max-width: 260px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .heading h2 {
+    font-size: clamp(36px, 5.8vw, 76px);
+  }
+
+  .subhead {
+    font-size: 8px;
+    line-height: 1.5;
+  }
+
+  .marquee {
+    display: none;
+  }
+
   .mobileMarquee {
     display: grid;
     gap: 16px;
   }
+
   .mobileRow {
     position: relative;
     width: 100%;
     overflow: hidden;
   }
+
   .mobileTrack {
     display: flex;
     width: max-content;
@@ -427,91 +594,273 @@
     animation: mobileSponsorScroll 15s linear infinite;
     will-change: transform;
   }
+
   .mobileTrack .card {
     width: min(48vw, 190px);
     height: clamp(108px, 30vw, 132px);
   }
-  .coordinates { width: min(100% - 32px, 1180px); font-size: 7px; }
-  .coordinates span:nth-child(2) { display: none; }
-  .orbitalRing { width: 128vw; top: 57%; }
-  .signal { width: 112vw; }
+
+  .coordinates {
+    width: min(100% - 32px, 1180px);
+    font-size: 7px;
+  }
+
+  .coordinates span:nth-child(2) {
+    display: none;
+  }
+
+  .orbitalRing {
+    width: 128vw;
+    top: 57%;
+  }
+
+  .signal {
+    width: 112vw;
+  }
 }
 
 @media (min-width: 641px) and (max-width: 960px) {
-  .sponsors { min-height: 620px; padding-block: 104px 92px; }
-  .heading { margin-bottom: 64px; }
-  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
-  .track { gap: 22px; }
+  .sponsors {
+    min-height: 620px;
+    padding-block: 104px 92px;
+  }
+
+  .heading {
+    margin-bottom: 64px;
+  }
+
+  .heading h2 {
+    font-size: clamp(36px, 5.8vw, 76px);
+  }
+
+  .track {
+    gap: 22px;
+  }
+
   .card {
     width: clamp(230px, 30vw, 278px);
     height: clamp(138px, 17vw, 158px);
   }
-  .coordinates { width: min(100% - 64px, 1180px); }
+
+  .coordinates {
+    width: min(100% - 64px, 1180px);
+  }
 }
 
 @keyframes titleJolt {
-  0%, 48%, 55%, 100% { transform: translate(0) skewX(0); filter: none; }
-  49% { transform: translate(-5px, 1px) skewX(-2deg); filter: brightness(1.4); }
-  50% { transform: translate(6px, -2px) skewX(3deg); }
-  51% { transform: translate(-3px, 1px) skewX(-1deg); }
-  52% { transform: translate(2px) skewX(0.5deg); }
-  82% { transform: translate(-3px) skewX(-1deg); }
-  83% { transform: translate(4px, 1px) skewX(2deg); }
+
+  0%,
+  48%,
+  55%,
+  100% {
+    transform: translate(0) skewX(0);
+    filter: none;
+  }
+
+  49% {
+    transform: translate(-5px, 1px) skewX(-2deg);
+    filter: brightness(1.4);
+  }
+
+  50% {
+    transform: translate(6px, -2px) skewX(3deg);
+  }
+
+  51% {
+    transform: translate(-3px, 1px) skewX(-1deg);
+  }
+
+  52% {
+    transform: translate(2px) skewX(0.5deg);
+  }
+
+  82% {
+    transform: translate(-3px) skewX(-1deg);
+  }
+
+  83% {
+    transform: translate(4px, 1px) skewX(2deg);
+  }
 }
 
 @keyframes titleGlitchTop {
-  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
-  49% { opacity: 0.9; transform: translate(-9px, -2px); clip-path: inset(0 0 63% 0); }
-  50% { opacity: 0.72; transform: translate(7px, 2px); clip-path: inset(21% 0 42% 0); }
-  51% { opacity: 0.94; transform: translate(-5px); clip-path: inset(52% 0 16% 0); }
-  52% { opacity: 0.42; transform: translate(3px); clip-path: inset(6% 0 74% 0); }
-  82% { opacity: 0.76; transform: translate(-6px); clip-path: inset(71% 0 3% 0); }
-  83% { opacity: 0.48; transform: translate(4px); clip-path: inset(9% 0 68% 0); }
+
+  0%,
+  48%,
+  54%,
+  81%,
+  84%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+    clip-path: inset(0);
+  }
+
+  49% {
+    opacity: 0.9;
+    transform: translate(-9px, -2px);
+    clip-path: inset(0 0 63% 0);
+  }
+
+  50% {
+    opacity: 0.72;
+    transform: translate(7px, 2px);
+    clip-path: inset(21% 0 42% 0);
+  }
+
+  51% {
+    opacity: 0.94;
+    transform: translate(-5px);
+    clip-path: inset(52% 0 16% 0);
+  }
+
+  52% {
+    opacity: 0.42;
+    transform: translate(3px);
+    clip-path: inset(6% 0 74% 0);
+  }
+
+  82% {
+    opacity: 0.76;
+    transform: translate(-6px);
+    clip-path: inset(71% 0 3% 0);
+  }
+
+  83% {
+    opacity: 0.48;
+    transform: translate(4px);
+    clip-path: inset(9% 0 68% 0);
+  }
 }
 
 @keyframes titleGlitchBottom {
-  0%, 48%, 54%, 81%, 84%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
-  49% { opacity: 0.76; transform: translate(9px, 2px); clip-path: inset(69% 0 0 0); }
-  50% { opacity: 0.9; transform: translate(-6px, -1px); clip-path: inset(47% 0 18% 0); }
-  51% { opacity: 0.62; transform: translate(5px); clip-path: inset(12% 0 60% 0); }
-  52% { opacity: 0.3; transform: translate(-2px); clip-path: inset(78% 0 3% 0); }
-  82% { opacity: 0.74; transform: translate(7px); clip-path: inset(4% 0 72% 0); }
-  83% { opacity: 0.38; transform: translate(-3px); clip-path: inset(63% 0 8% 0); }
+
+  0%,
+  48%,
+  54%,
+  81%,
+  84%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+    clip-path: inset(0);
+  }
+
+  49% {
+    opacity: 0.76;
+    transform: translate(9px, 2px);
+    clip-path: inset(69% 0 0 0);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translate(-6px, -1px);
+    clip-path: inset(47% 0 18% 0);
+  }
+
+  51% {
+    opacity: 0.62;
+    transform: translate(5px);
+    clip-path: inset(12% 0 60% 0);
+  }
+
+  52% {
+    opacity: 0.3;
+    transform: translate(-2px);
+    clip-path: inset(78% 0 3% 0);
+  }
+
+  82% {
+    opacity: 0.74;
+    transform: translate(7px);
+    clip-path: inset(4% 0 72% 0);
+  }
+
+  83% {
+    opacity: 0.38;
+    transform: translate(-3px);
+    clip-path: inset(63% 0 8% 0);
+  }
 }
 
 @media (max-width: 600px) {
-  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
+  .heading h2 {
+    font-size: clamp(36px, 5.8vw, 76px);
+  }
 }
 
 @media (max-width: 430px) {
-  .sponsors { min-height: 630px; padding-block: 70px 58px; }
-  .heading { margin-bottom: 42px; }
-  .eyebrow { font-size: 8px; letter-spacing: 0.13em; }
-  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
-  .subhead { max-width: 230px; margin-inline: auto; }
+  .sponsors {
+    min-height: 630px;
+    padding-block: 70px 58px;
+  }
+
+  .heading {
+    margin-bottom: 42px;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.13em;
+  }
+
+  .heading h2 {
+    font-size: clamp(36px, 5.8vw, 76px);
+  }
+
+  .subhead {
+    max-width: 230px;
+    margin-inline: auto;
+  }
+
   .mobileMarquee {
     gap: 12px;
   }
+
   .mobileTrack .card {
     height: 118px;
   }
-  .logoWrap { width: 74%; }
-  .coordinates { margin-top: 34px; letter-spacing: 0.1em; }
-  .coordinates span:last-child { display: none; }
-  .backgroundGrid { background-size: 48px 48px; }
+
+  .logoWrap {
+    width: 74%;
+  }
+
+  .coordinates {
+    margin-top: 34px;
+    letter-spacing: 0.1em;
+  }
+
+  .coordinates span:last-child {
+    display: none;
+  }
+
+  .backgroundGrid {
+    background-size: 48px 48px;
+  }
 }
 
 @media (max-width: 350px) {
-  .heading h2 { font-size: clamp(36px, 5.8vw, 76px); }
-  .mobileTrack .card { height: 110px; }
+  .heading h2 {
+    font-size: clamp(36px, 5.8vw, 76px);
+  }
+
+  .mobileTrack .card {
+    height: 110px;
+  }
 }
 
 @media (pointer: coarse) {
-  .marquee { overscroll-behavior-x: contain; }
-  .card:hover { transform: skewX(-6deg); }
+  .marquee {
+    overscroll-behavior-x: contain;
+  }
+
+  .card:hover {
+    transform: skewX(-6deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .backgroundGrid,
   .orbitalRing,
   .signal span,
@@ -522,7 +871,17 @@
   .track,
   .filmGrain,
   .glitchBursts span,
-  .card::after { animation: none; }
-  .track { transform: translateX(-25%); }
-  .card:hover::before { animation: none; opacity: 0.42; transform: skewX(-15deg) translateX(120%); }
+  .card::after {
+    animation: none;
+  }
+
+  .track {
+    transform: translateX(-25%);
+  }
+
+  .card:hover::before {
+    animation: none;
+    opacity: 0.42;
+    transform: skewX(-15deg) translateX(120%);
+  }
 }

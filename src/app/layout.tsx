@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SoundButton } from "@/components/ui/sound-button";
+import { CursorGlitch } from "@/components/layout/CursorGlitch";
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body>
         <div className="relative z-10">{children}</div>
         <SoundButton />
+        <CursorGlitch />
       </body>
     </html>
   );

@@ -1,0 +1,101 @@
+.modalBackdrop {
+    animation: timelineBackdropIn 260ms ease-out both;
+}
+
+.modalPanel {
+    animation: timelinePanelIn 420ms cubic-bezier(.16, 1, .3, 1) both;
+    transform-origin: 50% 52%;
+}
+
+.modalBackdropClosing {
+    animation: timelineBackdropOut 360ms ease-in both;
+    pointer-events: none;
+}
+
+.modalPanelClosing {
+    animation: timelinePanelOut 360ms steps(3, end) both;
+}
+
+@keyframes timelineBackdropIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes timelinePanelIn {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(.96);
+        filter: brightness(1.8) saturate(1.5);
+    }
+
+    48% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.01);
+        filter: brightness(1.2) saturate(1.35) drop-shadow(8px 0 #ff5fcf);
+    }
+
+    62% {
+        transform: translateX(-4px) scale(1.005);
+        filter: brightness(1.15) saturate(1.3) drop-shadow(-6px 0 #2e9eff);
+    }
+
+    76% {
+        transform: translateX(3px) scale(1.002);
+        filter: brightness(1.08) saturate(1.15);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+@keyframes timelineBackdropOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes timelinePanelOut {
+    0% {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+
+    28% {
+        transform: translateX(-8px) skewX(-1deg);
+        filter: contrast(1.7) saturate(1.6) drop-shadow(8px 0 #ff5fcf);
+    }
+
+    52% {
+        transform: translateX(7px) skewX(1deg);
+        filter: contrast(2) saturate(1.8) drop-shadow(-8px 0 #2e9eff);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-14px) scale(1.02);
+        filter: brightness(1.7) contrast(2.2);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .modalBackdrop,
+    .modalPanel,
+    .modalBackdropClosing,
+    .modalPanelClosing {
+        animation: none;
+    }
+}

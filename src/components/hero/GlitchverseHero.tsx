@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Navbar } from "@/components/navbar/Navbar";
 import { GlitchButton } from "@/components/ui/glitch-button";
+
 import styles from "./GlitchverseHero.module.css";
 
 const registrationUrl = "https://codeutsava-x.devfolio.co/overview";

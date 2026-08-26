@@ -232,19 +232,9 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
         }
       }
 
-      // 1. Dark Retro Void Background
-      const bgGrad = ctx.createRadialGradient(
-        width / 2, height * HORIZON_Y, 20,
-        width / 2, height * HORIZON_Y, Math.max(width, height) * 0.80
-      );
-      bgGrad.addColorStop(0, 'rgba(7, 2, 12, 0.4)');
-      bgGrad.addColorStop(0.40, 'rgba(4, 1, 7, 0.5)');
-      bgGrad.addColorStop(1, 'rgba(2, 1, 4, 0.6)');
-      ctx.fillStyle = bgGrad;
       ctx.clearRect(0, 0, width, height);
-      ctx.fillRect(0, 0, width, height);
 
-      // 2. Ambient Particles
+      // 1. Ambient Particles
       const pts = particlesRef.current;
       for (let i = 0; i < pts.length; i++) {
         const p = pts[i];
@@ -265,7 +255,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
       }
       ctx.globalAlpha = 1.0;
 
-      // 3. DRAW 3D PERSPECTIVE HIGHWAY
+      // 2. DRAW 3D PERSPECTIVE HIGHWAY
       const numCols = isMobile ? 8 : 16;
       const colWidth = roadWidth / numCols;
       const rowSpacingZ = isMobile ? 65 : 55;
@@ -363,8 +353,8 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
           ctx.strokeStyle = isActive
             ? '#FFE279'
             : isHovered
-            ? '#00F0FF'
-            : `rgba(255, 95, 207, ${0.45 * depthAlpha})`;
+              ? '#00F0FF'
+              : `rgba(255, 95, 207, ${0.45 * depthAlpha})`;
 
           ctx.lineWidth = isActive ? 2.6 : isHovered ? 1.6 : Math.max(1.0, 1.3 * pLeft.scale);
           if (isActive) {
@@ -387,8 +377,8 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
             ctx.fillStyle = isActive
               ? '#FFE279'
               : isHovered
-              ? '#00F0FF'
-              : `rgba(250, 235, 146, ${0.75 * depthAlpha})`;
+                ? '#00F0FF'
+                : `rgba(250, 235, 146, ${0.75 * depthAlpha})`;
 
             if (isMobile) {
               // On mobile: below the horizontal bar, centrally aligned
