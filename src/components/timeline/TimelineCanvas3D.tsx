@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useEffect, useState } from 'react';
-import { TimelineEvent, TIMELINE_EVENTS } from '@/data/timelineEvents';
+import { TIMELINE_EVENTS } from '@/data/timelineEvents';
 import { retroAudio } from '@/utils/audioEffects';
 import "./TimelineRoad.module.css";
 
@@ -44,7 +44,6 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
   const mousePosRef = useRef({ x: 0, y: 0 });
   const mousePixelRef = useRef({ x: -1000, y: -1000 });
   const hoveredNodeIndexRef = useRef<number | null>(null);
-  const [hoveredEvent, setHoveredEvent] = useState<TimelineEvent | null>(null);
   const touchStartPosRef = useRef<{ x: number; y: number; time: number }>({ x: 0, y: 0, time: 0 });
 
   // Smooth Scroll-Activated Expansion Progress
@@ -785,13 +784,8 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
 
       // Update hover state
       if (closestNodeIdx !== hoveredNodeIndexRef.current) {
-        hoveredNodeIndexRef.current = closestNodeIdx;
-        if (closestNodeIdx !== null) {
-          setHoveredEvent(TIMELINE_EVENTS[closestNodeIdx]);
-        } else {
-          setHoveredEvent(null);
+          hoveredNodeIndexRef.current = closestNodeIdx;
         }
-      }
 
       if (isVisible) {
         animationFrameId = requestAnimationFrame(render);
@@ -819,10 +813,9 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
   };
 
   const handleMouseLeave = () => {
-    mousePixelRef.current = { x: -1000, y: -1000 };
-    setHoveredEvent(null);
-    hoveredNodeIndexRef.current = null;
-  };
+      mousePixelRef.current = { x: -1000, y: -1000 };
+      hoveredNodeIndexRef.current = null;
+    };
 
   // Touch Handlers for Mobile & Android
   const handleTouchStart = (e: React.TouchEvent) => {
