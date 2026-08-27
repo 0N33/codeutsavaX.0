@@ -76,7 +76,7 @@ export function EventCard({ event }: EventCardProps) {
                     </p>
                 )}
                 <Link
-                    href="/faq"
+                    href="/#faq"
                     className="text-sm font-semibold text-zinc-200 underline decoration-white/20 underline-offset-4 transition-colors hover:text-cyan-200 focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
                 >
                     Review participation FAQs

@@ -65,7 +65,7 @@ export function ContactChannels() {
             <p className="mt-8 text-sm leading-6 text-zinc-400">
                 Looking for participation details?{" "}
                 <Link
-                    href="/faq"
+                    href="/#faq"
                     className="font-semibold text-cyan-200 underline decoration-cyan-300/30 underline-offset-4 hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
                 >
                     Read the FAQ

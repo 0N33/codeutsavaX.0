@@ -25,6 +25,6 @@ export const primaryNavigation = [
     { label: "Timeline", href: "/#timeline" },
     { label: "Events", href: "/events" },
     { label: "Team", href: "/team" },
-    { label: "FAQ", href: "/faq" },
+    { label: "FAQ", href: "/#faq" },
     { label: "Contact", href: "/contact-us" },
 ] as const;
