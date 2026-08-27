@@ -160,6 +160,7 @@ export const TimelineRoad: React.FC = () => {
       id="timeline"
       ref={stickyContainerRef}
       className={`${guidelineStyles.guidelines} relative w-full flex flex-col items-center justify-center`}
+      style={{ zIndex: isTimelineOpen ? 9999 : undefined }}
     >
       <div className={sponsorStyles.backgroundGrid} aria-hidden="true" />
       <div className={sponsorStyles.filmGrain} aria-hidden="true" />
@@ -226,11 +227,11 @@ export const TimelineRoad: React.FC = () => {
       </div>
       {isTimelineOpen && (
         <div
-          className={`${styles.modalBackdrop} ${isTimelineClosing ? styles.modalBackdropClosing : ''} fixed inset-0 z-3000 flex items-center justify-center bg-black/45 p-2 sm:p-6`}
+          className={`${styles.modalBackdrop} ${isTimelineClosing ? styles.modalBackdropClosing : ''} fixed inset-0 z-3000 flex items-center justify-center bg-black/90 p-2 sm:p-6`}
           role="presentation"
         >
           <div
-            className={`${styles.modalPanel} ${isTimelineClosing ? styles.modalPanelClosing : ''} relative h-[min(92svh,900px)] w-full max-w-360 overflow-hidden rounded-2xl border border-[#FF5FCF]/60 bg-[#05040A]/95 shadow-[0_0_0_1px_rgba(153,41,234,0.5),0_0_45px_rgba(153,41,234,0.55)] touch-none`}
+            className={`${styles.modalPanel} ${isTimelineClosing ? styles.modalPanelClosing : ''} relative h-[min(92svh,900px)] w-full max-w-360 overflow-hidden rounded-2xl border border-[#FF5FCF]/60 bg-[#05040A] shadow-[0_0_0_1px_rgba(153,41,234,0.5),0_0_45px_rgba(153,41,234,0.55)] touch-none`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="timeline-dialog-title"

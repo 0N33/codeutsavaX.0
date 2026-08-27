@@ -361,7 +361,8 @@ export function Navbar({ variant }: NavbarProps){
               ABOUT US
             </NavItem>
 
-            <NavItem href={getSectionHref("#faq")} delay={0.4}>
+
+            <NavItem href="/faq" delay={0.4}>
               FAQ
             </NavItem>
 
@@ -490,8 +491,9 @@ export function Navbar({ variant }: NavbarProps){
                     ABOUT US
                   </MobileNavLink>
 
+
                   <MobileNavLink
-                    href={getSectionHref("#faq")}
+                    href="/faq"
                     setMobileOpen={setMobileOpen}
                   >
                     FAQ

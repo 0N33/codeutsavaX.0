@@ -620,11 +620,12 @@
 
   .bios {
     padding: 9vh 6vw 5vh;
+    justify-content: center;
   }
 
   .brand {
     gap: 9px;
-    margin-top: 2vh;
+    margin-top: 0;
   }
 
   .brand h1 {
@@ -665,6 +666,8 @@
 
   .copyright {
     max-width: 80vw;
+    position: absolute;
+    bottom: 5vh;
   }
 }
 

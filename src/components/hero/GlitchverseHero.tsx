@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Navbar } from "@/components/navbar/Navbar";
 import { GlitchButton } from "@/components/ui/glitch-button";
 
 import styles from "./GlitchverseHero.module.css";
@@ -13,7 +12,6 @@ export function GlitchverseHero() {
     <main className={styles.hero} id="top">
       <div className={styles.ambientLight} aria-hidden="true" />
       <div className={styles.noise} aria-hidden="true" />
-      <Navbar />
 
       <section className={styles.heroStage} aria-labelledby="hero-title">
         <p className={styles.eyebrow}>WELCOME TO</p>
