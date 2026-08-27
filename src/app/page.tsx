@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { GlitchverseHero } from '@/components/hero/GlitchverseHero';
+import { Navbar } from '@/components/navbar/Navbar';
 import { SponsorSection } from "@/components/sponsor-section/SponsorSection";
 import { TimelineRoad } from '@/components/timeline/TimelineRoad';
 import { GuidelinesSection } from '@/components/sections/guidelines-section';
@@ -15,7 +16,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className='flex min-h-screen flex-col bg-transparent'>
+    <div className='flex min-h-screen flex-col bg-transparent gap-16 md:gap-24 pb-24'>
+      <Navbar />
       <GlitchverseHero />
       <AboutSection />
       <SponsorSection />
