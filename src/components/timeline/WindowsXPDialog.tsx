@@ -281,7 +281,7 @@ export const WindowsXPDialog: React.FC<WindowsXPDialogProps> = ({
 
             {/* Description Text with Notepad look */}
             <div className="p-2.5 rounded bg-black/40 border border-white/10 text-[12px] leading-relaxed text-gray-200">
-              <p className="font-sans text-[12px] sm:text-[13px]">{event.description}</p>
+              <p className="font-sans text-lg sm:text-[13px]">{event.description}</p>
             </div>
 
             {/* Event Key Protocols */}
