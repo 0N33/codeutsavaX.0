@@ -16,7 +16,7 @@
   background:
     linear-gradient(rgba(250, 235, 146, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(250, 235, 146, 0.025) 1px, transparent 1px),
-    radial-gradient(circle at 82% 22%, rgba(153, 41, 234, 0.2), transparent 28%),
+    radial-gradient(circle at 82% 42%, rgba(154, 41, 234, 0.089), transparent 28%),
     transparent;
   background-size: 36px 36px, 36px 36px, auto, auto;
 }
@@ -304,7 +304,7 @@
   max-width: 520px;
   margin: clamp(12px, 1.8vw, 20px) 0 0;
   color: rgba(250, 235, 146, 0.66);
-  font-size: clamp(12px, 1vw, 15px);
+  font-size: clamp(18px, 1vw, 26px);
   line-height: 1.45;
 }
 
@@ -373,7 +373,7 @@
   align-items: center;
   gap: 10px;
   font: inherit;
-  font-size: clamp(12px, 0.95vw, 14px);
+  font-size: clamp(20px, 0.95vw, 14px);
   font-weight: 800;
   line-height: 1.25;
   text-align: left;
@@ -406,7 +406,7 @@
 .fileNumber {
   color: var(--pink);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 15px;
   letter-spacing: 0.1em;
 }
 
@@ -431,9 +431,10 @@
 }
 
 .answer p {
-  max-width: 620px;
+  max-width: 680px;
   margin: 0;
-  font-size: 12px;
+  font-size: 17px;
+  font-weight: 700;
   line-height: 1.45;
 }
 
@@ -865,7 +866,7 @@
     padding: 7px 9px;
     grid-template-columns: 22px 1fr auto;
     gap: 7px;
-    font-size: 10px;
+    font-size: 15px;
     line-height: 1.2;
   }
 
@@ -874,7 +875,7 @@
   }
 
   .answer p {
-    font-size: 9.5px;
+    font-size: 12px;
     line-height: 1.35;
   }
 
@@ -885,7 +886,7 @@
 
   .introCopy {
     margin-top: 8px;
-    font-size: 10.5px;
+    font-size: 12.5px;
     line-height: 1.35;
   }
 
