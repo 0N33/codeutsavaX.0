@@ -41,16 +41,7 @@ const prizeCards = [
     ],
   },
   {
-    signal: "05 // WEB3",
-    rank: "⬡",
-    title: "Best Hack on Ethereum + Polygon",
-    award: "The winning team will be awarded Rs. 16,000 in cash.",
-    rewards: [
-      "To be announced",
-    ],
-  },
-  {
-    signal: "06 // ALL ACCESS",
+    signal: "05 // ALL ACCESS",
     rank: "✦",
     title: "For All Participants!",
     award: "Every participant unlocks the following partner perks and rewards.",

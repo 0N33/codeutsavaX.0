@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className='flex min-h-screen flex-col bg-transparent gap-16 md:gap-24 pb-24'>
+    <div className='flex min-h-screen flex-col bg-transparent gap-16 md:gap-24'>
       <Navbar />
       <GlitchverseHero />
       <AboutSection />
