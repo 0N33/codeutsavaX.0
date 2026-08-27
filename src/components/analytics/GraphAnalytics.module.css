@@ -176,7 +176,7 @@
 }
 
 @media (max-width: 600px) {
-  .sectionHeading { font-size: clamp(36px, 5.8vw, 76px); }
+  .sectionHeading { font-size: clamp(26px, 5.8vw, 76px); }
 }
 
 .section {
@@ -263,4 +263,4 @@
 }
 
 @media (max-width: 900px) { .intro { align-items: start; flex-direction: column; } .chartGrid { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .section { padding-inline: 16px; } .sectionHeading { font-size: clamp(36px, 10vw, 56px); } .chartCard { padding: 18px 14px; } .chartFrame { height: 270px; } .metricLabel { font-size: 15px; } .metricNote { font-size: 8px; } }  
+@media (max-width: 560px) { .section { padding-inline: 16px; } .sectionHeading { font-size: clamp(36px, 10vw, 56px); } .chartCard { padding: 18px 14px; } .chartFrame { height: 270px; margin-inline:2px;} .metricLabel { font-size: 15px; } .metricNote { font-size: 10px; } }  
