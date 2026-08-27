@@ -1,0 +1,93 @@
+.timerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 32px);
+  margin-top: clamp(20px, 3vh, 32px);
+  padding: clamp(32px, 4vw, 56px) clamp(64px, 8vw, 100px);
+  border: 1px solid rgba(255, 95, 207, 0.4);
+  background: rgba(8, 4, 13, 0.6);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 20px rgba(153, 41, 234, 0.2), 0 0 15px rgba(255, 95, 207, 0.15);
+  transform: skewX(-6deg);
+}
+
+.timerWrapper > * {
+  transform: skewX(6deg);
+}
+
+.timerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(90px, 12vw, 180px);
+}
+
+.timerValue {
+  position: relative;
+  font-family: var(--font-identity);
+  font-size: clamp(64px, 10vw, 140px);
+  font-weight: 700;
+  color: #faeb92;
+  line-height: 1;
+  text-shadow: 4px 4px 0 rgba(153, 41, 234, 0.8), -2px -2px 0 rgba(255, 95, 207, 0.5);
+  letter-spacing: 0.05em;
+}
+
+.timerValue::before,
+.timerValue::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.timerValue::before {
+  color: #ff5fcf;
+  left: -2px;
+  text-shadow: none;
+  animation: timerGlitch 3s infinite linear alternate-reverse;
+}
+
+.timerValue::after {
+  color: #00f0ff;
+  left: 2px;
+  text-shadow: none;
+  animation: timerGlitch 2s infinite linear alternate-reverse;
+}
+
+.timerLabel {
+  margin-top: 12px;
+  font-family: var(--font-screen);
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 700;
+  color: rgba(250, 235, 146, 0.7);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.timerSeparator {
+  font-family: var(--font-identity);
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 700;
+  color: #ff5fcf;
+  animation: pulse 1s infinite alternate;
+  transform: translateY(-12px) skewX(6deg) !important;
+}
+
+@keyframes timerGlitch {
+  0% { opacity: 0; clip-path: inset(10% 0 80% 0); }
+  5% { opacity: 1; clip-path: inset(50% 0 30% 0); }
+  10% { opacity: 0; clip-path: inset(10% 0 80% 0); }
+  100% { opacity: 0; clip-path: inset(10% 0 80% 0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; text-shadow: none; }
+  100% { opacity: 1; text-shadow: 0 0 10px #ff5fcf; }
+}

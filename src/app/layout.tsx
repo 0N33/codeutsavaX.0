@@ -1,64 +1,46 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
-
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
-import { siteConfig, siteUrl } from "@/data/site";
-
 import "./globals.css";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+import { SoundButton } from "@/components/ui/sound-button";
+import { CursorGlitch } from "@/components/layout/CursorGlitch";
+import { ExperienceShell } from "@/components/intro/ExperienceShell";
 
 export const metadata: Metadata = {
-    metadataBase: new URL(siteUrl),
-    title: {
-        default: siteConfig.name,
-        template: `%s | ${siteConfig.name}`,
-    },
-    description: siteConfig.description,
-    applicationName: siteConfig.name,
-    alternates: {
-        canonical: "/",
-    },
-    openGraph: {
-        title: siteConfig.name,
-        description: siteConfig.description,
-        siteName: siteConfig.name,
-        type: "website",
-        url: "/",
-    },
-    twitter: {
-        card: "summary",
-        title: siteConfig.name,
-        description: siteConfig.description,
-    },
+  title: {
+    default: "Codeutsava X.0",
+    template: "%s | Codeutsava X.0",
+  },
+  description:
+    "Enter the Glitchverse at Codeutsava X.0 — a celebration of code, creativity, and ideas that break the expected.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
-    children,
-}: Readonly<{ children: ReactNode }>) {
-    return (
-        <html
-            lang="en"
-            className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-        >
-            <body className="flex min-h-full flex-col font-sans">
-                <a className="skip-link" href="#main-content">
-                    Skip to content
-                </a>
-                <SiteHeader />
-                <div className="flex flex-1 flex-col">{children}</div>
-                <SiteFooter />
-            </body>
-        </html>
-    );
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(window.location.hash==="#top"){document.documentElement.dataset.heroReturn="true"}}catch(e){}',
+          }}
+        />
+      </head>
+      <body>
+        <div className="relative z-10">
+          <ExperienceShell>
+            {children}
+          </ExperienceShell>
+        </div>
+        <SoundButton />
+        <CursorGlitch />
+      </body>
+    </html>
+  );
 }

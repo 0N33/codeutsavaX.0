@@ -12,13 +12,15 @@
 
 # testing
 /coverage
+/tests
+/tmp
 
 # next.js
 /.next/
+/.next-corrupt-backup/
 /out/
-
-# production
-/build
+/.npm-cache/
+/.pnpm-store/
 
 # misc
 .DS_Store
@@ -37,6 +39,7 @@ yarn-error.log*
 # vercel
 .vercel
 
+.originkit/
+
 # typescript
 *.tsbuildinfo
-next-env.d.ts
