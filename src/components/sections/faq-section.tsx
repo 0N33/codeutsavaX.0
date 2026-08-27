@@ -46,7 +46,7 @@ export function FaqSection() {
                                 </span>
                             </summary>
                             <div className="pr-10 pb-7 pl-[2.6rem] sm:pl-[2.75rem]">
-                                <p className="text-sm leading-7 text-zinc-400 sm:text-base">
+                                <p className="text-lg leading-7 text-zinc-400 sm:text-base">
                                     {faq.answer}
                                 </p>
                                 {faq.status === "to-be-announced" ? (
