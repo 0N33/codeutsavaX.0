@@ -7,7 +7,7 @@ import styles from './GraphAnalytics.module.css';
 import sponsorStyles from '@/components/sponsor-section/SponsorSection.module.css';
 import guidelineStyles from '@/components/sections/guidelines-section.module.css';
 
-export type GraphDataPoint = { label: string; teams: number; participants: number };
+export type GraphDataPoint = { label: string; teams: number | string; participants: number | string };
 
 const DEFAULT_GROWTH_DATA: readonly GraphDataPoint[] = [
   { label: '2016', teams: 120, participants: 400 },
