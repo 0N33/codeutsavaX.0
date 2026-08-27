@@ -1,8 +1,8 @@
 'use client';
-
 import React, { useRef, useEffect, useState } from 'react';
 import { TimelineEvent, TIMELINE_EVENTS } from '@/data/timelineEvents';
 import { retroAudio } from '@/utils/audioEffects';
+import "./TimelineRoad.module.css";
 
 interface TimelineCanvas3DProps {
   activeEventIndex: number;
@@ -866,6 +866,19 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
     }
   };
 
+  // showScrollHint: boolean
+
+  const [showScrollHint, setShowScrollHint] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowScrollHint(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [])
+
+
   return (
     <div
       ref={containerRef}
@@ -888,15 +901,96 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
       <canvas ref={canvasRef} className="w-full h-full block" />
 
       {/* Compact Stage Indicator Pill for both PC and Android */}
-      {hoveredEvent && (
-        <div
-          className="flex absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 bg-transparent border px-4 py-1.5 sm:px-5 sm:py-2 rounded-full items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs font-mono pointer-events-none transition-all z-30 max-w-[92vw] whitespace-nowrap overflow-hidden"
-          style={{ borderColor: hoveredEvent.accentColor }}
-        >
-          <span className="text-[#FAEB92] font-bold shrink-0">{hoveredEvent.stageCode}:</span>
-          <span className="text-white font-medium truncate">{hoveredEvent.title}</span>
-        </div>
-      )}
+      <div
+        className="absolute bottom-25 max-sm:bottom-56 left-1/2 
+             flex items-center justify-center gap-2 sm:gap-2.5
+             px-4 py-1.5 sm:px-5 sm:py-2
+             border-r border-l rounded-r-xl rounded-l-xl
+             text-[11px] sm:text-xs font-mono
+             pointer-events-none z-30
+             max-w-[92vw] whitespace-nowrap overflow-hidden"
+        style={{
+          animation: `${showScrollHint ? "glitchIn" : "glitchOut"} 0.8s ${showScrollHint ? "ease-out" : "steps(6, end)"
+            } forwards`,
+        }}
+      >
+        <span className="text-amber-200 text-[14px] text-center font-bold shrink-0">
+          Scroll to see timeline
+        </span>
+
+        <style>{`
+    @keyframes glitchIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateX(-20px);
+        clip-path: inset(0 100% 0 0);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translateX(-50%) translateX(8px);
+        clip-path: inset(0 20% 0 0);
+      }
+
+      25% {
+        transform: translateX(-50%) translateX(-6px);
+        clip-path: inset(20% 0 40% 0);
+      }
+
+      35% {
+        transform: translateX(-50%) translateX(5px);
+        clip-path: inset(60% 0 10% 0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateX(-3px);
+        clip-path: inset(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateX(0);
+        clip-path: inset(0);
+      }
+    }
+
+    @keyframes glitchOut {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateX(0);
+      }
+
+      15% {
+        transform: translateX(-50%) translateX(-8px);
+        clip-path: inset(0 30% 0 0);
+      }
+
+      30% {
+        transform: translateX(-50%) translateX(10px);
+        clip-path: inset(20% 0 40% 0);
+        opacity: 0.8;
+      }
+
+      45% {
+        transform: translateX(-50%) translateX(-12px);
+        clip-path: inset(60% 0 10% 0);
+        opacity: 0.5;
+      }
+
+      65% {
+        transform: translateX(-50%) translateX(15px);
+        clip-path: inset(0 70% 0 0);
+        opacity: 0.25;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateX(20px);
+        clip-path: inset(0 100% 0 0);
+      }
+    }
+  `}</style>
+      </div>
     </div>
   );
 };

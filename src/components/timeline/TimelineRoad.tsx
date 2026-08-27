@@ -286,7 +286,6 @@ export const TimelineRoad: React.FC = () => {
                     </span>
                   </h2>
                 </div>
-
                 {/* Right Controls: Skip Section Button + Volume Toggle Button */}
                 <div className="pointer-events-auto flex items-center gap-2 sm:gap-3 pr-12">
                   {/* Skip Section Button */}
