@@ -18,7 +18,7 @@ const DEFAULT_GROWTH_DATA: readonly GrowthDataPoint[] = [
   { label: '2022', teams: 580, participants: 1900 },
   { label: '2023', teams: 640, participants: 2500 },
   { label: '2024', teams: 820, participants: 3300 },
-  { label: '2025', teams: 1000, participants: 4000 },
+  { label: '2025', teams: 1000+, participants: 4000+ },
 ]; 
 
 type GrowthAnalyticsProps = {
