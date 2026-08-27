@@ -81,7 +81,7 @@ export function PrizesSection() {
               <div className={styles.cardScanline} aria-hidden="true" />
               <div className={styles.cardMeta}>
                 <span>{prize.signal}</span>
-                <span>{String(index + 1).padStart(2, "0")} / 06</span>
+                <span>{String(index + 1).padStart(2, "0")} / 05</span>
               </div>
 
               <span className={styles.rank} aria-hidden="true">
@@ -93,7 +93,7 @@ export function PrizesSection() {
               {prize.rewards.length > 0 && (
                 <ul>
                   {prize.rewards.map((reward) => (
-                    <li key={reward}>{reward}</li>
+                    <li className="text-lg" key={reward}>{reward}</li>
                   ))}
                 </ul>
               )}
