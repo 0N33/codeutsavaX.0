@@ -1,78 +1,120 @@
-import { Container } from "@/components/ui/container";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { teamMembers } from "@/data/team";
+import Image from 'next/image';
+import { ExternalLink, UserRound } from 'lucide-react';
+import { teamMembers } from '@/data/team';
+import type { TeamMember } from '@/types/content';
+import styles from './TeamPage.module.css';
+
+const placeholderSlots = [
+  'Core committee',
+  'Technical team',
+  'Design team',
+  'Events team',
+  'Outreach team',
+  'Operations team',
+] as const;
+
+function MemberCard({ member, index }: { member: TeamMember; index: number }) {
+  return (
+    <article className={styles.memberCard} aria-labelledby={`${member.id}-name`}>
+      <div className={styles.photoFrame}>
+        {member.imageSrc ? (
+          <Image
+            src={member.imageSrc}
+            alt={`${member.name}, ${member.role}`}
+            fill
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 30vw"
+            className={styles.memberPhoto}
+          />
+        ) : (
+          <div className={styles.photoPlaceholder} aria-hidden="true">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <UserRound size={54} strokeWidth={1} />
+          </div>
+        )}
+        <span className={styles.photoStatus}>{member.status === 'published' ? 'PROFILE ONLINE' : 'PHOTO PENDING'}</span>
+      </div>
+
+      <div className={styles.memberBody}>
+        <p className={styles.memberTeam}>{member.team ?? 'Organizing team'}</p>
+        <h3 id={`${member.id}-name`}>{member.name}</h3>
+        <p className={styles.memberRole}>{member.role}</p>
+        {member.bio ? <p className={styles.memberBio}>{member.bio}</p> : null}
+
+        {member.socialLinks.length > 0 ? (
+          <ul className={styles.socialLinks} aria-label={`${member.name} social links`}>
+            {member.socialLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} target="_blank" rel="noreferrer">
+                  {link.label}<ExternalLink aria-hidden="true" size={13} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </article>
+  );
+}
+
+function PlaceholderCard({ label, index }: { label: string; index: number }) {
+  return (
+    <article className={`${styles.memberCard} ${styles.placeholderCard}`} aria-label={`${label} profile placeholder`}>
+      <div className={styles.photoFrame}>
+        <div className={styles.photoPlaceholder} aria-hidden="true">
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <UserRound size={54} strokeWidth={1} />
+        </div>
+        <span className={styles.photoStatus}>PHOTO PENDING</span>
+      </div>
+
+      <div className={styles.memberBody}>
+        <p className={styles.memberTeam}>{label}</p>
+        <h3>Profile incoming</h3>
+        <p className={styles.memberRole}>Name, role and links ready to sync</p>
+      </div>
+    </article>
+  );
+}
 
 export function TeamRoster() {
-    return (
-        <section
-            aria-labelledby="team-roster-title"
-            className="relative isolate overflow-hidden border-b border-white/10 py-20 sm:py-24 lg:py-28"
-        >
-            <div
-                aria-hidden="true"
-                className="absolute bottom-0 left-0 -z-10 size-96 bg-pink-400/[0.06] blur-3xl"
-            />
-            <Container>
-                <SectionHeading
-                    id="team-roster-title"
-                    eyebrow="People behind the signal"
-                    title="Built by a team that makes the improbable operational."
-                    description="The CodeUtsava X organizing roster will be published here as team profiles and official social links are confirmed."
-                />
+  const hasPublishedRoster = teamMembers.length > 0;
 
-                <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {teamMembers.map((member) => (
-                        <li key={member.id}>
-                            <article
-                                aria-labelledby={`${member.id}-name`}
-                                className="h-full border border-white/10 bg-white/[0.025] p-5 transition-colors hover:border-pink-300/30 sm:p-6"
-                            >
-                                <div
-                                    aria-hidden="true"
-                                    className="grid aspect-[4/3] place-items-center border border-white/10 bg-[linear-gradient(135deg,rgba(54,241,205,0.08),rgba(255,62,165,0.08))]"
-                                >
-                                    <span className="font-mono text-5xl font-black text-white/20">
-                                        ?
-                                    </span>
-                                </div>
-                                <div className="pt-6">
-                                    <p className="font-mono text-[0.62rem] tracking-[0.18em] text-cyan-200 uppercase">
-                                        {member.status === "published"
-                                            ? "Profile online"
-                                            : "Profile incoming"}
-                                    </p>
-                                    <h3
-                                        id={`${member.id}-name`}
-                                        className="mt-3 text-xl font-bold text-white"
-                                    >
-                                        {member.name}
-                                    </h3>
-                                    <p className="mt-1 text-sm text-zinc-400">
-                                        {member.role}
-                                    </p>
+  return (
+    <section id="team-roster" className={styles.rosterSection} aria-labelledby="team-roster-title">
+      <div className={styles.rosterGridBackdrop} aria-hidden="true" />
 
-                                    {member.socialLinks.length > 0 ? (
-                                        <ul className="mt-5 flex flex-wrap gap-3 border-t border-white/10 pt-5">
-                                            {member.socialLinks.map((link) => (
-                                                <li key={link.href}>
-                                                    <a
-                                                        href={link.href}
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        className="text-sm font-semibold text-zinc-300 underline decoration-white/20 underline-offset-4 hover:text-cyan-200 focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
-                                                    >
-                                                        {link.label}
-                                                    </a>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    ) : null}
-                                </div>
-                            </article>
-                        </li>
-                    ))}
-                </ul>
-            </Container>
-        </section>
-    );
+      <div className={styles.rosterContent}>
+        <header className={styles.rosterIntro}>
+          <div>
+            <p className={styles.kicker}>PEOPLE // ROSTER DIRECTORY</p>
+            <h2 id="team-roster-title">THE CREW</h2>
+          </div>
+          <p>
+            Profiles will populate this directory as soon as the verified team list, photographs and social links are available.
+          </p>
+        </header>
+
+        <div className={styles.departmentRail} aria-label="Planned team departments">
+          {placeholderSlots.map((department, index) => (
+            <span key={department}><i>{String(index + 1).padStart(2, '0')}</i>{department}</span>
+          ))}
+        </div>
+
+        <ul className={styles.rosterGrid}>
+          {hasPublishedRoster
+            ? teamMembers.map((member, index) => (
+                <li key={member.id}><MemberCard member={member} index={index} /></li>
+              ))
+            : placeholderSlots.map((label, index) => (
+                <li key={label}><PlaceholderCard label={label} index={index} /></li>
+              ))}
+        </ul>
+
+        <aside className={styles.dataNote}>
+          <span>IMPLEMENTATION NOTE</span>
+          <p>Add confirmed profiles to <code>src/data/team.ts</code>. Image, team, role, bio and social-link fields are already supported.</p>
+        </aside>
+      </div>
+    </section>
+  );
 }

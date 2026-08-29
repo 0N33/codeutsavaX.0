@@ -1,18 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TimelineCanvas3D } from './TimelineCanvas3D';
 import styles from './TimelineRoad.module.css';
 import sponsorStyles from '@/components/sponsor-section/SponsorSection.module.css';
 import guidelineStyles from '@/components/sections/guidelines-section.module.css';
 import { retroAudio } from '@/utils/audioEffects';
-import {
-  Volume2,
-  VolumeX,
-  FastForward,
-  X,
-  ChevronRight
-} from 'lucide-react';
+import { ChevronRight, FastForward, Volume2, VolumeX, X } from 'lucide-react';
 
 interface GlitchTextProps {
   text: string;
@@ -46,12 +40,12 @@ export const TimelineRoad: React.FC = () => {
   const [isMuted, setIsMuted] = useState<boolean>(retroAudio.getMuted());
   const [isTimelineOpen, setIsTimelineOpen] = useState<boolean>(false);
   const [isTimelineClosing, setIsTimelineClosing] = useState<boolean>(false);
+  const [isSkipping, setIsSkipping] = useState<boolean>(false);
   const closeTimerRef = useRef<number | null>(null);
+  const skipTimersRef = useRef<number[]>([]);
   const touchLastYRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    return retroAudio.subscribe((muted) => setIsMuted(muted));
-  }, []);
+  useEffect(() => retroAudio.subscribe((muted) => setIsMuted(muted)), []);
 
   useEffect(() => {
     if (!isTimelineOpen) return;
@@ -68,15 +62,17 @@ export const TimelineRoad: React.FC = () => {
   }, [isTimelineOpen]);
 
   useEffect(() => {
+    const skipTimers = skipTimersRef.current;
     return () => {
       if (closeTimerRef.current !== null) {
         window.clearTimeout(closeTimerRef.current);
       }
+      skipTimers.forEach((timer) => window.clearTimeout(timer));
     };
   }, []);
 
   const handleSelectEvent = React.useCallback((index: number) => {
-    setActiveEventIndex(prev => prev === index ? prev : index);
+    setActiveEventIndex((previousIndex) => previousIndex === index ? previousIndex : index);
   }, []);
 
   const toggleMute = () => {
@@ -86,19 +82,31 @@ export const TimelineRoad: React.FC = () => {
   };
 
   const handleSkipSection = () => {
-    if (!stickyContainerRef.current) return;
-    setIsTimelineOpen(false);
-    const nextEl = stickyContainerRef.current.nextElementSibling;
-    if (nextEl) {
-      nextEl.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      const rect = stickyContainerRef.current.getBoundingClientRect();
-      window.scrollTo({
-        top: window.scrollY + rect.bottom,
-        behavior: 'smooth'
-      });
-    }
+    if (!stickyContainerRef.current || isSkipping) return;
+
+    const timeline = stickyContainerRef.current;
+    const nextElement = timeline.nextElementSibling as HTMLElement | null;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const jumpDelay = reducedMotion ? 80 : 520;
+    const resetDelay = reducedMotion ? 220 : 1050;
+
+    setIsSkipping(true);
     retroAudio.playXPDing();
+
+    const jumpTimer = window.setTimeout(() => {
+      setIsTimelineOpen(false);
+      setIsTimelineClosing(false);
+
+      if (nextElement) {
+        nextElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+      } else {
+        const rect = timeline.getBoundingClientRect();
+        window.scrollTo({ top: window.scrollY + rect.bottom, behavior: 'auto' });
+      }
+    }, jumpDelay);
+
+    const resetTimer = window.setTimeout(() => setIsSkipping(false), resetDelay);
+    skipTimersRef.current.push(jumpTimer, resetTimer);
   };
 
   const handleCloseTimeline = () => {
@@ -162,6 +170,17 @@ export const TimelineRoad: React.FC = () => {
       className={`${guidelineStyles.guidelines} relative w-full flex flex-col items-center justify-center`}
       style={{ zIndex: isTimelineOpen ? 9999 : undefined }}
     >
+      {isSkipping && (
+        <div className={styles.skipTransition} role="status" aria-live="polite">
+          <div className={styles.skipNoise} aria-hidden="true" />
+          <div className={styles.skipReadout}>
+            <span>FAST FORWARD // TIMELINE</span>
+            <strong data-text="SIGNAL BYPASSED">SIGNAL BYPASSED</strong>
+            <i aria-hidden="true" />
+          </div>
+        </div>
+      )}
+
       <div className={sponsorStyles.backgroundGrid} aria-hidden="true" />
       <div className={sponsorStyles.filmGrain} aria-hidden="true" />
       <div className={sponsorStyles.glitchBursts} aria-hidden="true">
@@ -171,9 +190,7 @@ export const TimelineRoad: React.FC = () => {
       </div>
 
       <div className={`${sponsorStyles.heading} ${guidelineStyles.heading}`}>
-        <h2 id="timeline-title" data-text="TIMELINE">
-          TIMELINE
-        </h2>
+        <h2 id="timeline-title" data-text="TIMELINE">TIMELINE</h2>
       </div>
 
       <div className={guidelineStyles.frame}>
@@ -196,9 +213,9 @@ export const TimelineRoad: React.FC = () => {
               The <strong className="text-[#00F0FF]" style={{ textShadow: '0 0 10px rgba(0, 240, 255, 0.4)' }}>Glitchverse</strong> is expanding. Trace the sequence of events from initiation to execution in our interactive 3D timeline.
             </p>
             <div className="flex items-center justify-center gap-4 mt-8 opacity-80">
-              <span className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent to-[#FF5FCF]"></span>
+              <span className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent to-[#FF5FCF]" />
               <span className="font-mono text-[10px] sm:text-xs font-semibold tracking-[0.3em] text-[#FAEB92] animate-pulse">SYSTEM.READY // AWAITING.INPUT</span>
-              <span className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent to-[#FF5FCF]"></span>
+              <span className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent to-[#FF5FCF]" />
             </div>
           </div>
 
@@ -206,13 +223,7 @@ export const TimelineRoad: React.FC = () => {
             type="button"
             onClick={handleOpenTimeline}
             className={guidelineStyles.criteriaButton}
-            style={{ 
-              minWidth: '320px', 
-              minHeight: '54px', 
-              marginTop: '32px', 
-              fontSize: '16px',
-              padding: '12px 24px'
-            }}
+            style={{ minWidth: '320px', minHeight: '54px', marginTop: '32px', fontSize: '16px', padding: '12px 24px' }}
             aria-label="Open timeline"
           >
             <span>OPEN TIMELINE</span>
@@ -225,6 +236,7 @@ export const TimelineRoad: React.FC = () => {
           <span>ENTER TO BEGIN</span>
         </div>
       </div>
+
       {isTimelineOpen && (
         <div
           className={`${styles.modalBackdrop} ${isTimelineClosing ? styles.modalBackdropClosing : ''} fixed inset-0 z-3000 flex items-center justify-center bg-black/90 p-2 sm:p-6`}
@@ -250,10 +262,7 @@ export const TimelineRoad: React.FC = () => {
               <X className="h-5 w-5" />
             </button>
 
-            {/* FULLSCREEN PINNED STICKY VIEWPORT (100vw x 100vh) */}
             <div className="relative h-full w-full overflow-hidden flex flex-col justify-between select-none">
-
-              {/* 1. FULL-BLEED 3D PERSPECTIVE CANVAS */}
               <TimelineCanvas3D
                 activeEventIndex={activeEventIndex}
                 onSelectEvent={handleSelectEvent}
@@ -261,14 +270,11 @@ export const TimelineRoad: React.FC = () => {
                 setScrollProgress={setScrollProgress}
               />
 
-              {/* 2. TOP FLOATING HUD OVERLAY */}
               <div className="relative z-40 w-full pt-4 sm:pt-6 px-4 sm:px-10 pointer-events-none flex items-start justify-between">
-
-                {/* Left Headline */}
                 <div className="pointer-events-auto max-w-xl">
                   <h2
                     id="timeline-dialog-title"
-                    className="text-2xl sm:text-4xl lg:text-[44px] uppercase select-none leading-[0.92] tracking-[-0.045em] drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]"
+                    className={`${styles.timelineTitle} uppercase select-none drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]`}
                     style={{ fontFamily: '"Arial Narrow", "Helvetica Neue", Arial, sans-serif', fontWeight: 800 }}
                   >
                     <span className="text-white">THE </span>
@@ -279,38 +285,34 @@ export const TimelineRoad: React.FC = () => {
                       className="text-[#FF5FCF] inline-block mt-1"
                       style={{
                         textShadow: '3px 3px 0 #9929EA, 0 0 20px rgba(255,95,207,0.5)',
-                        filter: 'drop-shadow(0 0 15px rgba(255,95,207,0.4))'
+                        filter: 'drop-shadow(0 0 15px rgba(255,95,207,0.4))',
                       }}
                     >
                       GLITCHVERSE
                     </span>
                   </h2>
                 </div>
-                {/* Right Controls: Skip Section Button + Volume Toggle Button */}
+
                 <div className="pointer-events-auto flex items-center gap-2 sm:gap-3 pr-12">
-                  {/* Skip Section Button */}
                   <button
                     type="button"
                     onClick={handleSkipSection}
-                    className="h-10 px-3 sm:px-4 rounded-xl flex items-center gap-1.5 sm:gap-2 transition-all duration-300 cursor-pointer border bg-[#9929EA]/25 text-[#FAEB92] border-[#FF5FCF]/50 hover:bg-[#9929EA]/40 hover:scale-105 shadow-[0_0_20px_rgba(153,41,234,0.4)] text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider"
+                    disabled={isSkipping}
+                    className={styles.skipButton}
                     title="Skip Timeline Section"
                     aria-label="Skip Timeline Section"
                   >
+                    <span className={styles.skipButtonProgress} aria-hidden="true" />
                     <span>SKIP</span>
-                    <FastForward className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF5FCF] drop-shadow-[0_0_8px_#FF5FCF]" />
+                    <FastForward className={styles.skipIcon} aria-hidden="true" />
                   </button>
 
-                  {/* Sleek Purple Volume Toggle Button */}
                   <button
                     type="button"
                     onClick={toggleMute}
-                    className={`
-                w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 cursor-pointer border
-                ${!isMuted
-                        ? 'bg-[#9929EA]/25 text-[#FF5FCF] border-[#FF5FCF]/50 hover:bg-[#9929EA]/40 hover:scale-105 shadow-[0_0_20px_rgba(153,41,234,0.4)]'
-                        : 'bg-black/60 text-gray-500 border-white/10 hover:bg-black/80 hover:text-gray-300'
-                      }
-              `}
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 cursor-pointer border ${!isMuted
+                      ? 'bg-[#9929EA]/25 text-[#FF5FCF] border-[#FF5FCF]/50 hover:bg-[#9929EA]/40 hover:scale-105 shadow-[0_0_20px_rgba(153,41,234,0.4)]'
+                      : 'bg-black/60 text-gray-500 border-white/10 hover:bg-black/80 hover:text-gray-300'}`}
                     title={isMuted ? 'Unmute Timeline SFX' : 'Mute Timeline SFX'}
                     aria-label={isMuted ? 'Unmute Timeline SFX' : 'Mute Timeline SFX'}
                   >
@@ -323,7 +325,6 @@ export const TimelineRoad: React.FC = () => {
                 </div>
               </div>
 
-              {/* Empty bottom spacer for pristine clean view */}
               <div className="relative z-40 w-full pointer-events-none pb-4" />
             </div>
           </div>

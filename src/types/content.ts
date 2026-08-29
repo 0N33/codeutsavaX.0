@@ -65,6 +65,8 @@ export interface TeamMember {
     id: string;
     name: string;
     role: string;
+    team?: string;
+    bio?: string;
     imageSrc: string | null;
     socialLinks: readonly SocialLink[];
     status: ContentStatus;

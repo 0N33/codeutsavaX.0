@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useEffect, useState } from 'react';
-import { TIMELINE_EVENTS } from '@/data/timelineEvents';
+import { TIMELINE_EVENTS, type TimelineEvent } from '@/data/timelineEvents';
 import { retroAudio } from '@/utils/audioEffects';
 import "./TimelineRoad.module.css";
 
@@ -44,6 +44,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
   const mousePosRef = useRef({ x: 0, y: 0 });
   const mousePixelRef = useRef({ x: -1000, y: -1000 });
   const hoveredNodeIndexRef = useRef<number | null>(null);
+  const [hoveredEvent, setHoveredEvent] = useState<TimelineEvent | null>(null);
   const touchStartPosRef = useRef<{ x: number; y: number; time: number }>({ x: 0, y: 0, time: 0 });
 
   // Smooth Scroll-Activated Expansion Progress
@@ -112,7 +113,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
     let isVisible = true;
 
     const computeWrappedDescriptions = (context: CanvasRenderingContext2D, maxWidth: number) => {
-      context.font = '500 10px "Geist Mono", "Silkscreen", monospace';
+      context.font = '500 11px "Geist Mono", "Silkscreen", monospace';
       precomputedDescRef.current = TIMELINE_EVENTS.map(evt => {
         const words = evt.description.split(' ');
         const lines: string[] = [];
@@ -624,7 +625,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
 
           // Glitch Header Text in Silkscreen
           if (isExpanded) {
-            ctx.font = 'bold 11px "Silkscreen", "Press Start 2P", monospace';
+            ctx.font = 'bold 12px "Silkscreen", "Press Start 2P", monospace';
             const headerStr = scrambleDuringExpansion(`STAGE ${evt.stageNumber}`, effectiveIsCardGlitching ? effectiveCardGlitch : expProgress, tick);
             const headerTextY = cardY + canonicalHeaderH / 2 + 4.0;
 
@@ -678,12 +679,12 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
           if (isExpanded) {
             // Line 1: Uppercase Title with dynamic measurement & scaling to guarantee zero edge clipping
             const titleStr = scrambleDuringExpansion(evt.title.toUpperCase(), effectiveIsCardGlitching ? effectiveCardGlitch : expProgress, tick);
-            let titleFontSize = isMobile ? 10 : 11;
+            let titleFontSize = isMobile ? 11 : 13;
             ctx.font = `bold ${titleFontSize}px "Silkscreen", "Geist Mono", monospace`;
             const maxTitleWidth = canonicalW - 24;
             const measuredW = ctx.measureText(titleStr).width;
             if (measuredW > maxTitleWidth && measuredW > 0) {
-              titleFontSize = Math.max(7.5, Math.floor(titleFontSize * (maxTitleWidth / measuredW) * 10) / 10);
+              titleFontSize = Math.max(8.5, Math.floor(titleFontSize * (maxTitleWidth / measuredW) * 10) / 10);
               ctx.font = `bold ${titleFontSize}px "Silkscreen", "Geist Mono", monospace`;
             }
 
@@ -698,7 +699,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
             ctx.fillText(titleStr, 0, bodyY + 24);
 
             // Line 2: Full Description
-            ctx.font = '500 10px "Geist Mono", "Silkscreen", monospace';
+            ctx.font = '500 11px "Geist Mono", "Silkscreen", monospace';
             const baseLines = precomputedDescRef.current[idx] || [evt.description];
             const descLines = effectiveIsCardGlitching
               ? baseLines.map(line => scrambleDuringExpansion(line, effectiveCardGlitch, tick))
@@ -707,7 +708,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
             const availableTop = bodyY + 42;
             const availableBottom = bodyY + canonicalBodyH - 26;
             const availableCenter = (availableTop + availableBottom) / 2;
-            const lineSpacing = 17.5;
+            const lineSpacing = 18;
             const startY = availableCenter - ((descLines.length - 1) * lineSpacing) / 2;
 
             if (effectiveIsCardGlitching) {
@@ -723,7 +724,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
             });
 
             // Line 3: Big Bold Golden Timestamp in Silkscreen
-            ctx.font = 'bold 11px "Silkscreen", "Geist Mono", monospace';
+            ctx.font = 'bold 12px "Silkscreen", "Geist Mono", monospace';
             const dateStr = scrambleDuringExpansion(`${evt.date.toUpperCase()}, ${evt.time.split(' ')[0]} ${evt.time.split(' ')[1] || ''}`, effectiveIsCardGlitching ? effectiveCardGlitch : expProgress, tick);
 
             if (effectiveIsCardGlitching) {
@@ -734,7 +735,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
             ctx.fillText(dateStr, 0, bodyY + canonicalBodyH - 14);
           } else {
             // Compact Body
-            ctx.font = 'bold 10px "Geist Mono", monospace';
+            ctx.font = 'bold 11px "Geist Mono", monospace';
             const shortTitle = evt.title.length > 18 ? evt.title.substring(0, 16) + '..' : evt.title;
             const scrambledShort = scrambleDuringExpansion(shortTitle, effectiveIsCardGlitching ? effectiveCardGlitch : expProgress, tick);
 
@@ -746,7 +747,7 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
             ctx.textAlign = 'left';
             ctx.fillText(scrambledShort, cardX + 7, bodyY + 15);
 
-            ctx.font = '8.5px "Geist Mono", monospace';
+            ctx.font = '9.5px "Geist Mono", monospace';
             const timeTag = evt.time.split(' ')[0] + ' ' + (evt.time.split(' ')[1] || '');
             const compactDateTime = `${evt.dateShort} • ${timeTag}`;
             const scrambledDate = scrambleDuringExpansion(compactDateTime, effectiveIsCardGlitching ? effectiveCardGlitch : expProgress, tick);
@@ -784,7 +785,8 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
 
       // Update hover state
       if (closestNodeIdx !== hoveredNodeIndexRef.current) {
-          hoveredNodeIndexRef.current = closestNodeIdx;
+        hoveredNodeIndexRef.current = closestNodeIdx;
+        setHoveredEvent(closestNodeIdx === null ? null : TIMELINE_EVENTS[closestNodeIdx]);
         }
 
       if (isVisible) {
@@ -813,9 +815,10 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
   };
 
   const handleMouseLeave = () => {
-      mousePixelRef.current = { x: -1000, y: -1000 };
-      hoveredNodeIndexRef.current = null;
-    };
+    mousePixelRef.current = { x: -1000, y: -1000 };
+    hoveredNodeIndexRef.current = null;
+    setHoveredEvent(null);
+  };
 
   // Touch Handlers for Mobile & Android
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -984,6 +987,16 @@ export const TimelineCanvas3D: React.FC<TimelineCanvas3DProps> = ({
     }
   `}</style>
       </div>
+
+      {hoveredEvent && (
+        <div
+          className="flex absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 bg-black/35 border px-4 py-2 sm:px-5 sm:py-2.5 items-center justify-center gap-2 sm:gap-2.5 text-xs sm:text-sm font-mono pointer-events-none transition-all z-30 max-w-[92vw] whitespace-nowrap overflow-hidden backdrop-blur-sm"
+          style={{ borderColor: hoveredEvent.accentColor }}
+        >
+          <span className="text-[#FAEB92] font-bold shrink-0">{hoveredEvent.stageCode}:</span>
+          <span className="text-white font-medium truncate">{hoveredEvent.title}</span>
+        </div>
+      )}
     </div>
   );
 };
