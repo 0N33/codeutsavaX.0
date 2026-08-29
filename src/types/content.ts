@@ -59,12 +59,22 @@ export interface FaqItem {
 export interface SocialLink {
     label: string;
     href: string;
+    platform?: "instagram" | "linkedin" | "github" | "source";
 }
+
+export type TeamGroup =
+    | "overall-coordinator"
+    | "head-coordinator"
+    | "manager"
+    | "executive";
 
 export interface TeamMember {
     id: string;
     name: string;
     role: string;
+    group: TeamGroup;
+    team?: string;
+    bio?: string;
     imageSrc: string | null;
     socialLinks: readonly SocialLink[];
     status: ContentStatus;
