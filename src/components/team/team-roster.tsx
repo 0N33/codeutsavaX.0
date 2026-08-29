@@ -179,16 +179,12 @@ function ProfileCard({ member, section, index }: ProfileCardProps) {
 
 export function TeamRoster() {
   return (
-    <section id="team-roster" className={styles.rosterSection} aria-labelledby="team-roster-title">
+    <section id="team-roster" className={styles.rosterSection} aria-label="Team directory">
       <div className={styles.gridBackdrop} aria-hidden="true" />
 
       <div className={styles.rosterContent}>
         <header className={styles.rosterIntro}>
-          <div>
-            <p className={styles.kicker}>PEOPLE // COMMAND DIRECTORY</p>
-            <h2 id="team-roster-title">THE ROSTER</h2>
-          </div>
-          <p>Scroll through the directory to dissolve each portrait signal and reveal the people behind the build.</p>
+          <p className={styles.kicker}>PEOPLE // COMMAND DIRECTORY</p>
         </header>
 
         <nav className={styles.sectionRail} aria-label="Team groups">

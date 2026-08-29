@@ -386,25 +386,6 @@
   margin-bottom: clamp(26px, 4vw, 44px);
 }
 
-.rosterIntro h2 {
-  margin: 8px 0 0;
-  color: var(--cream);
-  font-family: var(--font-body);
-  font-size: clamp(42px, 6vw, 78px);
-  font-weight: 900;
-  letter-spacing: -.07em;
-  line-height: .82;
-  text-shadow: 7px 0 rgba(153, 41, 234, .5);
-}
-
-.rosterIntro > p {
-  max-width: 480px;
-  margin: 0;
-  color: rgba(250, 235, 146, .68);
-  font-size: clamp(15px, 1.25vw, 18px);
-  line-height: 1.55;
-}
-
 .sectionRail {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1010,15 +991,6 @@
   .rosterIntro {
     gap: 14px;
     margin-bottom: 22px;
-  }
-
-  .rosterIntro h2 {
-    font-size: clamp(40px, 13vw, 56px);
-  }
-
-  .rosterIntro > p {
-    font-size: 15px;
-    line-height: 1.48;
   }
 
   .sectionRail a {
