@@ -1,0 +1,1941 @@
+[
+  {
+    "id": "1",
+    "name": "Rebekah Dhone",
+    "role": "Design",
+    "group": "domain-lead",
+    "team": "TCP // Design",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1fCkPlXsN1xnvzZ-4C_sqLb6v952ec89t=w600",
+    "socialLinks": [],
+    "status": "published"
+  },
+  {
+    "id": "2",
+    "name": "Dishant Deshmukh",
+    "role": "Design",
+    "group": "executive",
+    "team": "TCP // Design",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1K4V9tP7ZtBzqs-JHb6ouE34fcpYP-UQG=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/dishant-deshmukh-6869aa383",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/dishant62",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "3",
+    "name": "Aryan Yadav",
+    "role": "Design",
+    "group": "executive",
+    "team": "TCP // Design",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1Qamks6HJHKGWA1YXccAZi3y6EuN1YEvz=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/aryan775/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/aryann.32/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Aryan775",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "4",
+    "name": "Adya Singh",
+    "role": "Design",
+    "group": "head-coordinator",
+    "team": "TCP // Design",
+    "imageSrc": "https://lh3.googleusercontent.com/d/12DQNXOGTFM97DOHCXiJu4-AvTyifE8V3=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/adya-singh-091126273/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/aaddyaaa_/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/aaddyaaa",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "5",
+    "name": "Harshit Jhariya",
+    "role": "Design",
+    "group": "manager",
+    "team": "TCP // Design",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1ASCp4u5f6J1_3XI2O8VIdnBIa_ePuQlE=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/harshitastic?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/harshit.img?igsi=MWVuc3diZzJibWQ4OA==",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Harshitastic",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "6",
+    "name": "Naman Rangari",
+    "role": "Design",
+    "group": "manager",
+    "team": "TCP // Design",
+    "imageSrc": "https://lh3.googleusercontent.com/d/14ZtmRTEmVz4WKWFAZRMo7nZ1EBt_mBEU=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/naman-rangari-299991323/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/namanrangari_123/?hl=en",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Naman-Rangari",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "7",
+    "name": "Monu Prakash Nagar",
+    "role": "Design",
+    "group": "manager",
+    "team": "TCP // Design",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1jhWZAFI9na0X6i-L4TFM5EZ1IR5fivKj=w600",
+    "socialLinks": [],
+    "status": "published"
+  },
+  {
+    "id": "8",
+    "name": "Rajveer singh",
+    "role": "Documentation",
+    "group": "domain-lead",
+    "team": "TCP // Documentation",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1rxJCfAF6OqArQ269pQZMzY36n6OqmA6D=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/rajveer-singh-844610293/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/alwaysphoenixR/",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "9",
+    "name": "Sanskriti Tandan",
+    "role": "Documentation",
+    "group": "executive",
+    "team": "TCP // Documentation",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1LbU9OyIx-0d25xUaF5C6tAdj3izjcvUl=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/sanskriti-tandan-03697b395",
+        "label": "LinkedIn"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "10",
+    "name": "Shreyas Goenka",
+    "role": "Documentation",
+    "group": "executive",
+    "team": "TCP // Documentation",
+    "imageSrc": "https://lh3.googleusercontent.com/d/12bHCxUpEVAJ0ve-VXXfkXwO6ZJ5De_vX=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/shreyas-goenka-95460536a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/shreyas.goenka07?igsi=OHMzODNxY3Q3MmNo",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/shreyasgoenka10057knp-del",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "11",
+    "name": "Sanskriti Sharma",
+    "role": "Documentation",
+    "group": "head-coordinator",
+    "team": "TCP // Documentation",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1EY_tLth6cLAj_nqd8NkEMsJQ-iSZbVx2=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/i-am-sanskriti-sharma",
+        "label": "LinkedIn"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "12",
+    "name": "Shreevi Patel",
+    "role": "Documentation",
+    "group": "manager",
+    "team": "TCP // Documentation",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1ZZ22rKp46IHf-_EZUseqtwk3lyCTMbN7=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/shreevi-patel-57960630a",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/shreevi_7786/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/shreevi480",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "13",
+    "name": "Prisha",
+    "role": "Overall Coordinator",
+    "group": "overall-coordinator",
+    "team": null,
+    "imageSrc": "https://lh3.googleusercontent.com/d/1UOFBh4BzzeGR3hj3qZsr_I9KYWlKZxzq=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/prisha-nitrr/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/prisha.0714/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/prisha-14",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "14",
+    "name": "Divyansh Sharma",
+    "role": "Overall Coordinator",
+    "group": "overall-coordinator",
+    "team": null,
+    "imageSrc": "https://lh3.googleusercontent.com/d/1WyLq8gNfxvgjTQ6c-D2aJGLqEaqHkOqz=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/divyansh-sharma-83702b2a6/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/div_uuh/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/divyansh884",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "15",
+    "name": "Krati Shrivastava",
+    "role": "Overall Coordinator",
+    "group": "overall-coordinator",
+    "team": null,
+    "imageSrc": "https://lh3.googleusercontent.com/d/1WT_rtad0fyv1mzA_x6RrUZ62p5SN0XX6=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://in.linkedin.com/in/krati-shrivastava-9766202a1",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_krati04?igsi=MWxlYjVnYzVkeWhtNw%3D%3D&utm_source=qr",
+        "label": "Instagram"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "16",
+    "name": "Muskan Sinha",
+    "role": "Overall Coordinator",
+    "group": "overall-coordinator",
+    "team": null,
+    "imageSrc": "https://lh3.googleusercontent.com/d/1p1KHZsyFJ5byHl9Eoqi8-Tj38y0UG5Kg=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/muskan-sinha112",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/muskannn.12_?utm_source=qr",
+        "label": "Instagram"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "17",
+    "name": "Sankalp Mittal",
+    "role": "PR & Marketing",
+    "group": "domain-lead",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1K9j2LJijwMzvXupCxTiK0mVdsUJ_7bEd=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/sankalp-mittal-07625b2b9",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_sankalp.__04",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://www.github.com/Vayu-401",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "18",
+    "name": "Ruturaj Misal",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1HESDlpmFOCZhYh7Acb0sWMo0g0kgk5iK=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ruturaj-misal-526b91318?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/ruturaj_misal_.07?igsi=MXNjem9jaHM1Y3pkdg==",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/rutu2007misal-cell",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "19",
+    "name": "Kavya Dewangan",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1m4E8CFqMVFRrL9xosbsOpHag7rWwjYOS=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ kavya-dewangan-a82803375",
+        "label": "LinkedIn"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "20",
+    "name": "Samarth Khandelwal",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1GMEGrg7iNtlzQc8ik8ds6PZWySSqeynt=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/samarth-khandelwal-6171a03ab?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "21",
+    "name": "Rohan Bhoi",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1fkLVbEVYbNkam6vRXTSJk8XyUZBqgQEU=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/rohan-bhoi-743166391?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/rohann.bhoi?igsi=ZWtocXZ2d3J0enpo",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/raw-ham",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "22",
+    "name": "Shlok Choudhary",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/14AHx_ozExtlRPYklfxYJ0pxLWyTmN1dQ=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/shlok-choudhary-b2257a371",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/ShlokVatsChoudhary",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "23",
+    "name": "Vikramank Mishra",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1TkgwAoElU_Bn6rgWUDlrrY2eLfxiD7_X=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/vikramank-mishra-4922283a3?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/vikram.mishra_?igsi=b2E2emFwMnB0d2ox",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/vikramank125-ctrl",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "24",
+    "name": "Muzzammil Nazar",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/18iuXP35faFMdRO6TXLeatZahPCrmg5cw=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/muzzammil-nazar-ab26863a1?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/muzzammil__nazar?igsi=azliOG40NThjb3M3&utm_source=qr",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Muzzammil15-29",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "25",
+    "name": "Pushkar khatri",
+    "role": "PR & Marketing",
+    "group": "executive",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/13arcoLSIa-dlZdErY2LpsD5f7TRUHXo_=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/pushkar-khatri-5bb762371?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/wpushkar_?igsi=MXFkNHU4aGNtaHRhcw==",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/404cluenotfound",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "26",
+    "name": "Daksh Tripathi",
+    "role": "PR & Marketing",
+    "group": "head-coordinator",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1jk6U5jNTGPgaFAlkMD3yiTZAcn2xn0Y2=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/daksh-tripathi2411",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_daksh_tripathi?igsi=NnNscDF6NXkxeDJt",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/DAKSH1124",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "27",
+    "name": "kruti dadriwal",
+    "role": "PR & Marketing",
+    "group": "head-coordinator",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1PTDUt2-VXtnWvGu9j4lOh25C1Z1qlH3t=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/kruti-dadriwal",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/krutidadriwal",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "28",
+    "name": "sejal jain",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1RU7tvg03pvPIagrqQXFh5blwZWHnFZ1f=w600",
+    "socialLinks": [],
+    "status": "published"
+  },
+  {
+    "id": "29",
+    "name": "Abhishek kumar singh",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1NzpnHonGxn5foyODvDrj730CO1i6STvx=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/abhishek-kumar-singh-nit-rr-state-head-lenient-tree-c-g-b75440316/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/ashokkumarsingh1457/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Abhishek1329452",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "30",
+    "name": "Satpal Singh",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1TpnEv4AS8F67yj76LDLQJQAaIlXFnUyV=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/satpal-singh-304860211",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/satpalsingh_26?igsi=bzN0cnJlMHJmdHQ5&utm_source=qr",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Satpal26",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "31",
+    "name": "Priyansh Shrivastava",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/19LmnhNYz2fU8RAHgVOaMiOnIbqV7K6qa=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/priyansh-shrivastava-6b8568281?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/priyanshotg?igsi=OGpucjh4ZmV3NWt1",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/diversepath1",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "32",
+    "name": "Anushka Gupta",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1iAlbJ2oK2N6rc7iaXNYB9VcGXe0FSblF=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/anushka-gupta-081688374/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/anushka_g04/",
+        "label": "Instagram"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "33",
+    "name": "Shreya Dewangan",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/19Vxo8boJawG3HgSzcpsuM6dKU55pw2dt=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/shreya-dewangan-63b675343?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/ShreyaaaP-dot",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "34",
+    "name": "ABHYUDAY YADAV",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1Hg4lIFQkP8ovyY0L87ulpI9eWoYiq3q_=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/abhyuday-yadav-b684b9325",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/abhyudayy580?igsi=ZThqbzh5cGtkMnlz",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/abhyuday580",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "35",
+    "name": "Vaibhavi S",
+    "role": "PR & Marketing",
+    "group": "manager",
+    "team": "TCP // PR & Marketing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1Msd8pha_pwVkRz5TpiLOXECawIixTZ4m=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/vaibhavi-s-680bb3330?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Vaibhaviii14",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "36",
+    "name": "Rudra Singh",
+    "role": "Documentation",
+    "group": "executive",
+    "team": "TCP // Documentation",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1AY4ZyB2Tu5r6AkQUpME7AXL3sbpO7vGT=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/rudra-singh-3120a2306",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_ruudraaaa/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Rudrasingh10",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "37",
+    "name": "Nitesh Kumar",
+    "role": "Project",
+    "group": "domain-lead",
+    "team": "TCP // Project",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1_0EpUy1cWRhCFgDJO6pQXZOM0Q6ns0bf=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/niteshkumar6263/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/niteshkumar6263",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "38",
+    "name": "Ankit",
+    "role": "Project",
+    "group": "head-coordinator",
+    "team": "TCP // Project",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1ouuNPFn0mg1843OPHVVe7Dxl_Jhl2VWk=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ankit-singh-325bbb27a/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/ankit_singh_4304",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/ankitsingh4304",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "39",
+    "name": "Aayush Kumar Gupta",
+    "role": "Project",
+    "group": "manager",
+    "team": "TCP // Project",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1JCfo_mySQtG5QPFXAF0lcCKi5teXiRvL=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ayuuxshh/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_.imayush_/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/ayuuxssh",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "40",
+    "name": "Shourya Veer Singh",
+    "role": "Project",
+    "group": "manager",
+    "team": "TCP // Project",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1uB3GGD8BqnpmNQAyaZYPJyIGngqwWefw=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://in.linkedin.com/in/shourya-veer-singh-31-d",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/sho31verse?igsi=eGlvZXN3Nm1wc2p6",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Shourya-31",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "41",
+    "name": "Prasann Trivedi",
+    "role": "Skills & Mentorship",
+    "group": "domain-lead",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1h8BkfrvEbw_zZZD3m8ofoxIefcOId64k=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/prasann-trivedi-871403295?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Prasann3",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "42",
+    "name": "Somesh Kumar Dewangan",
+    "role": "Skills & Mentorship",
+    "group": "executive",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1ZTwtvU-RmsbJ66GxaJRkQNtDWg_MTP_Q=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/somesh-kumar-dewangan-134a80341/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/dewangan_somesh07/?hl=en",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/somesh07-max",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "43",
+    "name": "Divye Agarwal",
+    "role": "Skills & Mentorship",
+    "group": "executive",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1fiRnSDoym1k20TymM_ucQXmsGH0CZJI5=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/divye-agarwal",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/divye180/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/divyeagarwal",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "44",
+    "name": "Palak Soni",
+    "role": "Skills & Mentorship",
+    "group": "executive",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1xhoGgeOc5tMDGVQW00ziu1a2rgMYLaBD=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/palaksoni-nit",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/coderpalak3109-cyber/",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "45",
+    "name": "Akshata Bakre",
+    "role": "Skills & Mentorship",
+    "group": "head-coordinator",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1ytfuaJ5NUdANbTYvb6Y9bxZ4xv_H1lX7=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/akshata-bakre-894750296",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/akshatabakre",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/akshatabakre",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "46",
+    "name": "Priyanshu Kumar Pandey",
+    "role": "Skills & Mentorship",
+    "group": "manager",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1a-jxA0DZHNX4r7QvnNru2rniuqblAEqo=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/priyanshu-matrix",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "47",
+    "name": "Rahul Sahu",
+    "role": "Skills & Mentorship",
+    "group": "manager",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1MAUqAA_27eRf-HDGjEH7SHZaqPk0RMhj=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://linkedin.com/in/rahul-sahu-nitrr/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Rahulsahu7389",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "48",
+    "name": "Samir Tiwari",
+    "role": "Skills & Mentorship",
+    "group": "manager",
+    "team": "TCP // Skills & Mentorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1RpyaSTYuxjQ_5pp8nZYoxm3Q3VN1ykLu=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/samir-tiwari-05933b336/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/samir_tiwari1/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/samirtiwari020",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "49",
+    "name": "Akshat Mishra",
+    "role": "Social Media",
+    "group": "domain-lead",
+    "team": "TCP // Social Media",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1gfw-x6OJPz4qN1oW4kNu1BOyDy60JQEk=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/akshat-mishra-58302a298",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_akshat__mishra",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/CoderAkshat404",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "50",
+    "name": "Bhoomi Chhablani",
+    "role": "Social Media",
+    "group": "executive",
+    "team": "TCP // Social Media",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1SNgih9KUux-liaQn4kDL3j2El1KKCLYQ=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/bhoomi-chhablani-96b5923a3",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/bhoomi_chhablani/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/bhoomichhablani09-spec",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "51",
+    "name": "Arnav Sharma",
+    "role": "Social Media",
+    "group": "executive",
+    "team": "TCP // Social Media",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1BuhHGBwqqoiYzw0gTVeMR71ZzC-6H-Qt=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/arnav-sharma-627b34368?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/arnav.2306?igsi=MXVxdGtlaGtoMGFoag%3D%3D&utm_source=qr",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Arnav2306-code",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "52",
+    "name": "Dakshesh Sahu",
+    "role": "Social Media",
+    "group": "head-coordinator",
+    "team": "TCP // Social Media",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1kuVXc5lUWajVDyvj0DzlWY-tZHGb_R4K=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/daksheshsahu0212/",
+        "label": "LinkedIn"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "53",
+    "name": "Palakshi Agrawal",
+    "role": "Social Media",
+    "group": "manager",
+    "team": "TCP // Social Media",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1Vo9Rt6CfeKnAz90mdPvnWWmmYibFMn0P=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/palakshi-agrawal-6a1132344",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/palakshi_13?igsi=b2Q5ajhqdTQ3Mmw3",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/palakshi13-debug",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "54",
+    "name": "Amandeep Singh Matharu",
+    "role": "Social Media",
+    "group": "manager",
+    "team": "TCP // Social Media",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1rPh67_LZ3jSM_QbKVnl5iMDewxDuqAse=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/amandeepsinghmatharu2010?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/aalooparanthaa?igsi=MTFxZzRhZXF6dHdvcw==",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://www.github.com/amandeep2010",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "55",
+    "name": "Gourav Mishra",
+    "role": "Social Media",
+    "group": "manager",
+    "team": "TCP // Social Media",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1e5n1bo4nvPWnH7s1zko-j7FKint2BqAp=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/gourav-mishra-49884a25a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/gourav_mishra005/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/GouravMishra05",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "56",
+    "name": "Anusara",
+    "role": "Video Editing",
+    "group": "executive",
+    "team": "TCP // Video Editing",
+    "imageSrc": null,
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/anusara-c-ab7801382?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/everyday.in.pixels?igsi=dmpyNXg0cWptbzhs&utm_source=qr",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/anusarachandel029",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "57",
+    "name": "Somansh Raj Kashyap",
+    "role": "Sponsorship",
+    "group": "domain-lead",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1FmYBAIg1gywEufvpSG0YguxvPjWCupI9=w600",
+    "socialLinks": [],
+    "status": "published"
+  },
+  {
+    "id": "58",
+    "name": "Amulya Dhar Diwan",
+    "role": "Sponsorship",
+    "group": "executive",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1nbjGXOSNKDhLfL7xBPbXIMQ2XniN0lwH=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://linkedin.com/in/amulyadiwan",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/amulyadiwan",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/AmulyaDharDiwan",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "59",
+    "name": "Akshat Tikariha",
+    "role": "Sponsorship",
+    "group": "executive",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1sJgJJ6i1SQvgJEogtJyzP0hPOabh3xHE=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/akshat-tikariha-345069354?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/akshat_tikariha?igsi=dHRveHUzMDAwcnZw",
+        "label": "Instagram"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "60",
+    "name": "Mihir Mandhani",
+    "role": "Sponsorship",
+    "group": "executive",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1X0MtkdotzW_nIzieULRjkwuegZwcVbOD=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/mihir-mandhani-91346b318?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/mandhani_mihir?igsi=MWRuY2dyZ3o4dzBpdA==",
+        "label": "Instagram"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "61",
+    "name": "Aditi Singh",
+    "role": "Sponsorship",
+    "group": "head-coordinator",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1-_i8DsyDkT0n3mscGiuWNKVGQxzc2dW8=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/aditisingh25",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Aditi252005",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "62",
+    "name": "Shreyash Chaudhary",
+    "role": "Sponsorship",
+    "group": "manager",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/14eYIZxeUdh1C360ntNAYBGBxWG0zbOza=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/shreyash-chaudhary-571370307",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/shreyash._.chaudhary",
+        "label": "Instagram"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "63",
+    "name": "Harshvardhan Chandrakar",
+    "role": "Sponsorship",
+    "group": "manager",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1meM8-Py6u9E6z7JQwUZVQPXERbTLfv81=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/harshvardhan-chandrakar-028579370?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/harshbeingharshhhhh?igsi=a3UwMjQzbHA2NjZw",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/harshh-1509005",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "64",
+    "name": "Aman Kumar Singh",
+    "role": "Sponsorship",
+    "group": "manager",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1534bdMMKZ9LbvoNqKtQHRDCl82BJpFUb=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/aman-singh-579ab9329/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://instagram.com/amann._2005",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/conqueror1703",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "65",
+    "name": "Pranjal Agrawal",
+    "role": "Sponsorship",
+    "group": "manager",
+    "team": "TCP // Sponsorship",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1p7vGA5jvkgmsM_jlPs3oABBBRyB5qd67=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/pranjal-agrawal-62124220b/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/pranzzal_246/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Pranjal-Agrawal-246",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "66",
+    "name": "Sanskar Gupta",
+    "role": "Technical",
+    "group": "domain-lead",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1AFbLhfmfuB0R-Fbpd3sQQKwqYbMz4T5s=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/sanskargupta80",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/sanskargupta80?igsi=ZGh6eHY5NXlnOHYx",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/TheFakeCreator",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "67",
+    "name": "Piyush Kumar Singh",
+    "role": "Technical",
+    "group": "executive",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1wjvwvCCG-cvHwZMJlYwba-ECev6KMGhG=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/piyush-kumar-singh-2a8619321",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/piyush.4706?igsi=MXJvNzNhZnZiMjMzbw==",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/0N33",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "68",
+    "name": "Aryan Puri Goswami",
+    "role": "Technical",
+    "group": "executive",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1w5ZsarxfAmVKCv-5XgEvHBGoQoEcN1mM=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/aryan-puri-goswami",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/aryan_puri18?igsi=bXpvangwdW01dGV1",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/aryan-the-programmer",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "69",
+    "name": "Soham Sharaf",
+    "role": "Technical",
+    "group": "executive",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/18Bd7zNVLR6hYfSwbq858oLQvdJSAIcry=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/soham-sharaf-679a12365?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/2_soham_8?igsi=emoyNWd2ODZzd2h3",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/sohamsharaf-zen",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "70",
+    "name": "Vaibhav sharma",
+    "role": "Technical",
+    "group": "executive",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1ZCKCNgJW3znAp0_BpyV57Ssd9hJjs9XI=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/vaibhav-sharma0230",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/vaibhavdotdev",
+        "label": "Instagram"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "71",
+    "name": "Mayank Joshi",
+    "role": "Technical",
+    "group": "executive",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/17y_NX8ceXJtr0uDpyA5DVuAkg31ZBdk-=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/mayankjoshi19",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/mayankj0919",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "72",
+    "name": "Prayash Sinha",
+    "role": "Technical",
+    "group": "head-coordinator",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1NPkYSze47-2Sm_tdWokRFWeJZ3tk7eU2=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/prayash-sinha-836454280",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_.sinha_prayash.__/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Prayash007",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "73",
+    "name": "Soumyajeet Ghatak",
+    "role": "Technical",
+    "group": "head-coordinator",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1VbMhn7PReI97UMZRXcWTxi0OErLpuF8b=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/soumyajeet-ghatak-a98ab62a1/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_soumya.jeet._/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/deforeign",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "74",
+    "name": "Ved Yamgantiwar",
+    "role": "Technical",
+    "group": "manager",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1v3k_cY5yyEnzfsTGON3hTKzPSGaT-52o=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ved-yamgantiwar-25367532b",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_ved._._?igsi=bDM3MzlxOHd2cjM3",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/Codec-V",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "75",
+    "name": "Shourya Sinha",
+    "role": "Technical",
+    "group": "manager",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1bRfJJ_l418N5gjPiv6IpfFJXzI9135vd=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/shourya-sinha-12ba0732b",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=ssyweh7",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/ShouryaGit023",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "76",
+    "name": "Shreyash Kumar Dheemar",
+    "role": "Technical",
+    "group": "manager",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/11pxWARvtMf5OUpb7WZ6JDlVUgZmEqn8c=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/techshreyash/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/TechShreyash",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "77",
+    "name": "Naman Ahuja",
+    "role": "Technical",
+    "group": "manager",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/10qRXXyspO0LEWPWoF78Nrz4R11IaV1Bp=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/naman-ahuja-553-/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/naman__553/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/naman553",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "78",
+    "name": "Ronanki Dinesh",
+    "role": "Technical",
+    "group": "manager",
+    "team": "TCP // Technical",
+    "imageSrc": "https://lh3.googleusercontent.com/d/18dQoZ1rxQDpci4pjl-DEcwNEgg3WhjWm=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ronanki-dinesh",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/dinesh_.7799?igsi=MTI1NWU2Y3U1dnE3Zw==",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/dinesh-1709",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "79",
+    "name": "Ketan Dewangan",
+    "role": "Video Editing",
+    "group": "executive",
+    "team": "TCP // Video Editing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1vghgLqMBpN2YwY5vMUPaWPMlzQLrp9Jr=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ketan-dewangan-3ab665379?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/ketandewangan7?igsi=cG14emFlaHpnMWE2",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/ketandewangan7-jpg",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "80",
+    "name": "Yashraj Sahu",
+    "role": "Video Editing",
+    "group": "executive",
+    "team": "TCP // Video Editing",
+    "imageSrc": null,
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/yashraj-sahu-a429a9395?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/yashvyast.h",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/yashrajsahu53",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "81",
+    "name": "Ayush Kumar Singh",
+    "role": "Video Editing",
+    "group": "head-coordinator",
+    "team": "TCP // Video Editing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1Ks5cSM0Wbao-rNnl1rnOG57RLqSCj_PI=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/ayush-singh-5388b327a/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/ayushsingh.910/?hl=en",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/CuriousAyush",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "82",
+    "name": "Chiranjeev Anil Shekokar",
+    "role": "Video Editing",
+    "group": "manager",
+    "team": "TCP // Video Editing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1uxJS9LME18iXXpj2-h6cLkwobEzGczAk=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/chiranjeev-anil-shekokar-3366a3313?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/silenttruth40?igsi=MWJmY2d1dzZzYzZveQ==",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://share.google/JsMxkDitEYesjJNJ0",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "83",
+    "name": "kshitiz soni",
+    "role": "Video Editing",
+    "group": "manager",
+    "team": "TCP // Video Editing",
+    "imageSrc": "https://lh3.googleusercontent.com/d/1RVukJpC3tYkYTcxLiNYv8SdFeRKicKK-=w600",
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "href": "https://www.linkedin.com/in/kshitiz-soni-828b69324/",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_kshitizsoni/",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/kshitizsoni12",
+        "label": "GitHub"
+      }
+    ],
+    "status": "published"
+  }
+]

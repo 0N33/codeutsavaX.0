@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArrowDown } from 'lucide-react';
 import { BackgroundVideo } from '@/components/layout/BackgroundVideo';
 import { Navbar } from '@/components/navbar/Navbar';
 import { SiteFooter } from '@/components/footer/SiteFooter';
 import { TeamRoster } from '@/components/team/team-roster';
+import { fetchTeamMembers } from '@/lib/team-api';
 import styles from '@/components/team/TeamPage.module.css';
 
 export const metadata: Metadata = {
@@ -11,7 +12,11 @@ export const metadata: Metadata = {
   description: 'Meet the Turing Club of Programmers team organizing Codeutsava X.0 in 2026.',
 };
 
-export default function TeamPage() {
+export const revalidate = 60;
+
+export default async function TeamPage() {
+  const members = await fetchTeamMembers(2026);
+
   return (
     <>
       <BackgroundVideo />
@@ -52,7 +57,7 @@ export default function TeamPage() {
             </div>
           </section>
 
-          <TeamRoster />
+          <TeamRoster members={members} />
         </main>
 
         <SiteFooter />

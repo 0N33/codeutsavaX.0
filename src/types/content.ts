@@ -1,4 +1,4 @@
-export type ContentStatus = "published" | "to-be-announced";
+﻿export type ContentStatus = "published" | "to-be-announced";
 
 export interface Statistic {
     id: string;
@@ -64,6 +64,7 @@ export interface SocialLink {
 
 export type TeamGroup =
     | "overall-coordinator"
+    | "domain-lead"
     | "head-coordinator"
     | "manager"
     | "executive";

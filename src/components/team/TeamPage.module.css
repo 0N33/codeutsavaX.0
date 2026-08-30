@@ -1,4 +1,4 @@
-.pageShell {
+﻿.pageShell {
   --cream: #faeb92;
   --pink: #ff5fcf;
   --purple: #9929ea;
@@ -388,7 +388,7 @@
 
 .sectionRail {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border: 1px solid rgba(250, 235, 146, .2);
   background: rgba(8, 7, 13, .78);
 }
@@ -506,10 +506,22 @@
 
 .featuredGrid,
 .headGrid,
-.managerGrid,
-.executiveGrid {
+.managerGrid {
   grid-template-columns: repeat(auto-fit, minmax(260px, 286px));
   justify-content: center;
+}
+
+.executiveGrid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 236px));
+  gap: clamp(12px, 1.5vw, 18px);
+  justify-content: center;
+}
+
+.executiveGrid > li {
+  width: 236px;
+  height: 485px;
+  min-width: 0;
+  justify-self: center;
 }
 
 .memberCard {
@@ -798,6 +810,43 @@
   background: linear-gradient(145deg, rgba(153, 41, 234, .08), transparent 42%), rgba(8, 7, 13, .88);
 }
 
+.executiveCard {
+  height: 485px;
+}
+
+.executiveCard .photoFrame {
+  aspect-ratio: 1 / 1.15;
+}
+
+.executiveCard .memberBody {
+  padding: 13px 15px 16px;
+}
+
+.executiveCard .memberBody h3 {
+  margin-top: 6px;
+  font-size: clamp(16px, 1.3vw, 20px);
+}
+
+.executiveCard .memberRole {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.executiveCard .cardFooter {
+  padding-top: 8px;
+  gap: 6px;
+}
+
+.executiveCard .profileLink {
+  width: 34px;
+  height: 34px;
+}
+
+.executiveCard .profileLink svg {
+  width: 17px;
+  height: 17px;
+}
+
 .dataNote {
   display: grid;
   grid-template-columns: minmax(150px, .24fr) 1fr;
@@ -1074,3 +1123,52 @@
     transition: none;
   }
 }
+/* â”€â”€ Domain sub-groups â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+.domainGroups {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 64px);
+}
+
+.domainGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.domainLabel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  color: rgba(250, 235, 146, .54);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.domainLabelLine {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(153, 41, 234, .55), rgba(250, 235, 146, .12));
+}
+
+.domainLabel .domainLabelLine:last-child {
+  background: linear-gradient(270deg, rgba(153, 41, 234, .55), rgba(250, 235, 146, .12));
+}
+/* â”€â”€ Performance optimizations for large roster â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.memberCard {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.photoFrame {
+  contain: paint;
+}
+
+
