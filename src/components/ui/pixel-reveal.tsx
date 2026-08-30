@@ -1,6 +1,6 @@
 'use client';
 
-import React, {
+import {
   useEffect,
   useMemo,
   useRef,
@@ -62,20 +62,21 @@ export default function PixelReveal({
 }: PixelRevealProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const candidates = useMemo(() => buildSourceCandidates(imageSrc ?? ''), [imageSrc]);
+  const [prevImageSrc, setPrevImageSrc] = useState(imageSrc);
   const [candidateIndex, setCandidateIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  // Reset when imageSrc changes
-  useEffect(() => {
-    setCandidateIndex(0);
-    setIsLoaded(false);
-    setRevealed(false);
-    setHasError(false);
-    setIsVisible(false);
-  }, [imageSrc]);
+  if (prevImageSrc !== imageSrc) {
+      setPrevImageSrc(imageSrc);
+      setCandidateIndex(0);
+      setIsLoaded(false);
+      setRevealed(false);
+      setHasError(false);
+      setIsVisible(false);
+   }
 
   // Only start loading images when card scrolls into view
   useEffect(() => {
