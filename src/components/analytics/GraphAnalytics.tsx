@@ -4,10 +4,8 @@ import { Activity, Users } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styles from './GraphAnalytics.module.css';
-import sponsorStyles from '@/components/sponsor-section/SponsorSection.module.css';
-import guidelineStyles from '@/components/sections/guidelines-section.module.css';
 
-export type GraphDataPoint = { label: string; teams: number ; participants: number };
+export type GraphDataPoint = { label: string; teams: number; participants: number };
 
 const DEFAULT_GROWTH_DATA: readonly GraphDataPoint[] = [
   { label: '2016', teams: 120, participants: 400 },
@@ -41,6 +39,9 @@ export function GraphAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: G
   const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
   const [activeParticipationLabel, setActiveParticipationLabel] = useState<string | null>(null);
   const chartData = [...data];
+  const periodLabel = chartData.length > 1
+    ? `${chartData[0].label} — ${chartData[chartData.length - 1].label}`
+    : chartData[0]?.label ?? 'Archive pending';
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -59,36 +60,29 @@ export function GraphAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: G
 
   return (
     <section ref={sectionRef} id="analytics" className={`${styles.section} ${className}`} aria-labelledby="analytics-title">
-      <div className={sponsorStyles.backgroundGrid} aria-hidden="true" />
-      <div className={sponsorStyles.filmGrain} aria-hidden="true" />
-      <div className={sponsorStyles.glitchBursts} aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
+      <div className={styles.gridOverlay} aria-hidden="true" />
+      <div className={styles.glow} aria-hidden="true" />
+      <div className={styles.content}>
+        <header className={styles.intro}>
+          <p className={styles.sectionKicker}>ARCHIVE // EVENT TELEMETRY</p>
+          <h2 id="analytics-title" data-text="GRAPH AND ANALYTICS" className={styles.sectionHeading}>GRAPH AND ANALYTICS</h2>
+          <p className={styles.bodyCopy}>A signal map of Codeutsava&apos;s growth across editions, from teams entering the build to participants joining the community.</p>
+        </header>
 
-      <div className={`${sponsorStyles.heading} ${guidelineStyles.heading}`}>
-        <h2 id="analytics-title" data-text="ANALYTICS">
-          GRAPHS AND ANALYTICS
-        </h2>
-      </div>
+        <div className={styles.dashboardFrame}>
+          <span className={styles.frameCorner} aria-hidden="true" />
+          <span className={styles.frameCorner} aria-hidden="true" />
+          <span className={styles.frameCorner} aria-hidden="true" />
+          <span className={styles.frameCorner} aria-hidden="true" />
 
-      <div className={guidelineStyles.frame}>
-        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
-        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
-        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
-        <span className={guidelineStyles.frameCorner} aria-hidden="true" />
-
-        <div className={guidelineStyles.frameHeader} aria-hidden="true">
-          <span>DATA // CODEUTSAVA</span>
-          <span className={guidelineStyles.status}>LIVE METRICS</span>
-        </div>
-
-        <div className={guidelineStyles.content}>
+          <div className={styles.dashboardHeader} aria-hidden="true">
+            <span>GROWTH MATRIX // CU-X.0</span>
+            <span className={styles.signalStatus}><i /> SIGNAL VERIFIED</span>
+          </div>
 
           <div className={styles.chartGrid}>
             <article className={styles.chartCard} aria-labelledby="teams-chart-title">
-              <header className={styles.chartCardHeader}><p id="teams-chart-title" className={styles.metricLabel}><Users size={19} /> Total number of teams</p><span className={styles.metricNote}>2016 — 2024</span></header>
+              <header className={styles.chartCardHeader}><p id="teams-chart-title" className={styles.metricLabel}><Users size={19} /> Total number of teams</p><span className={styles.metricNote}>{periodLabel}</span></header>
               <div className={styles.chartFrame}>
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart key={hasEnteredViewport ? 'teams-revealed' : 'teams-pending'} data={chartData} margin={{ top: 18, right: 12, bottom: 2, left: -14 }} accessibilityLayer={false} style={{ outline: 'none' }}>
@@ -104,7 +98,7 @@ export function GraphAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: G
             </article>
 
             <article className={styles.chartCard} aria-labelledby="participation-chart-title">
-              <header className={styles.chartCardHeader}><p id="participation-chart-title" className={styles.metricLabel}><Activity size={19} /> Total participation</p><span className={styles.metricNote}>2016 - 2024</span></header>
+              <header className={styles.chartCardHeader}><p id="participation-chart-title" className={styles.metricLabel}><Activity size={19} /> Total participation</p><span className={styles.metricNote}>{periodLabel}</span></header>
               <div className={styles.chartFrame}>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
@@ -130,11 +124,11 @@ export function GraphAnalytics({ data = DEFAULT_GROWTH_DATA, className = '' }: G
               </div>
             </article>
           </div>
-        </div>
 
-        <div className={guidelineStyles.frameFooter} aria-hidden="true">
-          <span>ANALYZE // PREDICT</span>
-          <span>SYSTEM: OPTIMAL</span>
+          <div className={styles.dashboardFooter} aria-hidden="true">
+            <span>{String(chartData.length).padStart(2, '0')} ARCHIVED CHECKPOINTS</span>
+            <span>TEAMS // PARTICIPANTS</span>
+          </div>
         </div>
       </div>
     </section>

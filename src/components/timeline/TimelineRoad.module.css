@@ -100,5 +100,252 @@
     }
 }
 
+.timelineTitle {
+    font-size: clamp(1.85rem, 4.2vw, 3.6rem);
+    line-height: .9;
+    letter-spacing: -.045em;
+}
+
+.skipButton {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    height: 42px;
+    min-width: 98px;
+    padding: 0 14px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 95, 207, .58);
+    border-radius: 0;
+    background: rgba(10, 3, 17, .82);
+    box-shadow: 5px 5px 0 rgba(153, 41, 234, .34), inset 0 0 20px rgba(153, 41, 234, .16);
+    color: #faeb92;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.skipButton > span:not(.skipButtonProgress),
+.skipIcon {
+    position: relative;
+    z-index: 2;
+}
+
+.skipButtonProgress {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(90deg, #9929ea, #ff5fcf);
+    transform: translateX(-102%);
+    transition: transform 260ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.skipButton:hover,
+.skipButton:focus-visible {
+    border-color: #faeb92;
+    box-shadow: 7px 7px 0 rgba(153, 41, 234, .54), 0 0 22px rgba(255, 95, 207, .22);
+    color: #050207;
+    outline: none;
+    transform: translate(-2px, -2px);
+}
+
+.skipButton:hover .skipButtonProgress,
+.skipButton:focus-visible .skipButtonProgress,
+.skipButton:disabled .skipButtonProgress {
+    transform: translateX(0);
+}
+
+.skipButton:disabled {
+    color: #050207;
+    cursor: wait;
+}
+
+.skipIcon {
+    width: 17px;
+    height: 17px;
+    color: #ff5fcf;
+    filter: drop-shadow(0 0 7px rgba(255, 95, 207, .9));
+    transition: color 180ms ease, transform 180ms ease;
+}
+
+.skipButton:hover .skipIcon,
+.skipButton:focus-visible .skipIcon,
+.skipButton:disabled .skipIcon {
+    color: #050207;
+    filter: none;
+    transform: translateX(2px);
+}
+
+.skipTransition {
+    position: fixed;
+    z-index: 4000;
+    inset: 0;
+    display: grid;
+    overflow: hidden;
+    place-items: center;
+    pointer-events: none;
+    background: rgba(3, 1, 7, .92);
+    animation: skip-curtain 1.05s steps(1, end) both;
+}
+
+.skipTransition::before,
+.skipTransition::after {
+    position: absolute;
+    right: -12%;
+    left: -12%;
+    height: 22vh;
+    content: "";
+    background: linear-gradient(90deg, transparent, rgba(255, 95, 207, .72) 20%, rgba(153, 41, 234, .82) 62%, transparent);
+    filter: blur(2px);
+    transform: skewY(-3deg) translateX(-110%);
+}
+
+.skipTransition::before {
+    top: 18%;
+    animation: skip-band 520ms cubic-bezier(.65, 0, .35, 1) 80ms both;
+}
+
+.skipTransition::after {
+    bottom: 12%;
+    animation: skip-band 480ms cubic-bezier(.65, 0, .35, 1) 190ms reverse both;
+}
+
+.skipNoise {
+    position: absolute;
+    inset: 0;
+    opacity: .38;
+    background:
+        repeating-linear-gradient(to bottom, transparent 0 3px, rgba(250, 235, 146, .08) 4px, rgba(0, 0, 0, .32) 5px),
+        repeating-linear-gradient(90deg, transparent 0 60px, rgba(255, 95, 207, .08) 61px 62px);
+    mix-blend-mode: screen;
+    animation: skip-noise 120ms steps(2, end) infinite;
+}
+
+.skipReadout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    width: min(620px, calc(100vw - 36px));
+    padding: clamp(20px, 4vw, 34px);
+    border: 1px solid rgba(250, 235, 146, .48);
+    background: rgba(4, 2, 8, .88);
+    box-shadow: 10px 10px 0 rgba(153, 41, 234, .44), -5px -5px 0 rgba(255, 95, 207, .18);
+    text-align: center;
+    animation: skip-readout 620ms steps(1, end) both;
+}
+
+.skipReadout span {
+    color: #ff5fcf;
+    font-family: var(--font-mono);
+    font-size: clamp(8px, 1.5vw, 11px);
+    font-weight: 800;
+    letter-spacing: .22em;
+}
+
+.skipReadout strong {
+    position: relative;
+    margin-top: 8px;
+    color: #faeb92;
+    font-family: var(--font-body);
+    font-size: clamp(32px, 7vw, 72px);
+    font-weight: 900;
+    letter-spacing: -.055em;
+    line-height: .86;
+    text-shadow: 7px 0 #9929ea, -3px 0 rgba(255, 95, 207, .8);
+}
+
+.skipReadout strong::after {
+    position: absolute;
+    inset: 0;
+    content: attr(data-text);
+    color: #ff5fcf;
+    opacity: 0;
+    clip-path: inset(58% 0 12%);
+    transform: translateX(12px);
+    animation: skip-text-glitch 620ms steps(1, end) infinite;
+}
+
+.skipReadout i {
+    position: relative;
+    height: 3px;
+    margin-top: 20px;
+    overflow: hidden;
+    background: rgba(250, 235, 146, .15);
+}
+
+.skipReadout i::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(90deg, #9929ea, #ff5fcf, #faeb92);
+    transform-origin: left;
+    animation: skip-progress 520ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes skip-curtain {
+    0% { opacity: 0; }
+    8%, 72% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes skip-band {
+    0% { transform: skewY(-3deg) translateX(-110%); }
+    100% { transform: skewY(-3deg) translateX(110%); }
+}
+
+@keyframes skip-noise {
+    0% { transform: translate(0); }
+    50% { transform: translate(-5px, 2px); }
+    100% { transform: translate(4px, -1px); }
+}
+
+@keyframes skip-readout {
+    0% { opacity: 0; transform: scaleX(.72) translateX(-22px); }
+    18% { opacity: 1; transform: scaleX(1.04) translateX(12px); }
+    26%, 100% { opacity: 1; transform: scaleX(1) translateX(0); }
+}
+
+@keyframes skip-text-glitch {
+    0%, 36%, 44%, 72%, 80%, 100% { opacity: 0; transform: translateX(0); }
+    38% { opacity: .85; transform: translateX(14px); }
+    40% { opacity: .45; transform: translateX(-9px); }
+    74% { opacity: .7; transform: translateX(-12px); }
+    76% { opacity: .35; transform: translateX(7px); }
+}
+
+@keyframes skip-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@media (max-width: 640px) {
+    .timelineTitle { font-size: clamp(1.8rem, 8.5vw, 2.5rem); line-height: .88; }
+    .skipButton { height: 40px; min-width: 88px; padding-inline: 11px; font-size: 11px; }
+    .skipReadout { padding-inline: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skipButton,
+    .skipButtonProgress,
+    .skipIcon { transition: none; }
+
+    .skipTransition,
+    .skipTransition::before,
+    .skipTransition::after,
+    .skipNoise,
+    .skipReadout,
+    .skipReadout strong::after,
+    .skipReadout i::after {
+        animation-duration: 1ms;
+        animation-iteration-count: 1;
+    }
+}
+
 
 /* SCROLL TO SEE TIMELINE GLITCH EFFECT */

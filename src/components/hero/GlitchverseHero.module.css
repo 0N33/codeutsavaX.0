@@ -363,7 +363,7 @@
   flex: 0 1 auto;
   color: #ff4fbe;
   font-family: var(--font-identity);
-  font-size: clamp(25px, 10cqi, 106px);
+  font-size: clamp(26px, 10.6cqi, 112px);
   font-weight: 400;
   letter-spacing: .075em;
   line-height: .74;
@@ -1213,7 +1213,7 @@
   }
 
   .wordmark {
-    font-size: clamp(25px, 10cqi, 70px);
+    font-size: clamp(26px, 10.6cqi, 74px);
     text-shadow: 2px 3px 0 #5c159b, 4px 5px 8px rgba(0, 0, 0, .7), -1px 0 0 rgba(255, 95, 207, .42);
   }
 
