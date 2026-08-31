@@ -92,6 +92,41 @@ function resolveImageSrc(member: ApiTeamMember): string | null {
   return null;
 }
 
+const EMPTY_SOCIAL_VALUES = new Set(['n/a', 'na', 'none', 'nil', 'null', '-', '--']);
+
+export function normalizeSocialUrl(
+  value: string | null | undefined,
+  platform: Exclude<SocialLink['platform'], 'source' | undefined>,
+): string | null {
+  const trimmed = value?.trim();
+  if (!trimmed || EMPTY_SOCIAL_VALUES.has(trimmed.toLowerCase())) return null;
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      return new URL(trimmed).toString();
+    } catch {
+      return null;
+    }
+  }
+
+  if (/^(?:www\.)?(?:instagram\.com|linkedin\.com|github\.com)\//i.test(trimmed)) {
+    return `https://${trimmed.replace(/^\/+/, '')}`;
+  }
+
+  const handle = trimmed
+    .replace(/^@/, '')
+    .replace(/^\/+|\/+$/g, '')
+    .replace(/\s+/g, '');
+
+  if (!handle) return null;
+
+  if (platform === 'instagram') return `https://www.instagram.com/${handle}/`;
+  if (platform === 'github') return `https://github.com/${handle}`;
+
+  const linkedinHandle = handle.replace(/^in\//i, '');
+  return linkedinHandle ? `https://www.linkedin.com/in/${linkedinHandle}/` : null;
+}
+
 function buildSocialLinks(member: ApiTeamMember): readonly SocialLink[] {
   const links: SocialLink[] = [];
   const add = (
@@ -99,16 +134,28 @@ function buildSocialLinks(member: ApiTeamMember): readonly SocialLink[] {
     platform: SocialLink['platform'],
     label: string,
   ) => {
-    const trimmed = href?.trim();
-    if (!trimmed) return;
-    if (!trimmed.startsWith('https://') && !trimmed.startsWith('http://')) return;
-    links.push({ label, href: trimmed, platform });
+    if (!platform || platform === 'source') return;
+    const normalizedHref = normalizeSocialUrl(href, platform);
+    if (!normalizedHref) return;
+    links.push({ label, href: normalizedHref, platform });
   };
 
   add(member.linkedin, 'linkedin', 'LinkedIn');
   add(member.instagram, 'instagram', 'Instagram');
   add(member.github, 'github', 'GitHub');
   return links;
+}
+
+function normalizeStoredMemberLinks(member: TeamMember): TeamMember {
+  const socialLinks = member.socialLinks.flatMap((link) => {
+    const platform = link.platform;
+    if (!platform || platform === 'source') return [link];
+
+    const href = normalizeSocialUrl(link.href, platform);
+    return href ? [{ ...link, href }] : [];
+  });
+
+  return { ...member, socialLinks };
 }
 
 function normalizeDomain(rawDomain: string): string {
@@ -175,5 +222,5 @@ export async function fetchTeamMembers(year = 2026): Promise<TeamMember[]> {
   }
 
   // Fallback to static 2026 dataset
-  return staticTeam2026 as TeamMember[];
+  return (staticTeam2026 as TeamMember[]).map(normalizeStoredMemberLinks);
 }
