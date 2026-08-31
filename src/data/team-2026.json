@@ -620,32 +620,6 @@
     "status": "published"
   },
   {
-    "id": "29",
-    "name": "Abhishek kumar singh",
-    "role": "PR & Marketing",
-    "group": "manager",
-    "team": "TCP // PR & Marketing",
-    "imageSrc": "https://lh3.googleusercontent.com/d/1NzpnHonGxn5foyODvDrj730CO1i6STvx=w600",
-    "socialLinks": [
-      {
-        "platform": "linkedin",
-        "href": "https://www.linkedin.com/in/abhishek-kumar-singh-nit-rr-state-head-lenient-tree-c-g-b75440316/",
-        "label": "LinkedIn"
-      },
-      {
-        "platform": "instagram",
-        "href": "https://www.instagram.com/ashokkumarsingh1457/",
-        "label": "Instagram"
-      },
-      {
-        "platform": "github",
-        "href": "https://github.com/Abhishek1329452",
-        "label": "GitHub"
-      }
-    ],
-    "status": "published"
-  },
-  {
     "id": "30",
     "name": "Satpal Singh",
     "role": "PR & Marketing",
