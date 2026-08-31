@@ -1,6 +1,7 @@
 import type { SVGProps } from 'react';
 import Image from 'next/image';
 import { ExternalLink, UserRound } from 'lucide-react';
+import { CardReveal } from './card-reveal';
 import type { TeamGroup, TeamMember } from '@/types/content';
 import styles from './TeamPage.module.css';
 
@@ -41,7 +42,6 @@ type TeamSection = {
   title: string;
   singularRole: string;
   placeholderCount: number;
-  gridClass: string;
 };
 
 const teamSections: readonly TeamSection[] = [
@@ -52,7 +52,6 @@ const teamSections: readonly TeamSection[] = [
     title: 'Overall Coordinators',
     singularRole: 'Overall Coordinator',
     placeholderCount: 1,
-    gridClass: styles.featuredGrid,
   },
   {
     id: 'head-coordinator',
@@ -61,7 +60,6 @@ const teamSections: readonly TeamSection[] = [
     title: 'Head Coordinators',
     singularRole: 'Head Coordinator',
     placeholderCount: 2,
-    gridClass: styles.headGrid,
   },
   {
     id: 'manager',
@@ -70,7 +68,6 @@ const teamSections: readonly TeamSection[] = [
     title: 'Managers',
     singularRole: 'Manager',
     placeholderCount: 3,
-    gridClass: styles.executiveGrid,
   },
   {
     id: 'executive',
@@ -79,7 +76,6 @@ const teamSections: readonly TeamSection[] = [
     title: 'Executives',
     singularRole: 'Executive',
     placeholderCount: 4,
-    gridClass: styles.executiveGrid,
   },
 ] as const;
 
@@ -124,18 +120,16 @@ function ProfileCard({ member, section, index }: ProfileCardProps) {
   const domain = getMemberDomain(member);
   const imageCredit = member?.socialLinks.find((link) => link.platform === 'source');
 
-  const isCompact = section.id === 'manager' || section.id === 'executive';
-
   return (
     <article
-      className={`${styles.memberCard} ${isCompact ? styles.executiveCard : ''} ${member ? '' : styles.placeholderCard}`}
+      className={`${styles.memberCard} ${member ? '' : styles.placeholderCard}`}
       aria-labelledby={`${section.id}-${index}-name`}
       tabIndex={0}
     >
       <div className={styles.photoFrame}>
         <div className={styles.photoPlaceholder} aria-hidden="true">
           <span>{section.number}.{slotNumber}</span>
-          <UserRound size={isCompact ? 48 : 64} strokeWidth={0.8} />
+          <UserRound size={64} strokeWidth={0.8} />
           <small>IDENTITY ENCRYPTED</small>
         </div>
 
@@ -145,7 +139,7 @@ function ProfileCard({ member, section, index }: ProfileCardProps) {
             alt={`${member.name}, ${member.role}`}
             fill
             loading="lazy"
-            sizes={isCompact ? "(max-width: 640px) 46vw, 20vw" : "(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 25vw"}
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 20vw"
             className={styles.memberPhoto}
             unoptimized
             referrerPolicy="no-referrer"
@@ -258,13 +252,16 @@ export function TeamRoster({ members }: TeamRosterProps) {
                   </div>
                 </header>
 
-                <ul className={`${styles.memberGrid} ${section.gridClass}`}>
+                <ul className={styles.memberGrid}>
                   {Array.from(
                     { length: Math.max(section.placeholderCount, sectionMembers.length) },
                     (_, index) => (
-                      <li key={sectionMembers[index]?.id ?? `${section.id}-placeholder-${index}`}>
+                      <CardReveal
+                        key={sectionMembers[index]?.id ?? `${section.id}-placeholder-${index}`}
+                        delayIndex={index % 5}
+                      >
                         <ProfileCard member={sectionMembers[index]} section={section} index={index} />
-                      </li>
+                      </CardReveal>
                     ),
                   )}
                 </ul>
