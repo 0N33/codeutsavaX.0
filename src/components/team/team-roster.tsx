@@ -232,10 +232,51 @@ export function TeamRoster({ members }: TeamRosterProps) {
           {teamSections.map((section) => {
             const sectionMembers = members
               .filter((member) => section.groups.includes(member.group))
-              .sort(
-                (first, second) =>
-                  Number(first.group === 'domain-lead') - Number(second.group === 'domain-lead'),
-              );
+              .sort((first, second) => {
+                  const firstDomain = getMemberDomain(first);
+                  const secondDomain = getMemberDomain(second);
+
+                  const technicalPriority =
+                    Number(secondDomain.toLowerCase() === 'technical') -
+                    Number(firstDomain.toLowerCase() === 'technical');
+                
+                  if (technicalPriority !== 0) return technicalPriority;
+                
+                  const domainOrder = firstDomain.localeCompare(secondDomain, undefined, {
+                    sensitivity: 'base',
+                  });
+                
+                  if (domainOrder !== 0) return domainOrder;
+                
+                  if (section.id === 'head-coordinator') {
+                    return (
+                      Number(second.group === 'domain-lead') -
+                      Number(first.group === 'domain-lead')
+                    );
+                  }
+                
+                  // Handle 'manager' section with special priority for names starting with 'V'
+                  if (section.id === 'manager') {
+                    const firstStartsWithV = first.name.trim().toUpperCase().startsWith('V');
+                    const secondStartsWithV = second.name.trim().toUpperCase().startsWith('V');
+                
+                    const vPriority = Number(secondStartsWithV) - Number(firstStartsWithV);
+                    if (vPriority !== 0) return vPriority;
+                
+                    return first.name.localeCompare(second.name, undefined, {
+                      sensitivity: 'base',
+                    });
+                  }
+                
+                  // Handle 'executive' section (standard alphabetical sorting)
+                  if (section.id === 'executive') {
+                    return first.name.localeCompare(second.name, undefined, {
+                      sensitivity: 'base',
+                    });
+                  }
+                
+                  return 0;
+                });
 
             return (
               <section

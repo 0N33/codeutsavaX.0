@@ -177,6 +177,16 @@
         "platform": "linkedin",
         "href": "https://www.linkedin.com/in/sanskriti-tandan-03697b395",
         "label": "LinkedIn"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/san_ey2?igsi=bm5majNtd3g3Y3l1",
+        "label": "Instagram"
+      },
+      {
+        "platform": "github",
+        "href": "https://github.com/sanskrititandan247-sudo",
+        "label": "GitHub"
       }
     ],
     "status": "published"
@@ -1603,6 +1613,11 @@
         "label": "LinkedIn"
       },
       {
+        "platform": "github",
+        "href": "https://github.com/vaibhav9526",
+        "label": "GitHub"
+      },
+      {
         "platform": "instagram",
         "href": "https://www.instagram.com/vaibhavdotdev",
         "label": "Instagram"
@@ -1627,6 +1642,11 @@
         "platform": "github",
         "href": "https://github.com/mayankj0919",
         "label": "GitHub"
+      },
+      {
+        "platform": "instagram",
+        "href": "https://www.instagram.com/_mayankjoshi05/",
+        "label": "Instagram"
       }
     ],
     "status": "published"
