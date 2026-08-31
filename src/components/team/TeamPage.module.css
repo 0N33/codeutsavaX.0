@@ -388,7 +388,7 @@
 
 .sectionRail {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border: 1px solid rgba(250, 235, 146, .2);
   background: rgba(8, 7, 13, .78);
 }
@@ -488,8 +488,8 @@
 
 .memberGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 286px));
-  gap: clamp(16px, 2vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 230px));
+  gap: clamp(13px, 1.5vw, 18px);
   margin: 0;
   padding: 0;
   align-items: stretch;
@@ -498,28 +498,27 @@
 }
 
 .memberGrid > li {
-  width: 286px;
-  height: 600px;
+  width: 230px;
+  height: 490px;
   min-width: 0;
   justify-self: center;
 }
 
 .featuredGrid,
-.headGrid,
-.managerGrid {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 286px));
+.headGrid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 230px));
   justify-content: center;
 }
 
 .executiveGrid {
-  grid-template-columns: repeat(auto-fit, minmax(210px, 236px));
-  gap: clamp(12px, 1.5vw, 18px);
+  grid-template-columns: repeat(auto-fit, minmax(184px, 200px));
+  gap: clamp(10px, 1.2vw, 14px);
   justify-content: center;
 }
 
 .executiveGrid > li {
-  width: 236px;
-  height: 485px;
+  width: 200px;
+  height: 420px;
   min-width: 0;
   justify-self: center;
 }
@@ -528,7 +527,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  height: 600px;
+  height: 490px;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(250, 235, 146, .24);
@@ -571,32 +570,6 @@
 
 .memberPhoto {
   object-fit: cover;
-  filter: grayscale(1) saturate(.2) contrast(1.12) brightness(.5);
-  transform: scale(1.055);
-  transition: filter 420ms ease, transform 700ms cubic-bezier(.22, 1, .36, 1);
-}
-
-.memberCard:hover .memberPhoto,
-.memberCard:focus-visible .memberPhoto {
-  filter: grayscale(0) saturate(1.04) contrast(1.04) brightness(1);
-  transform: scale(1);
-}
-
-.photoTint {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(153, 41, 234, .18), transparent 46%, rgba(3, 1, 7, .58)),
-    rgba(153, 41, 234, .18);
-  mix-blend-mode: color;
-  transition: opacity 360ms ease;
-}
-
-.memberCard:hover .photoTint,
-.memberCard:focus-visible .photoTint {
-  opacity: .18;
 }
 
 .photoFrame::after {
@@ -666,21 +639,6 @@
   transform: translateX(-50%);
 }
 
-.photoStatus {
-  position: absolute;
-  z-index: 6;
-  right: 9px;
-  bottom: 9px;
-  padding: 5px 7px;
-  border: 1px solid rgba(255, 95, 207, .46);
-  background: rgba(3, 1, 7, .9);
-  color: var(--pink);
-  font-family: var(--font-mono);
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: .12em;
-}
-
 .memberBody {
   display: flex;
   min-height: 0;
@@ -690,13 +648,26 @@
 }
 
 .memberTeam {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 25px;
   margin: 0;
-  color: var(--pink);
+  padding: 6px 9px 5px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 95, 207, .58);
+  background: rgba(255, 95, 207, .12);
+  color: var(--cream);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: .14em;
+  letter-spacing: .1em;
+  line-height: 1;
+  text-overflow: ellipsis;
   text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: inset 3px 0 0 var(--pink);
 }
 
 .memberBody h3 {
@@ -811,7 +782,7 @@
 }
 
 .executiveCard {
-  height: 485px;
+  height: 420px;
 }
 
 .executiveCard .photoFrame {
@@ -1077,14 +1048,13 @@
 
   .featuredGrid,
   .headGrid,
-  .managerGrid,
   .executiveGrid {
     grid-template-columns: 1fr;
     justify-content: center;
   }
 
   .memberGrid > li {
-    width: min(100%, 286px);
+    width: min(100%, 230px);
   }
 
   .dataNote {
@@ -1117,50 +1087,12 @@
   .directoryLink,
   .sectionRail a,
   .memberCard,
-  .memberPhoto,
-  .photoTint,
   .photoPlaceholder {
     transition: none;
   }
 }
 /* â”€â”€ Domain sub-groups â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-.domainGroups {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(40px, 6vw, 64px);
-}
-
-.domainGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.domainLabel {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 0;
-  color: rgba(250, 235, 146, .54);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.domainLabelLine {
-  display: block;
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(153, 41, 234, .55), rgba(250, 235, 146, .12));
-}
-
-.domainLabel .domainLabelLine:last-child {
-  background: linear-gradient(270deg, rgba(153, 41, 234, .55), rgba(250, 235, 146, .12));
-}
 /* â”€â”€ Performance optimizations for large roster â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .memberCard {
   transform: translateZ(0);
