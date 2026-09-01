@@ -233,30 +233,121 @@
 .pagerControls {
   position: absolute;
   z-index: 7;
-  right: clamp(24px, 3vw, 46px);
-  bottom: clamp(6px, .75vw, 11px);
+  right: clamp(16px, 2.4vw, 36px);
+  bottom: clamp(4px, .55vw, 8px);
   display: flex;
   align-items: center;
-  gap: clamp(8px, 1vw, 14px);
+  gap: clamp(6px, .75vw, 10px);
 }
 
-.pagerControls i {
-  display: block;
-  border: 1px solid rgba(250, 235, 146, .28);
-  background: linear-gradient(145deg, #55305c, #160c19 58%, #080409);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .14), inset -2px -2px 2px rgba(0, 0, 0, .5), 2px 3px 0 rgba(0, 0, 0, .55);
-}
-
-.pagerControls i:first-child {
-  width: clamp(28px, 3.2vw, 48px);
-  height: clamp(7px, .75vw, 11px);
+.pagerControls button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(54px, 6vw, 80px);
+  height: clamp(16px, 1.7vw, 23px);
+  padding: 0 clamp(8px, 1vw, 13px);
+  border: 1.8px solid rgba(250, 235, 146, 0.65);
   border-radius: 999px;
+  background: linear-gradient(180deg, #3d1b40, #140918 55%, #08030b);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .2), inset -1px -1px 2px rgba(0, 0, 0, .6), 0 2px 0 rgba(0, 0, 0, .6);
+  cursor: pointer;
+  font-family: var(--font-screen), "Courier New", monospace;
+  font-size: clamp(8.5px, 0.92vw, 11px);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  color: #faeb92;
+  text-shadow: 0 0 6px rgba(250, 235, 146, 0.4);
+  transition: all 0.18s ease;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.pagerControls i:last-child {
-  width: clamp(12px, 1.3vw, 19px);
-  aspect-ratio: 1;
+.pagerControls button:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  text-shadow: 0 0 8px #faeb92;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .35), 0 0 10px rgba(250, 235, 146, 0.5);
+  transform: translateY(-1px);
+}
+
+.pagerControls button:active {
+  transform: translateY(1px);
+  box-shadow: inset -1px -1px 0 rgba(255, 255, 255, .1), inset 0 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+.pagerSwitchBtnActive,
+.pagerPlayBtnActive {
+  background: linear-gradient(180deg, #443012, #1a1207 55%, #0a0703) !important;
+  border: 1.8px solid #faeb92 !important;
+  color: #faeb92 !important;
+  text-shadow: 0 0 8px rgba(250, 235, 146, 0.7) !important;
+  box-shadow: 0 0 10px rgba(250, 235, 146, 0.55), inset 0 0 4px rgba(250, 235, 146, 0.3) !important;
+}
+
+/* Circular Power Button on upmost right side */
+.pagerCircleBtn {
+  min-width: clamp(16px, 1.65vw, 22px) !important;
+  width: clamp(16px, 1.65vw, 22px) !important;
+  height: clamp(16px, 1.65vw, 22px) !important;
+  aspect-ratio: 1 !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  border: 2.5px solid rgba(240, 235, 225, 0.85) !important; /* Thicker, distinct Off-White border when OFF */
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3), inset -1px -1px 2px rgba(0, 0, 0, .6), 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+.pagerCircleBtn:hover {
+  border-color: #ffffff !important;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .4), 0 0 10px rgba(240, 235, 225, 0.55) !important;
+}
+
+.pagerCircleBtnActive {
+  background: linear-gradient(180deg, #503814, #1c1409 55%, #0a0703) !important;
+  border: 2.5px solid #faeb92 !important;
+  box-shadow: 0 0 12px rgba(250, 235, 146, 0.6), inset 0 0 4px rgba(250, 235, 146, 0.4) !important;
+}
+
+.pagerCircleBtnActive::after {
+  content: "";
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
+  background: #faeb92;
+  box-shadow: 0 0 6px #faeb92;
+}
+
+.btnTooltip {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  right: 0;
+  white-space: nowrap;
+  background: rgba(13, 7, 18, 0.95);
+  border: 1px solid rgba(250, 235, 146, 0.5);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--font-screen), "Courier New", monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #faeb92;
+  box-shadow: 0 0 10px rgba(250, 235, 146, 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(3px);
+  transition: all 0.18s ease;
+  z-index: 20;
+}
+
+.pagerControls button:hover .btnTooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.powerLedActive {
+  background: linear-gradient(90deg, #00f0ff, #faeb92 55%, #00f0ff) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 0 12px #00f0ff !important;
 }
 
 .pagerViewport {
