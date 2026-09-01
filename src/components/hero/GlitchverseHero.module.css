@@ -1311,27 +1311,29 @@
   }
 
   .identity {
-    width: calc(100% - 10px);
+    width: 100%;
     height: 100%;
-    gap: clamp(6px, 1.8vw, 12px);
+    gap: clamp(8px, 2.2vw, 14px);
     flex-wrap: nowrap;
     justify-content: center;
+    align-items: center;
   }
 
   .wordmark {
-    font-size: clamp(24px, 7.2vw, 40px);
+    font-size: clamp(28px, 8.6vw, 48px);
+    letter-spacing: .06em;
     -webkit-text-stroke: clamp(.8px, .09vw, 1.4px) #faeb92;
-    text-shadow: 2px 3px 0 #5c159b, 4px 5px 8px rgba(0, 0, 0, .7), -1px 0 0 rgba(255, 95, 207, .42);
+    text-shadow: 2.5px 3.5px 0 #5c159b, 5px 6px 10px rgba(0, 0, 0, .7), -1px 0 0 rgba(255, 95, 207, .42);
   }
 
   .editionCycle {
     width: auto;
-    min-width: clamp(52px, 15vw, 86px);
+    min-width: clamp(58px, 17vw, 96px);
     height: auto;
     margin-left: 0;
-    font-size: clamp(24px, 7.2vw, 40px);
+    font-size: clamp(28px, 8.6vw, 48px);
     -webkit-text-stroke: clamp(1px, .11vw, 1.6px) #faeb92;
-    text-shadow: 2px 2px 0 #7113d4, 4px 5px 9px rgba(62, 0, 72, .72);
+    text-shadow: 2.5px 3px 0 #7113d4, 5px 6px 10px rgba(62, 0, 72, .72);
   }
 
   .editionCycle::before,
@@ -1397,14 +1399,15 @@
   .identity {
     width: 100%;
     height: 100%;
+    gap: 6px;
   }
 
   .wordmark {
-    font-size: clamp(22px, 6.8vw, 30px);
+    font-size: clamp(25px, 7.8vw, 34px);
   }
 
   .editionCycle {
-    font-size: clamp(22px, 6.8vw, 30px);
+    font-size: clamp(25px, 7.8vw, 34px);
   }
 
   .tagline {
