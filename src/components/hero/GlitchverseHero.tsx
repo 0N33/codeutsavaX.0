@@ -17,16 +17,13 @@ export function GlitchverseHero() {
   const [activeGame, setActiveGame] = useState<GameType>("breaker");
   const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
 
-  // Android & Mobile detection (forces Cyber Dino Runner on mobile devices)
+  // Android & Mobile detection
   useEffect(() => {
     const checkMobile = () => {
       const isMobile =
         window.innerWidth <= 768 ||
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       setIsMobileDevice(isMobile);
-      if (isMobile) {
-        setActiveGame("dino");
-      }
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -62,10 +59,9 @@ export function GlitchverseHero() {
     });
   }, []);
 
-  const toggleGameType = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation();
+  const toggleGameType = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) e.stopPropagation();
     if (!isGameMode) return; // Inactive before powering on monitor!
-    if (isMobileDevice) return; // Locked to Dino on Android/mobile
 
     setActiveGame((prev) => {
       if (prev === "breaker") return "spaceship";
@@ -94,7 +90,7 @@ export function GlitchverseHero() {
         osc.stop(ctx.currentTime + 0.2);
       }
     } catch {}
-  }, [isGameMode, isMobileDevice]);
+  }, [isGameMode]);
 
   const getNextGameName = () => {
     if (activeGame === "breaker") return "SPACESHIP";
@@ -124,6 +120,7 @@ export function GlitchverseHero() {
               type="button"
               className={`${styles.pagerConsoleBtn} ${isGameMode ? styles.pagerSwitchBtnActive : ""}`}
               onClick={toggleGameType}
+              onTouchEnd={toggleGameType}
               title={
                 !isGameMode
                   ? "Turn on PLAY first to switch games"
