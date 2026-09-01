@@ -1225,24 +1225,26 @@
   }
 
   .heroStage {
-    width: min(calc(100% - 20px), 540px);
-    padding: clamp(18px, 4svh, 34px) 0 max(24px, env(safe-area-inset-bottom));
+    width: min(calc(100% - 16px), 540px);
+    margin-top: 0;
+    padding: clamp(12px, 2.5svh, 24px) 0 max(20px, env(safe-area-inset-bottom));
     justify-content: center;
   }
 
   .eyebrow {
-    margin-bottom: 10px;
-    font-size: clamp(22px, 6.8vw, 32px);
+    margin-bottom: 8px;
+    font-size: clamp(20px, 6vw, 30px);
     letter-spacing: .08em;
     line-height: 1;
     text-wrap: balance;
   }
 
+  /* Expanded, Spacious Cyber Monitor on Mobile / Android */
   .pagerShell {
     width: min(100%, 94vw, 520px);
-    height: clamp(84px, 19vw, 116px);
+    height: clamp(135px, 32vw, 180px);
     aspect-ratio: auto;
-    padding: 8px 12px 16px;
+    padding: 10px 12px clamp(28px, 6.5vw, 36px);
     border-radius: 0;
     filter: drop-shadow(0 2px 0 #45204d) drop-shadow(0 4px 0 rgba(5, 2, 7, .76)) drop-shadow(0 7px 9px rgba(0, 0, 0, .3));
     transform: perspective(900px) rotateX(1.4deg);
@@ -1254,39 +1256,46 @@
   }
 
   .pagerShell::after {
-    height: 14px;
+    height: clamp(20px, 4.5vw, 26px);
   }
 
   .pagerTopRidge {
     top: 5px;
-    right: 18px;
+    right: 16px;
     gap: 4px;
   }
 
   .pagerSpeaker {
-    bottom: 6px;
-    left: 20px;
+    bottom: 7px;
+    left: 16px;
     gap: 3px;
   }
 
   .pagerSpeaker i {
-    width: 11px;
+    width: 12px;
     height: 3px;
   }
 
   .pagerControls {
-    right: 20px;
+    right: 14px;
     bottom: 5px;
-    gap: 7px;
+    gap: 6px;
   }
 
-  .pagerControls i:first-child {
-    width: 26px;
-    height: 6px;
+  .pagerControls button {
+    min-width: clamp(48px, 11vw, 60px);
+    height: clamp(16px, 3.8vw, 20px);
+    padding: 0 clamp(6px, 1.2vw, 10px);
+    font-size: clamp(8px, 1.9vw, 9.5px);
+    letter-spacing: 0.12em;
+    border-width: 1.5px;
   }
 
-  .pagerControls i:last-child {
-    width: 11px;
+  .pagerCircleBtn {
+    min-width: clamp(16px, 3.8vw, 20px) !important;
+    width: clamp(16px, 3.8vw, 20px) !important;
+    height: clamp(16px, 3.8vw, 20px) !important;
+    border-width: 2px !important;
   }
 
   .pagerViewport {
@@ -1300,19 +1309,23 @@
   }
 
   .identity {
-    width: calc(100% - 18px);
+    width: calc(100% - 12px);
+    gap: clamp(4px, 1.5vw, 10px);
+    flex-wrap: nowrap;
+    justify-content: center;
   }
 
   .wordmark {
-    font-size: clamp(26px, 10.6cqi, 74px);
+    font-size: clamp(20px, 6.2vw, 34px);
     text-shadow: 2px 3px 0 #5c159b, 4px 5px 8px rgba(0, 0, 0, .7), -1px 0 0 rgba(255, 95, 207, .42);
   }
 
   .editionCycle {
-    width: clamp(58px, 18cqi, 112px);
-    height: clamp(34px, 10cqi, 70px);
+    width: auto;
+    min-width: clamp(48px, 15vw, 80px);
+    height: auto;
     margin-left: 0;
-    font-size: clamp(25px, 10cqi, 70px);
+    font-size: clamp(20px, 6.2vw, 34px);
     text-shadow: 2px 2px 0 #7113d4, 4px 5px 9px rgba(62, 0, 72, .72);
   }
 
@@ -1323,32 +1336,32 @@
 
   .tagline {
     max-width: 90vw;
-    margin-top: 10px;
-    font-size: clamp(14px, 4.2vw, 18px);
-    letter-spacing: .01em;
-    line-height: 1.18;
+    margin-top: 14px;
+    font-size: clamp(15px, 4.4vw, 20px);
+    letter-spacing: .02em;
+    line-height: 1.2;
     text-wrap: balance;
   }
 
   .eventLine {
-    max-width: 310px;
-    margin-top: 9px;
-    font-size: clamp(8px, 2.3vw, 10px);
+    max-width: 340px;
+    margin-top: 8px;
+    font-size: clamp(8.5px, 2.4vw, 10.5px);
     letter-spacing: .07em;
-    line-height: 1.55;
+    line-height: 1.5;
     text-wrap: balance;
   }
 
   .heroActions {
-    width: min(100%, 320px);
-    margin-top: clamp(22px, 4svh, 32px);
+    width: min(100%, 330px);
+    margin-top: clamp(20px, 3.5svh, 28px);
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   .heroActions>* {
     width: 100% !important;
-    min-height: 48px;
+    min-height: 46px;
   }
 
   .bottomRail {
@@ -1364,35 +1377,42 @@
 
 @media (max-width: 380px) {
   .heroStage {
-    width: calc(100% - 20px);
-    padding-top: 14px;
+    width: calc(100% - 16px);
+    padding-top: 10px;
   }
 
   .eyebrow {
-    font-size: clamp(25px, 8.8vw, 34px);
-    letter-spacing: .07em;
+    font-size: clamp(22px, 8vw, 28px);
   }
 
   .pagerShell {
-    height: 86px;
+    height: clamp(130px, 34vw, 155px);
   }
 
   .identity {
-    width: calc(100% - 14px);
+    width: 100%;
+  }
+
+  .wordmark {
+    font-size: clamp(18px, 5.6vw, 24px);
+  }
+
+  .editionCycle {
+    font-size: clamp(18px, 5.6vw, 24px);
   }
 
   .tagline {
-    max-width: 300px;
-    font-size: clamp(15px, 5vw, 19px);
+    max-width: 290px;
+    font-size: clamp(14px, 4.5vw, 17px);
   }
 
   .eventLine {
-    max-width: 290px;
-    font-size: 9px;
+    max-width: 280px;
+    font-size: 8.5px;
   }
 
   .heroActions>* {
-    width: min(100%, 290px) !important;
+    width: min(100%, 280px) !important;
   }
 
   .bottomRail {
@@ -1403,20 +1423,20 @@
 
 @media (max-width: 767px) and (max-height: 680px) {
   .navbar {
-    min-height: 58px;
+    min-height: 54px;
   }
 
   .heroStage {
-    padding-block: 10px 16px;
+    padding-block: 8px 12px;
   }
 
   .eyebrow {
-    font-size: clamp(20px, 5svh, 28px);
+    font-size: clamp(18px, 4.5svh, 24px);
   }
 
   .pagerShell {
-    width: min(90vw, 480px);
-    height: 84px;
+    width: min(92vw, 480px);
+    height: clamp(125px, 24vh, 150px);
   }
 
   .identity {
