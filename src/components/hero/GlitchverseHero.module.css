@@ -438,10 +438,11 @@
   display: flex;
   width: min(1010px, calc(100% - 24px));
   max-width: 100%;
+  height: 100%;
   margin: 0;
   align-items: center;
   justify-content: center;
-  gap: clamp(4px, .7cqi, 10px);
+  gap: clamp(6px, 1.2cqi, 16px);
   overflow: visible;
   line-height: 1;
   animation: pager-identity-glitch 12s steps(1, end) infinite;
@@ -452,15 +453,15 @@
   display: block;
   min-width: 0;
   flex: 0 1 auto;
-  color: #ff4fbe;
+  color: #faeb92;
   font-family: var(--font-identity);
-  font-size: clamp(26px, 10.6cqi, 112px);
+  font-size: clamp(30px, 11cqi, 116px);
   font-weight: 400;
-  letter-spacing: .075em;
+  letter-spacing: .08em;
   line-height: .74;
   white-space: nowrap;
-  -webkit-text-stroke: clamp(.8px, .09vw, 1.5px) #faeb92;
-  text-shadow: 5px 6px 0 #5c159b, 9px 11px 16px rgba(0, 0, 0, .72), -3px 0 0 rgba(255, 95, 207, .42);
+  -webkit-text-stroke: clamp(.6px, .08vw, 1.2px) rgba(255, 255, 255, 0.85);
+  text-shadow: 3px 4px 0 #7b1fa2, 6px 8px 0 #3a0954, 0 0 20px rgba(250, 235, 146, 0.5), 0 0 35px rgba(255, 43, 158, 0.35);
   animation: wordmark-main-glitch 12s steps(1, end) infinite;
 }
 
@@ -490,20 +491,21 @@
 .editionCycle {
   position: relative;
   display: grid;
-  width: clamp(58px, 18cqi, 174px);
-  height: clamp(34px, 10cqi, 100px);
+  width: auto;
+  min-width: clamp(64px, 18cqi, 180px);
+  height: clamp(36px, 10cqi, 100px);
   margin-left: 0;
   flex: 0 0 auto;
   place-items: center;
   overflow: visible;
-  color: #ff35a8;
+  color: #faeb92;
   font-family: var(--font-edition);
-  font-size: clamp(25px, 10cqi, 106px);
+  font-size: clamp(28px, 10.5cqi, 110px);
   font-weight: 500;
   letter-spacing: .015em;
   line-height: .82;
-  -webkit-text-stroke: clamp(1px, .12vw, 2px) #faeb92;
-  text-shadow: 4px 4px 0 #7113d4, 8px 9px 14px rgba(62, 0, 72, .72), -3px 0 0 rgba(255, 95, 207, .45);
+  -webkit-text-stroke: clamp(.6px, .08vw, 1.2px) rgba(255, 255, 255, 0.85);
+  text-shadow: 3px 4px 0 #7b1fa2, 6px 8px 0 #3a0954, 0 0 20px rgba(250, 235, 146, 0.5), 0 0 35px rgba(255, 43, 158, 0.35);
   animation: edition-jolt 12s steps(1, end) infinite;
 }
 
@@ -1309,24 +1311,27 @@
   }
 
   .identity {
-    width: calc(100% - 12px);
-    gap: clamp(4px, 1.5vw, 10px);
+    width: calc(100% - 10px);
+    height: 100%;
+    gap: clamp(6px, 1.8vw, 12px);
     flex-wrap: nowrap;
     justify-content: center;
   }
 
   .wordmark {
-    font-size: clamp(20px, 6.2vw, 34px);
-    text-shadow: 2px 3px 0 #5c159b, 4px 5px 8px rgba(0, 0, 0, .7), -1px 0 0 rgba(255, 95, 207, .42);
+    font-size: clamp(25px, 7.6vw, 44px);
+    -webkit-text-stroke: clamp(.5px, .08vw, 1px) rgba(255, 255, 255, 0.85);
+    text-shadow: 2.5px 3.5px 0 #7b1fa2, 5px 6px 0 #3a0954, 0 0 16px rgba(250, 235, 146, 0.5);
   }
 
   .editionCycle {
     width: auto;
-    min-width: clamp(48px, 15vw, 80px);
+    min-width: clamp(54px, 16vw, 92px);
     height: auto;
     margin-left: 0;
-    font-size: clamp(20px, 6.2vw, 34px);
-    text-shadow: 2px 2px 0 #7113d4, 4px 5px 9px rgba(62, 0, 72, .72);
+    font-size: clamp(25px, 7.6vw, 44px);
+    -webkit-text-stroke: clamp(.5px, .08vw, 1px) rgba(255, 255, 255, 0.85);
+    text-shadow: 2.5px 3.5px 0 #7b1fa2, 5px 6px 0 #3a0954, 0 0 16px rgba(250, 235, 146, 0.5);
   }
 
   .editionCycle::before,
@@ -1391,14 +1396,15 @@
 
   .identity {
     width: 100%;
+    height: 100%;
   }
 
   .wordmark {
-    font-size: clamp(18px, 5.6vw, 24px);
+    font-size: clamp(22px, 6.8vw, 30px);
   }
 
   .editionCycle {
-    font-size: clamp(18px, 5.6vw, 24px);
+    font-size: clamp(22px, 6.8vw, 30px);
   }
 
   .tagline {
