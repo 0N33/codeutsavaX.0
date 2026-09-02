@@ -1,11 +1,11 @@
 "use client";
 
+import React, { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { useState, useCallback, useEffect } from "react";
 import { GlitchButton } from "@/components/ui/glitch-button";
+import { CyberBrickBreaker } from "./CyberBrickBreaker";
 import { CyberSpaceshipGame } from "./CyberSpaceshipGame";
 import { CyberDinoGame } from "./CyberDinoGame";
-import { CyberBrickBreaker } from "./CyberBrickBreaker";
 import styles from "./GlitchverseHero.module.css";
 
 const registrationUrl = "https://codeutsava-x.devfolio.co/overview";
@@ -15,20 +15,6 @@ type GameType = "breaker" | "spaceship" | "dino";
 export function GlitchverseHero() {
   const [isGameMode, setIsGameMode] = useState<boolean>(false);
   const [activeGame, setActiveGame] = useState<GameType>("breaker");
-  const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
-
-  // Android & Mobile detection
-  useEffect(() => {
-    const checkMobile = () => {
-      const isMobile =
-        window.innerWidth <= 768 ||
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      setIsMobileDevice(isMobile);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   const togglePower = useCallback(() => {
     setIsGameMode((prev) => {
@@ -141,6 +127,7 @@ export function GlitchverseHero() {
               type="button"
               className={`${styles.pagerConsoleBtn} ${isGameMode ? styles.pagerPlayBtnActive : ""}`}
               onClick={togglePower}
+              onTouchEnd={togglePower}
               title={isGameMode ? "Exit Game Mode" : "Play Cyber Arcade Games"}
               aria-label="Toggle Play Mode"
             >
@@ -155,6 +142,7 @@ export function GlitchverseHero() {
               type="button"
               className={`${styles.pagerConsoleBtn} ${styles.pagerCircleBtn} ${isGameMode ? styles.pagerCircleBtnActive : ""}`}
               onClick={togglePower}
+              onTouchEnd={togglePower}
               title={isGameMode ? "Power Off Console" : "Power On Game Console"}
               aria-label="Power Button: Toggle Game Console"
             >
@@ -213,14 +201,23 @@ export function GlitchverseHero() {
             label="STEPS TO REGISTER"
             variant="secondary"
             onClick={() => {
-              const element = document.getElementById("tracks");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              const link = document.createElement("a");
+              link.href = "/Registration_Instructions.pdf";
+              link.download = "RegistrationInstructions.pdf";
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
             }}
           />
+
         </div>
       </section>
+
+      <div className={styles.bottomRail} aria-hidden="true">
+        <span>CODEUTSAVA // X</span>
+        <span>BUILD / BREAK / PERCEIVE / REIMAGINE</span>
+        <span>BY TURING CLUB OF PROGRAMMERS</span>
+      </div>
     </main>
   );
 }
