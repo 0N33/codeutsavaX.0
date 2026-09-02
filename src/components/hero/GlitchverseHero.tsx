@@ -15,8 +15,26 @@ type GameType = "breaker" | "spaceship" | "dino";
 export function GlitchverseHero() {
   const [isGameMode, setIsGameMode] = useState<boolean>(false);
   const [activeGame, setActiveGame] = useState<GameType>("breaker");
+  const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
+
+  // Easter egg games are strictly for PC (Desktop/Laptop)
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobile =
+        window.innerWidth <= 768 ||
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobileDevice(isMobile);
+      if (isMobile) {
+        setIsGameMode(false);
+      }
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const togglePower = useCallback(() => {
+    if (isMobileDevice) return;
     setIsGameMode((prev) => {
       const next = !prev;
       // Synthesize power switch tone
@@ -43,11 +61,11 @@ export function GlitchverseHero() {
       }
       return next;
     });
-  }, []);
+  }, [isMobileDevice]);
 
-  const toggleGameType = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
+  const toggleGameType = useCallback((e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!isGameMode) return; // Inactive before powering on monitor!
+    if (!isGameMode || isMobileDevice) return;
 
     setActiveGame((prev) => {
       if (prev === "breaker") return "spaceship";
@@ -76,7 +94,7 @@ export function GlitchverseHero() {
         osc.stop(ctx.currentTime + 0.2);
       }
     } catch {}
-  }, [isGameMode]);
+  }, [isGameMode, isMobileDevice]);
 
   const getNextGameName = () => {
     if (activeGame === "breaker") return "SPACESHIP";
@@ -92,21 +110,24 @@ export function GlitchverseHero() {
       <section className={styles.heroStage} aria-labelledby="hero-title">
         <p className={styles.eyebrow}>WELCOME TO</p>
 
-        <div className={`${styles.pagerShell} ${isGameMode ? styles.consoleActiveShell : ""}`}>
+        <div className={`${styles.pagerShell} ${isGameMode && !isMobileDevice ? styles.consoleActiveShell : ""}`}>
           <span className={styles.pagerTopRidge} aria-hidden="true">
-            <i className={isGameMode ? styles.powerLedActive : ""} />
+            <i className={isGameMode && !isMobileDevice ? styles.powerLedActive : ""} />
             <i />
             <i />
           </span>
           <span className={styles.pagerSpeaker} aria-hidden="true"><i /><i /><i /><i /><i /></span>
           
+          {/* Mobile Original Bezel Slits */}
+          <span className={styles.pagerControlsMobile} aria-hidden="true"><i /><i /></span>
+
+          {/* PC Desktop Console Bezel Buttons */}
           <div className={styles.pagerControls}>
             {/* 1. SWITCH Button */}
             <button
               type="button"
               className={`${styles.pagerConsoleBtn} ${isGameMode ? styles.pagerSwitchBtnActive : ""}`}
               onClick={toggleGameType}
-              onTouchEnd={toggleGameType}
               title={
                 !isGameMode
                   ? "Turn on PLAY first to switch games"
@@ -127,7 +148,6 @@ export function GlitchverseHero() {
               type="button"
               className={`${styles.pagerConsoleBtn} ${isGameMode ? styles.pagerPlayBtnActive : ""}`}
               onClick={togglePower}
-              onTouchEnd={togglePower}
               title={isGameMode ? "Exit Game Mode" : "Play Cyber Arcade Games"}
               aria-label="Toggle Play Mode"
             >
@@ -142,7 +162,6 @@ export function GlitchverseHero() {
               type="button"
               className={`${styles.pagerConsoleBtn} ${styles.pagerCircleBtn} ${isGameMode ? styles.pagerCircleBtnActive : ""}`}
               onClick={togglePower}
-              onTouchEnd={togglePower}
               title={isGameMode ? "Power Off Console" : "Power On Game Console"}
               aria-label="Power Button: Toggle Game Console"
             >
@@ -153,7 +172,7 @@ export function GlitchverseHero() {
           </div>
 
           <div className={styles.pagerViewport}>
-            {isGameMode ? (
+            {!isMobileDevice && isGameMode ? (
               activeGame === "breaker" ? (
                 <CyberBrickBreaker onClose={() => setIsGameMode(false)} />
               ) : activeGame === "spaceship" ? (
