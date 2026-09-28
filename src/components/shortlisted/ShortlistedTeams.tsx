@@ -2,20 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import {
+  fetchShortlistedTeams,
+  FALLBACK_SHORTLISTED_TEAMS,
+  type ParsedShortlistedTeam,
+} from '@/lib/shortlisted-api';
+import { ShortlistedTeamModal } from './ShortlistedTeamModal';
 import styles from './ShortlistedTeams.module.css';
-
-interface ShortlistedSlot {
-  id: number;
-  name: string;
-  rank: string;
-}
-
-const SHORTLISTED_SLOTS: ShortlistedSlot[] = [
-  { id: 1, name: 'BYTE_FORCE', rank: 'TEAM // 01' },
-  { id: 2, name: 'CYBER_PULSE', rank: 'TEAM // 02' },
-  { id: 3, name: 'NEO_SYNTAX', rank: 'TEAM // 03' },
-  { id: 4, name: 'ZERO_DAY', rank: 'TEAM // 04' },
-];
 
 const GLITCH_GLYPHS = '!@#$%^&*<>[]{}|~_+?01X=/\\';
 
@@ -57,10 +50,19 @@ function ScrambleGlitchText({
 }
 
 export function ShortlistedTeams() {
-  const [hoveredSlot, setHoveredSlot] = useState<number | null>(null);
+  const [teams, setTeams] = useState<ParsedShortlistedTeam[]>(FALLBACK_SHORTLISTED_TEAMS);
+  const [selectedTeam, setSelectedTeam] = useState<ParsedShortlistedTeam | null>(null);
+  const [hoveredSlot, setHoveredSlot] = useState<string | number | null>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+    fetchShortlistedTeams().then((data) => {
+      if (isMounted && data && data.length > 0) {
+        setTeams(data);
+      }
+    });
+
     const checkTouch = () => {
       setIsTouchDevice(
         'ontouchstart' in window ||
@@ -70,7 +72,10 @@ export function ShortlistedTeams() {
     };
     checkTouch();
     window.addEventListener('resize', checkTouch);
-    return () => window.removeEventListener('resize', checkTouch);
+    return () => {
+      isMounted = false;
+      window.removeEventListener('resize', checkTouch);
+    };
   }, []);
 
   return (
@@ -84,7 +89,7 @@ export function ShortlistedTeams() {
         <h2 id="shortlist-title">TEAMS SHORTLISTED</h2>
       </div>
 
-      {/* Master Controls Bar - Decrypted & Live State */}
+      {/* Master Controls Bar - Decrypted State */}
       <div className={styles.controlsBar}>
         <div className={styles.statusIndicator}>
           <span>TRANSMISSION // DECRYPTED</span>
@@ -98,39 +103,51 @@ export function ShortlistedTeams() {
         </div>
       </div>
 
-      {/* Grid of Rectangular Cards displaying Shortlisted Team Names */}
+      {/* Grid of Rectangular Cards displaying Only Team Names */}
       <div className={styles.slotsGrid}>
-        {SHORTLISTED_SLOTS.map((slot) => {
-          const isHovered = !isTouchDevice && hoveredSlot === slot.id;
+        {teams.map((team) => {
+          const isHovered = !isTouchDevice && hoveredSlot === team.id;
 
           return (
             <div
-              key={slot.id}
+              key={team.id}
               className={`${styles.slotCard} ${isHovered ? styles.slotCardHovered : ''}`}
-              onMouseEnter={() => !isTouchDevice && setHoveredSlot(slot.id)}
+              onMouseEnter={() => !isTouchDevice && setHoveredSlot(team.id)}
               onMouseLeave={() => setHoveredSlot(null)}
-              aria-label={`Shortlisted Team ${slot.id}: ${slot.name}`}
+              onClick={() => setSelectedTeam(team)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedTeam(team);
+                }
+              }}
+              aria-label={`View dossier for ${team.teamName}`}
             >
               <div className={styles.cardScanline} aria-hidden="true" />
               <span className={styles.cardCorner} aria-hidden="true" />
 
               <div className={styles.cardInner}>
                 <div className={styles.openedView}>
-                  <div className={styles.teamContent}>
-                    <span className={styles.slotBadge}>{slot.rank}</span>
-                    <h3 className={styles.teamName}>
-                      <ScrambleGlitchText
-                        text={slot.name}
-                        isHovered={isHovered}
-                      />
-                    </h3>
-                  </div>
+                  <h3 className={styles.teamName}>
+                    <ScrambleGlitchText
+                      text={team.teamName}
+                      isHovered={isHovered}
+                    />
+                  </h3>
                 </div>
               </div>
             </div>
           );
         })}
       </div>
+
+      {/* Glitchy Windows XP Title Box Modal */}
+      <ShortlistedTeamModal
+        team={selectedTeam}
+        onClose={() => setSelectedTeam(null)}
+      />
     </section>
   );
 }
