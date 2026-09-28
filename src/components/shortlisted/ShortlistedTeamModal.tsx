@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Minus, Square, Terminal, ShieldCheck } from 'lucide-react';
+import { X, Minus, Square, Terminal } from 'lucide-react';
 import type { ParsedShortlistedTeam } from '@/lib/shortlisted-api';
 import styles from './ShortlistedTeamModal.module.css';
 
@@ -12,6 +13,12 @@ interface ShortlistedTeamModalProps {
 }
 
 export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Synthesize retro open audio tone
   useEffect(() => {
     if (team) {
@@ -38,7 +45,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
     }
   }, [team]);
 
-  // Handle ESC key to close
+  // Handle ESC key to close & scroll lock
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -64,7 +71,9 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
     [onClose]
   );
 
-  return (
+  if (!mounted) return null;
+
+  const modalContent = (
     <AnimatePresence>
       {team && (
         <motion.div
@@ -73,15 +82,15 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.18 }}
         >
           {/* Windows XP / Cyberpunk Glitchy Dialog Shell */}
           <motion.div
             className={styles.windowShell}
-            initial={{ scale: 0.88, opacity: 0, y: 15 }}
+            initial={{ scale: 0.9, opacity: 0, y: 18 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 10 }}
-            transition={{ type: 'spring', damping: 24, stiffness: 320 }}
+            exit={{ scale: 0.92, opacity: 0, y: 12 }}
+            transition={{ type: 'spring', damping: 26, stiffness: 360 }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-team-title"
@@ -90,7 +99,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
             <div className={styles.windowScanlines} aria-hidden="true" />
             <div className={styles.windowGlow} aria-hidden="true" />
 
-            {/* Retro Windows Title Bar */}
+            {/* Retro Windows XP Title Bar */}
             <div className={styles.titleBar}>
               <div className={styles.titleLeft}>
                 <Terminal size={13} className={styles.terminalIcon} />
@@ -105,6 +114,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
                   type="button"
                   className={styles.winBtn}
                   onClick={onClose}
+                  title="Minimize"
                   aria-label="Minimize"
                 >
                   <Minus size={11} strokeWidth={2.5} />
@@ -113,6 +123,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
                   type="button"
                   className={styles.winBtn}
                   onClick={onClose}
+                  title="Maximize"
                   aria-label="Maximize"
                 >
                   <Square size={10} strokeWidth={2.2} />
@@ -121,6 +132,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
                   type="button"
                   className={`${styles.winBtn} ${styles.winBtnClose}`}
                   onClick={onClose}
+                  title="Close"
                   aria-label="Close dialog"
                 >
                   <X size={12} strokeWidth={2.6} />
@@ -130,13 +142,9 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
 
             {/* Modal Body */}
             <div className={styles.windowBody}>
-              {/* Top Banner Plaque (Matching reference image) */}
+              {/* Top Banner Plaque (Team Name & College only) */}
               <div className={styles.teamPlaque}>
                 <div className={styles.plaqueInner}>
-                  <div className={styles.verifiedTag}>
-                    <ShieldCheck size={11} />
-                    <span>OFFICIAL SHORTLIST</span>
-                  </div>
                   <h2 id="modal-team-title" className={styles.plaqueTeamName}>
                     {team.teamName}
                   </h2>
@@ -189,4 +197,6 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
       )}
     </AnimatePresence>
   );
+
+  return createPortal(modalContent, document.body);
 }
