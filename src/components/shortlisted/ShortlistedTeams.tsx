@@ -1,20 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Lock } from 'lucide-react';
-import { CyberLootboxIcon } from './CyberLootboxIcon';
+import { CheckCircle2 } from 'lucide-react';
 import styles from './ShortlistedTeams.module.css';
 
 interface ShortlistedSlot {
   id: number;
+  name: string;
+  rank: string;
 }
 
 const SHORTLISTED_SLOTS: ShortlistedSlot[] = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
+  { id: 1, name: 'BYTE_FORCE', rank: 'TEAM // 01' },
+  { id: 2, name: 'CYBER_PULSE', rank: 'TEAM // 02' },
+  { id: 3, name: 'NEO_SYNTAX', rank: 'TEAM // 03' },
+  { id: 4, name: 'ZERO_DAY', rank: 'TEAM // 04' },
 ];
 
 const GLITCH_GLYPHS = '!@#$%^&*<>[]{}|~_+?01X=/\\';
@@ -22,7 +22,7 @@ const GLITCH_GLYPHS = '!@#$%^&*<>[]{}|~_+?01X=/\\';
 function ScrambleGlitchText({
   text,
   isHovered,
-  className
+  className,
 }: {
   text: string;
   isHovered: boolean;
@@ -84,21 +84,21 @@ export function ShortlistedTeams() {
         <h2 id="shortlist-title">TEAMS SHORTLISTED</h2>
       </div>
 
-      {/* Master Controls Bar - Locked State */}
+      {/* Master Controls Bar - Decrypted & Live State */}
       <div className={styles.controlsBar}>
         <div className={styles.statusIndicator}>
-          <span>TRANSMISSION // LOCKED</span>
+          <span>TRANSMISSION // DECRYPTED</span>
         </div>
 
         <div className={styles.btnGroup}>
           <div className={styles.lockedBadge}>
-            <Lock size={11} className={styles.lockIcon} />
-            <span>REVEALING SOON</span>
+            <CheckCircle2 size={12} className={styles.lockIcon} />
+            <span>PHASE 1 SHORTLIST LIVE</span>
           </div>
         </div>
       </div>
 
-      {/* Grid of Rectangular Lootbox Cards (Totally Locked) */}
+      {/* Grid of Rectangular Cards displaying Shortlisted Team Names */}
       <div className={styles.slotsGrid}>
         {SHORTLISTED_SLOTS.map((slot) => {
           const isHovered = !isTouchDevice && hoveredSlot === slot.id;
@@ -106,32 +106,26 @@ export function ShortlistedTeams() {
           return (
             <div
               key={slot.id}
-              className={`${styles.slotCard} ${styles.slotCardLocked} ${isHovered ? styles.slotCardHovered : ''}`}
+              className={`${styles.slotCard} ${isHovered ? styles.slotCardHovered : ''}`}
               onMouseEnter={() => !isTouchDevice && setHoveredSlot(slot.id)}
               onMouseLeave={() => setHoveredSlot(null)}
-              aria-label={`Slot ${slot.id}: Encrypted Cyber Vault`}
+              aria-label={`Shortlisted Team ${slot.id}: ${slot.name}`}
             >
               <div className={styles.cardScanline} aria-hidden="true" />
               <span className={styles.cardCorner} aria-hidden="true" />
 
               <div className={styles.cardInner}>
-                <motion.div
-                  className={styles.unopenedView}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <CyberLootboxIcon
-                    isOpen={false}
-                    isOpening={false}
-                    isHovered={isHovered}
-                  />
-                  <ScrambleGlitchText
-                    text="[ LOCKED ]"
-                    isHovered={isHovered}
-                    className={styles.unopenedLabel}
-                  />
-                </motion.div>
+                <div className={styles.openedView}>
+                  <div className={styles.teamContent}>
+                    <span className={styles.slotBadge}>{slot.rank}</span>
+                    <h3 className={styles.teamName}>
+                      <ScrambleGlitchText
+                        text={slot.name}
+                        isHovered={isHovered}
+                      />
+                    </h3>
+                  </div>
+                </div>
               </div>
             </div>
           );
