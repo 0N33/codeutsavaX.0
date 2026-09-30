@@ -59,7 +59,7 @@ export function ShortlistedTeams() {
         <div className={styles.btnGroup}>
           <div className={styles.lockedBadge}>
             <CheckCircle2 size={12} className={styles.lockIcon} />
-            <span>PHASE 1 SHORTLIST LIVE</span>
+            <span>LIVE</span>
           </div>
         </div>
       </div>
