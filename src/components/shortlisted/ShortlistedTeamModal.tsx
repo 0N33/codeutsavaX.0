@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Square, Terminal } from 'lucide-react';
@@ -12,12 +12,18 @@ interface ShortlistedTeamModalProps {
   onClose: () => void;
 }
 
-export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProps) {
-  const [mounted, setMounted] = useState(false);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+function useIsMounted() {
+  return React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
+
+export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProps) {
+  const mounted = useIsMounted();
 
   // Synthesize retro open audio tone
   useEffect(() => {
@@ -41,7 +47,10 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
           osc.start(ctx.currentTime);
           osc.stop(ctx.currentTime + 0.18);
         }
-      } catch {}
+      } catch (err) {
+        // AudioContext is optional and might be blocked by browser autoplay policy
+        console.debug('Audio tone blocked or unavailable:', err);
+      }
     }
   }, [team]);
 
@@ -65,7 +74,10 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
         osc.start(ctx.currentTime);
         osc.stop(ctx.currentTime + 0.24);
       }
-    } catch {}
+    } catch (err) {
+      // AudioContext is optional and might be blocked by browser autoplay policy
+      console.debug('Close audio tone blocked or unavailable:', err);
+    }
   }, []);
 
   const handleClose = useCallback(() => {
