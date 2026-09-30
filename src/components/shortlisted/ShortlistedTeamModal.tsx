@@ -104,7 +104,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
               <div className={styles.titleLeft}>
                 <Terminal size={13} className={styles.terminalIcon} />
                 <span className={styles.windowTitle}>
-                  TeamShortlisted//{team.teamName.replace(/\s+/g, '')}
+                  TEAM_SHORTLISTED // {team.teamName.replace(/\s+/g, '_').toUpperCase()}
                 </span>
               </div>
 
