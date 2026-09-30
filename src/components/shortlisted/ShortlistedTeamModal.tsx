@@ -45,11 +45,39 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
     }
   }, [team]);
 
+  // Synthesize retro glitch power-down audio tone on close
+  const playCloseSound = useCallback(() => {
+    try {
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (AudioCtx) {
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(840, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(70, ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.24);
+      }
+    } catch {}
+  }, []);
+
+  const handleClose = useCallback(() => {
+    playCloseSound();
+    onClose();
+  }, [onClose, playCloseSound]);
+
   // Handle ESC key to close & scroll lock
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        handleClose();
       }
     };
     if (team) {
@@ -60,15 +88,15 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [team, onClose]);
+  }, [team, handleClose]);
 
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent) => {
       if (e.target === e.currentTarget) {
-        onClose();
+        handleClose();
       }
     },
-    [onClose]
+    [handleClose]
   );
 
   if (!mounted) return null;
@@ -82,15 +110,45 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.22, ease: 'easeInOut' }}
+          transition={{ duration: 0.32, ease: 'easeInOut' }}
         >
-          {/* Windows XP / Cyberpunk Glitchy Dialog Shell */}
+          {/* Windows XP / Cyberpunk Glitchy Dialog Shell with Glitch Close Exit Animation */}
           <motion.div
             className={styles.windowShell}
             initial={{ scale: 0.88, opacity: 0, y: 16 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.88, opacity: 0, y: 16 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+              y: 0,
+              x: 0,
+              scaleX: 1,
+              scaleY: 1,
+              skewX: 0,
+              filter: 'none',
+              transition: { duration: 0.24, ease: [0.16, 1, 0.3, 1] },
+            }}
+            exit={{
+              scaleX: [1, 1.08, 0.94, 1.16, 1.35, 0.04, 0],
+              scaleY: [1, 0.94, 1.04, 0.55, 0.12, 0.02, 0],
+              x: [0, -10, 14, -8, 16, -12, 0],
+              y: [0, 3, -5, 6, -3, 1, 0],
+              skewX: [0, -12, 14, -9, 18, -14, 0],
+              opacity: [1, 0.9, 0.95, 0.7, 0.85, 0.2, 0],
+              filter: [
+                'none',
+                'hue-rotate(45deg) contrast(160%) drop-shadow(-6px 0 0 #ff5fcf)',
+                'hue-rotate(-60deg) contrast(200%) drop-shadow(6px 0 0 #faeb92)',
+                'invert(70%) contrast(250%) drop-shadow(-10px 0 0 #9929ea)',
+                'brightness(220%) saturate(300%) drop-shadow(8px 0 0 #ff5fcf)',
+                'brightness(0%) contrast(300%)',
+                'brightness(0%)',
+              ],
+              transition: {
+                duration: 0.34,
+                ease: [0.22, 1, 0.36, 1],
+                times: [0, 0.14, 0.28, 0.46, 0.68, 0.88, 1],
+              },
+            }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-team-title"
@@ -113,7 +171,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
                 <button
                   type="button"
                   className={styles.winBtn}
-                  onClick={onClose}
+                  onClick={handleClose}
                   title="Minimize"
                   aria-label="Minimize"
                 >
@@ -122,7 +180,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
                 <button
                   type="button"
                   className={styles.winBtn}
-                  onClick={onClose}
+                  onClick={handleClose}
                   title="Maximize"
                   aria-label="Maximize"
                 >
@@ -131,7 +189,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
                 <button
                   type="button"
                   className={`${styles.winBtn} ${styles.winBtnClose}`}
-                  onClick={onClose}
+                  onClick={handleClose}
                   title="Close"
                   aria-label="Close dialog"
                 >
@@ -185,3 +243,4 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
     document.body
   );
 }
+
