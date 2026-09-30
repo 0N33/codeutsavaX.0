@@ -7,44 +7,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(12px, 3vw, 24px);
-  background: rgba(4, 1, 10, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  padding: clamp(14px, 3vw, 24px);
+  background: rgba(4, 1, 10, 0.84);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   overflow-y: auto;
 }
 
 .windowShell {
   position: relative;
   width: 100%;
-  max-width: 540px;
+  max-width: 520px;
   margin: auto;
-  background: linear-gradient(180deg, #19092b 0%, #0d0417 40%, #05020a 100%);
+  background: linear-gradient(180deg, #1a0a2e 0%, #0d0418 45%, #05020a 100%);
   border: 1.8px solid rgba(250, 235, 146, 0.55);
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow:
-    0 0 30px rgba(153, 41, 234, 0.5),
-    0 0 16px rgba(255, 95, 207, 0.35),
-    inset 0 0 24px rgba(153, 41, 234, 0.25),
-    0 25px 50px rgba(0, 0, 0, 0.9);
+    0 0 35px rgba(153, 41, 234, 0.55),
+    0 0 18px rgba(255, 95, 207, 0.38),
+    inset 0 0 24px rgba(153, 41, 234, 0.22),
+    0 25px 60px rgba(0, 0, 0, 0.95);
   overflow: hidden;
   user-select: none;
-  animation: windowJitter 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes windowJitter {
-  0% {
-    transform: scale(0.88) skewX(-1.5deg);
-    filter: drop-shadow(-6px 0 #ff5fcf) drop-shadow(6px 0 #9929ea);
-  }
-  50% {
-    transform: scale(1.02) skewX(1deg);
-    filter: drop-shadow(3px 0 #faeb92);
-  }
-  100% {
-    transform: scale(1) skewX(0deg);
-    filter: none;
-  }
 }
 
 .windowScanlines {
@@ -55,10 +39,10 @@
     to bottom,
     transparent 0px,
     transparent 2px,
-    rgba(0, 0, 0, 0.24) 2px,
-    rgba(0, 0, 0, 0.24) 4px
+    rgba(0, 0, 0, 0.22) 2px,
+    rgba(0, 0, 0, 0.22) 4px
   );
-  opacity: 0.3;
+  opacity: 0.28;
   z-index: 10;
 }
 
@@ -68,21 +52,21 @@
   left: 20%;
   width: 60%;
   height: 80px;
-  background: radial-gradient(ellipse, rgba(255, 95, 207, 0.4), transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 95, 207, 0.45), transparent 70%);
   filter: blur(24px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* RETRO WINDOWS XP / CYBER TITLE BAR */
+/* RETRO WINDOWS XP CYBER TITLE BAR */
 .titleBar {
   position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
-  background: linear-gradient(90deg, #46146b 0%, #240938 60%, #150522 100%);
+  padding: 9px 14px;
+  background: linear-gradient(90deg, #441469 0%, #230936 60%, #140520 100%);
   border-bottom: 1.5px solid rgba(250, 235, 146, 0.4);
 }
 
@@ -94,14 +78,14 @@
 
 .terminalIcon {
   color: #faeb92;
-  filter: drop-shadow(0 0 5px #faeb92);
+  filter: drop-shadow(0 0 6px #faeb92);
 }
 
 .windowTitle {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: #faeb92;
   text-shadow: 0 0 6px rgba(250, 235, 146, 0.5);
   text-transform: uppercase;
@@ -111,7 +95,7 @@
 .windowControls {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 }
 
 .winBtn {
@@ -146,23 +130,23 @@
 .windowBody {
   position: relative;
   z-index: 2;
-  padding: 18px 20px 16px;
+  padding: 20px 20px 22px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-/* TEAM PLAQUE / BANNER (MATCHING SCREENSHOT) */
+/* TEAM PLAQUE / BANNER */
 .teamPlaque {
   position: relative;
   width: 100%;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(153, 41, 234, 0.55) 0%, rgba(85, 20, 135, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(153, 41, 234, 0.5) 0%, rgba(85, 20, 135, 0.65) 100%);
   border: 1.5px solid rgba(255, 95, 207, 0.55);
   box-shadow:
     inset 0 0 20px rgba(255, 95, 207, 0.28),
     0 6px 20px rgba(0, 0, 0, 0.45);
-  padding: 14px 18px;
+  padding: 16px 20px;
   text-align: center;
   backdrop-filter: blur(8px);
 }
@@ -172,15 +156,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
 }
 
 .plaqueTeamName {
   margin: 0;
   font-family: var(--font-identity), var(--font-body);
-  font-size: clamp(22px, 4.2vw, 32px);
+  font-size: clamp(24px, 4.4vw, 34px);
   font-weight: 900;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: #ffffff;
   text-shadow:
     0 0 14px rgba(255, 95, 207, 0.85),
@@ -193,7 +177,7 @@
 .plaqueCollege {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: #faeb92;
@@ -225,8 +209,8 @@
 
 .thMember,
 .thName {
-  padding: 9px 14px;
-  font-size: 10px;
+  padding: 10px 14px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.14em;
   color: #faeb92;
@@ -262,7 +246,7 @@
 }
 
 .tdMember {
-  padding: 9px 14px;
+  padding: 11px 14px;
   text-align: center;
   border-right: 1px solid rgba(250, 235, 146, 0.2);
 }
@@ -271,62 +255,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: rgba(153, 41, 234, 0.4);
   border: 1px solid rgba(255, 95, 207, 0.55);
   color: #faeb92;
   font-weight: 800;
-  font-size: 10.5px;
+  font-size: 11px;
   box-shadow: 0 0 6px rgba(153, 41, 234, 0.4);
 }
 
 .tdName {
-  padding: 9px 16px;
-  font-size: 13px;
+  padding: 11px 18px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 0.04em;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
-}
-
-/* WINDOW FOOTER */
-.windowFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 2px;
-}
-
-.footerStatus {
-  font-family: var(--font-mono);
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #ff5fcf;
-  text-shadow: 0 0 6px rgba(255, 95, 207, 0.5);
-}
-
-.closeActionBtn {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  padding: 4px 10px;
-  border-radius: 3px;
-  background: rgba(153, 41, 234, 0.3);
-  border: 1px solid rgba(250, 235, 146, 0.45);
-  color: #faeb92;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.closeActionBtn:hover {
-  background: #ff5fcf;
-  color: #05020a;
-  border-color: #ffffff;
-  box-shadow: 0 0 12px rgba(255, 95, 207, 0.7);
 }
 
 @media (max-width: 600px) {
@@ -335,41 +281,35 @@
   }
 
   .windowBody {
-    padding: 12px 12px 10px;
-    gap: 10px;
+    padding: 14px 14px 16px;
+    gap: 12px;
   }
 
   .teamPlaque {
-    padding: 10px 12px;
+    padding: 12px 14px;
     border-radius: 8px;
   }
 
   .plaqueTeamName {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .plaqueCollege {
-    font-size: 9.5px;
+    font-size: 10px;
   }
 
   .thMember,
   .thName {
-    padding: 7px 8px;
-    font-size: 8.5px;
+    padding: 8px 8px;
+    font-size: 9px;
   }
 
   .tdMember {
-    padding: 7px 8px;
+    padding: 8px 8px;
   }
 
   .tdName {
-    padding: 7px 10px;
-    font-size: 11px;
-  }
-
-  .windowFooter {
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
+    padding: 8px 12px;
+    font-size: 12px;
   }
 }

@@ -10,45 +10,6 @@ import {
 import { ShortlistedTeamModal } from './ShortlistedTeamModal';
 import styles from './ShortlistedTeams.module.css';
 
-const GLITCH_GLYPHS = '!@#$%^&*<>[]{}|~_+?01X=/\\';
-
-function ScrambleGlitchText({
-  text,
-  isHovered,
-  className,
-}: {
-  text: string;
-  isHovered: boolean;
-  className?: string;
-}) {
-  const [displayText, setDisplayText] = useState(text);
-
-  useEffect(() => {
-    if (!isHovered) {
-      const timeoutId = setTimeout(() => setDisplayText(text), 0);
-      return () => clearTimeout(timeoutId);
-    }
-
-    const interval = setInterval(() => {
-      const scrambled = text
-        .split('')
-        .map((char) => {
-          if (char === ' ' || char === '&' || char === '_' || char === '[' || char === ']') return char;
-          if (Math.random() < 0.48) {
-            return GLITCH_GLYPHS[Math.floor(Math.random() * GLITCH_GLYPHS.length)];
-          }
-          return char;
-        })
-        .join('');
-      setDisplayText(scrambled);
-    }, 45);
-
-    return () => clearInterval(interval);
-  }, [isHovered, text]);
-
-  return <span className={className}>{isHovered ? displayText : text}</span>;
-}
-
 export function ShortlistedTeams() {
   const [teams, setTeams] = useState<ParsedShortlistedTeam[]>(FALLBACK_SHORTLISTED_TEAMS);
   const [selectedTeam, setSelectedTeam] = useState<ParsedShortlistedTeam | null>(null);
@@ -103,7 +64,7 @@ export function ShortlistedTeams() {
         </div>
       </div>
 
-      {/* Grid of Rectangular Cards displaying Only Team Names */}
+      {/* Grid of Rectangular Cards displaying Only Clean Team Names */}
       <div className={styles.slotsGrid}>
         {teams.map((team) => {
           const isHovered = !isTouchDevice && hoveredSlot === team.id;
@@ -131,10 +92,7 @@ export function ShortlistedTeams() {
               <div className={styles.cardInner}>
                 <div className={styles.openedView}>
                   <h3 className={styles.teamName}>
-                    <ScrambleGlitchText
-                      text={team.teamName}
-                      isHovered={isHovered}
-                    />
+                    {team.teamName}
                   </h3>
                 </div>
               </div>

@@ -73,8 +73,8 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
 
   if (!mounted) return null;
 
-  const modalContent = (
-    <AnimatePresence>
+  return createPortal(
+    <AnimatePresence mode="wait">
       {team && (
         <motion.div
           className={styles.backdrop}
@@ -82,15 +82,15 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
+          transition={{ duration: 0.22, ease: 'easeInOut' }}
         >
           {/* Windows XP / Cyberpunk Glitchy Dialog Shell */}
           <motion.div
             className={styles.windowShell}
-            initial={{ scale: 0.9, opacity: 0, y: 18 }}
+            initial={{ scale: 0.88, opacity: 0, y: 16 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.92, opacity: 0, y: 12 }}
-            transition={{ type: 'spring', damping: 26, stiffness: 360 }}
+            exit={{ scale: 0.88, opacity: 0, y: 16 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-team-title"
@@ -104,7 +104,7 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
               <div className={styles.titleLeft}>
                 <Terminal size={13} className={styles.terminalIcon} />
                 <span className={styles.windowTitle}>
-                  TEAM_DOSSIER.EXE // [{team.teamName}]
+                  TeamShortlisted//{team.teamName.replace(/\s+/g, '')}
                 </span>
               </div>
 
@@ -177,26 +177,11 @@ export function ShortlistedTeamModal({ team, onClose }: ShortlistedTeamModalProp
                   </tbody>
                 </table>
               </div>
-
-              {/* Footer status row */}
-              <div className={styles.windowFooter}>
-                <span className={styles.footerStatus}>
-                  ● VERIFIED SQUAD // {team.members.length} OPERATOR{team.members.length > 1 ? 'S' : ''}
-                </span>
-                <button
-                  type="button"
-                  className={styles.closeActionBtn}
-                  onClick={onClose}
-                >
-                  [ CLOSE DOSSIER ]
-                </button>
-              </div>
             </div>
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
-
-  return createPortal(modalContent, document.body);
 }
